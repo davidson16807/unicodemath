@@ -165,16 +165,30 @@ UnicodeMath = function(){
 		if (type === 'Object') {
 			var element_type = 'Vector'; // x.x.constructor.name === 'Function'? 'Function' : 'Vector';
 			if (x.yz !== void 0 || x.zx !== void 0 ){
+				if (x.x !== void 0 || x.xyz !== void 0){
+					return "Multivector";
+				} 
 				return "Quaternion";
-			} else if (x.xy !== void 0){
+			} 
+			if (x.xy !== void 0){
 				return "Complex";
-			} else if(x.w !== void 0){
+			} 
+			if(x.w !== void 0){
 				return element_type + '4';
-			} else if (x.z !== void 0) {
+			} 
+			if (x.z !== void 0) {
 				return element_type + '3';
-			} else if (x.y !== void 0){
+			} 
+			if (x.y !== void 0){
 				return element_type + '2';
 			} 
+
+			for (var i = 0, li = datatypes.length; i < li; i++) {
+				datatype = datatypes[i];
+				if (datatype.test(x)) {
+					return datatype.name;
+				}
+			}
 		}
 		
 		if (type === 'Array'){
