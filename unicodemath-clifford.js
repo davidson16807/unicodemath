@@ -247,21 +247,21 @@ UnicodeMath.add_overloads({
 	'Quaternion	〳ꘌ	Quaternion': 	H〳ꘌH,	// complex division
 });
 
-GᵌᐩR = 
-
-GᵌᐩGᵌ = (function () {
-})();
-
-GᵌᐨGᵌ = (function () {
-	var bases = [
-		'1',
-		'x', 	'y',	'z',
-		'xy', 	'yz',	'zx',
-		'xyz'];
-	return 
-})();
 
 
+
+function ːᕮGᵌ(s,x,y,z,xy,yz,zx,xyz) 	{ 
+	return bases = {
+		1: 		s	|| 0,
+		x: 		x	|| 0,
+		y: 		y	|| 0,
+		z: 		z	|| 0,
+		xy: 	xy	|| 0,
+		yz: 	yz	|| 0,
+		zx: 	zx	|| 0,
+		xyz: 	xyz	|| 0
+	};
+}
 
 var Gᵌ = (function () {
 	var bases = [
@@ -385,16 +385,18 @@ var Gᵌ = (function () {
 		GᵌᐩGᵌ: function (a,b) {
 			var sum = {};
 			for (var i = 0; i < bases.length; i++) {
-				e = bases[j];
+				e = bases[i];
 				sum[e] = (a[e] || 0) + (b[e] || 0);
 			}
+			return sum;
 		},
 		GᵌᐨGᵌ: function (a,b) {
 			var difference = {};
 			for (var i = 0; i < bases.length; i++) {
-				e = bases[j];
+				e = bases[i];
 				difference[e] = (a[e] || 0) - (b[e] || 0);
 			}
+			return difference;
 		},
 		GᵌᐧGᵌ: GᵌᐧGᵌ,
 
@@ -435,100 +437,128 @@ var Gᵌ = (function () {
 })();
 
 UnicodeMath.add_overloads({
+
 	'Number	ᐩ	Multivector': 			Gᵌ.RᐩGᵌ, 	// complex multiplication
 	'Number	ᐨ	Multivector': 			Gᵌ.RᐨGᵌ, 	// complex multiplication
 	'Number	ᐧ	Multivector': 			Gᵌ.RᐧGᵌ, 	// complex multiplication
+	'Number	ॱ	Multivector': 			Gᵌ.RᐧGᵌ, 	// complex multiplication
 	'Multivector	ᐩ	Number': 		Gᵌ.GᵌᐩR, 	// complex multiplication
 	'Multivector	ᐨ	Number': 		Gᵌ.GᵌᐨR, 	// complex multiplication
 	'Multivector	ᐧ	Number': 		Gᵌ.GᵌᐧR, 	// complex multiplication
+	'Multivector	ॱ	Number': 		Gᵌ.GᵌᐧR, 	// complex multiplication
 	'Multivector	ᐩꘌ	Number': 		Gᵌ.GᵌᐩꘌR, 	// complex multiplication
 	'Multivector	ᐨꘌ	Number': 		Gᵌ.GᵌᐨꘌR, 	// complex multiplication
 	'Multivector	ᐧꘌ	Number': 		Gᵌ.GᵌᐧꘌR, 	// complex multiplication
+	'Multivector	ॱꘌ	Number': 		Gᵌ.GᵌᐧꘌR, 	// complex multiplication
 
 	'Multivector	ᐩ	Multivector': 	Gᵌ.GᵌᐩGᵌ, 	// complex multiplication
 	'Multivector	ᐨ	Multivector': 	Gᵌ.GᵌᐨGᵌ, 	// complex multiplication
 	'Multivector	ᐧ	Multivector': 	Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
+	'Multivector	ॱ	Multivector': 	Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
 	'Multivector	ᐩꘌ	Multivector': 	Gᵌ.GᵌᐩꘌGᵌ, 	// complex multiplication
 	'Multivector	ᐨꘌ	Multivector': 	Gᵌ.GᵌᐨꘌGᵌ, 	// complex multiplication
 	'Multivector	ᐧꘌ	Multivector': 	Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
+	'Multivector	ॱꘌ	Multivector': 	Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
 	'Multivector	ꘌ	Multivector': 	Gᵌ.GᵌꘌGᵌ, 	// complex multiplication
 	'Multivector	ꘌꘌ	Multivector': 	Gᵌ.GᵌꘌꘌGᵌ, // complex multiplication
 
 	'Multivector	ᐩ	Vector3': 		Gᵌ.GᵌᐩGᵌ, 	// complex multiplication
 	'Multivector	ᐨ	Vector3': 		Gᵌ.GᵌᐨGᵌ, 	// complex multiplication
 	'Multivector	ᐧ	Vector3': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
+	'Multivector	ॱ	Vector3': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
 	'Multivector	ᐩꘌ	Vector3': 		Gᵌ.GᵌᐩꘌGᵌ, 	// complex multiplication
 	'Multivector	ᐨꘌ	Vector3': 		Gᵌ.GᵌᐨꘌGᵌ, 	// complex multiplication
 	'Multivector	ᐧꘌ	Vector3': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
+	'Multivector	ॱꘌ	Vector3': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
 	'Multivector	ꘌ	Vector3': 		Gᵌ.GᵌꘌGᵌ, 	// complex multiplication
 	'Multivector	ꘌꘌ	Vector3': 		Gᵌ.GᵌꘌꘌGᵌ, // complex multiplication
 
 	'Vector3	ᐩ	Multivector': 		Gᵌ.GᵌᐩGᵌ, 	// complex multiplication
 	'Vector3	ᐨ	Multivector': 		Gᵌ.GᵌᐨGᵌ, 	// complex multiplication
 	'Vector3	ᐧ	Multivector': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
+	'Vector3	ॱ	Multivector': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
 	'Vector3	ᐩ	Multivector': 		Gᵌ.GᵌᐩꘌGᵌ, 	// complex multiplication
 	'Vector3	ᐨ	Multivector': 		Gᵌ.GᵌᐨꘌGᵌ, 	// complex multiplication
 	'Vector3	ᐧꘌ	Multivector': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
+	'Vector3	ॱꘌ	Multivector': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
 	'Vector3	ꘌ	Multivector': 		Gᵌ.GᵌꘌGᵌ, 	// complex multiplication
 	'Vector3	ꘌꘌ	Multivector': 		Gᵌ.GᵌꘌꘌGᵌ, // complex multiplication
-
 
 	'Multivector	ᐩ	Quaternion': 		Gᵌ.GᵌᐩGᵌ, 	// complex multiplication
 	'Multivector	ᐨ	Quaternion': 		Gᵌ.GᵌᐨGᵌ, 	// complex multiplication
 	'Multivector	ᐧ	Quaternion': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
+	'Multivector	ॱ	Quaternion': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
 	'Multivector	ᐩꘌ	Quaternion': 		Gᵌ.GᵌᐩꘌGᵌ, 	// complex multiplication
 	'Multivector	ᐨꘌ	Quaternion': 		Gᵌ.GᵌᐨꘌGᵌ, 	// complex multiplication
 	'Multivector	ᐧꘌ	Quaternion': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
+	'Multivector	ॱꘌ	Quaternion': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
 	'Multivector	ꘌ	Quaternion': 		Gᵌ.GᵌꘌGᵌ, 	// complex multiplication
 	'Multivector	ꘌꘌ	Quaternion': 		Gᵌ.GᵌꘌꘌGᵌ, // complex multiplication
 
 	'Quaternion	ᐩ	Multivector': 		Gᵌ.GᵌᐩGᵌ, 	// complex multiplication
 	'Quaternion	ᐨ	Multivector': 		Gᵌ.GᵌᐨGᵌ, 	// complex multiplication
 	'Quaternion	ᐧ	Multivector': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
+	'Quaternion	ॱ	Multivector': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
 	'Quaternion	ᐩ	Multivector': 		Gᵌ.GᵌᐩꘌGᵌ, 	// complex multiplication
 	'Quaternion	ᐨ	Multivector': 		Gᵌ.GᵌᐨꘌGᵌ, 	// complex multiplication
 	'Quaternion	ᐧꘌ	Multivector': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
+	'Quaternion	ॱꘌ	Multivector': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
 	'Quaternion	ꘌ	Multivector': 		Gᵌ.GᵌꘌGᵌ, 	// complex multiplication
 	'Quaternion	ꘌꘌ	Multivector': 		Gᵌ.GᵌꘌꘌGᵌ, // complex multiplication
 
 	'Vector3	ᐩ	Quaternion': 		Gᵌ.GᵌᐩGᵌ, 	// complex multiplication
 	'Vector3	ᐨ	Quaternion': 		Gᵌ.GᵌᐨGᵌ, 	// complex multiplication
 	'Vector3	ᐧ	Quaternion': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
+	'Vector3	ॱ	Quaternion': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
 	'Vector3	ᐩꘌ	Quaternion': 		Gᵌ.GᵌᐩꘌGᵌ, 	// complex multiplication
 	'Vector3	ᐨꘌ	Quaternion': 		Gᵌ.GᵌᐨꘌGᵌ, 	// complex multiplication
 	'Vector3	ᐧꘌ	Quaternion': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
+	'Vector3	ॱꘌ	Quaternion': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
 	'Vector3	ꘌ	Quaternion': 		Gᵌ.GᵌꘌGᵌ, 	// complex multiplication
 	'Vector3	ꘌꘌ	Quaternion': 		Gᵌ.GᵌꘌꘌGᵌ, // complex multiplication
 
 	'Quaternion	ᐩ	Vector3': 		Gᵌ.GᵌᐩGᵌ, 	// complex multiplication
 	'Quaternion	ᐨ	Vector3': 		Gᵌ.GᵌᐨGᵌ, 	// complex multiplication
 	'Quaternion	ᐧ	Vector3': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
+	'Quaternion	ॱ	Vector3': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
 	'Quaternion	ᐩ	Vector3': 		Gᵌ.GᵌᐩꘌGᵌ, 	// complex multiplication
 	'Quaternion	ᐨ	Vector3': 		Gᵌ.GᵌᐨꘌGᵌ, 	// complex multiplication
 	'Quaternion	ᐧꘌ	Vector3': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
+	'Quaternion	ॱꘌ	Vector3': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
 	'Quaternion	ꘌ	Vector3': 		Gᵌ.GᵌꘌGᵌ, 	// complex multiplication
 	'Quaternion	ꘌꘌ	Vector3': 		Gᵌ.GᵌꘌꘌGᵌ, // complex multiplication
-
 
 	'Vector3	ᐩ	Complex': 		Gᵌ.GᵌᐩGᵌ, 	// complex multiplication
 	'Vector3	ᐨ	Complex': 		Gᵌ.GᵌᐨGᵌ, 	// complex multiplication
 	'Vector3	ᐧ	Complex': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
+	'Vector3	ॱ	Complex': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
 	'Vector3	ᐩꘌ	Complex': 		Gᵌ.GᵌᐩꘌGᵌ, 	// complex multiplication
 	'Vector3	ᐨꘌ	Complex': 		Gᵌ.GᵌᐨꘌGᵌ, 	// complex multiplication
 	'Vector3	ᐧꘌ	Complex': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
+	'Vector3	ॱꘌ	Complex': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
 	'Vector3	ꘌ	Complex': 		Gᵌ.GᵌꘌGᵌ, 	// complex multiplication
 	'Vector3	ꘌꘌ	Complex': 		Gᵌ.GᵌꘌꘌGᵌ, // complex multiplication
 
 	'Complex	ᐩ	Vector3': 		Gᵌ.GᵌᐩGᵌ, 	// complex multiplication
 	'Complex	ᐨ	Vector3': 		Gᵌ.GᵌᐨGᵌ, 	// complex multiplication
 	'Complex	ᐧ	Vector3': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
+	'Complex	ॱ	Vector3': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
 	'Complex	ᐩ	Vector3': 		Gᵌ.GᵌᐩꘌGᵌ, 	// complex multiplication
 	'Complex	ᐨ	Vector3': 		Gᵌ.GᵌᐨꘌGᵌ, 	// complex multiplication
 	'Complex	ᐧꘌ	Vector3': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
+	'Complex	ॱꘌ	Vector3': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
 	'Complex	ꘌ	Vector3': 		Gᵌ.GᵌꘌGᵌ, 	// complex multiplication
-	'Complex	ꘌꘌ	Vector3': 		Gᵌ.GᵌꘌꘌGᵌ, // complex multiplication
+	'Complex	ꘌꘌ	Vector3': 		Gᵌ.GᵌꘌꘌGᵌ,	// complex multiplication
 
-	'Vector3	ॱ	Vector3': 			Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
-	'Vector3	ॱꘌ	Vector3': 			Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
+	'Vector3	ᐩ	Vector3': 		Gᵌ.GᵌᐩGᵌ, 	// complex multiplication
+	'Vector3	ᐨ	Vector3': 		Gᵌ.GᵌᐨGᵌ, 	// complex multiplication
+	'Vector3	ᐧ	Vector3': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
+	'Vector3	ॱ	Vector3': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
+	'Vector3	ᐩ	Vector3': 		Gᵌ.GᵌᐩꘌGᵌ, 	// complex multiplication
+	'Vector3	ᐨ	Vector3': 		Gᵌ.GᵌᐨꘌGᵌ, 	// complex multiplication
+	'Vector3	ᐧꘌ	Vector3': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
+	'Vector3	ॱꘌ	Vector3': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
+	'Vector3	ꘌ	Vector3': 		Gᵌ.GᵌꘌGᵌ, 	// complex multiplication
+	'Vector3	ꘌꘌ	Vector3': 		Gᵌ.GᵌꘌꘌGᵌ,	// complex multiplication
 
 });

@@ -164,13 +164,13 @@ UnicodeMath = function(){
 		var type = x.constructor.name;
 		if (type === 'Object') {
 			var element_type = 'Vector'; // x.x.constructor.name === 'Function'? 'Function' : 'Vector';
-			if (x.yz !== void 0 || x.zx !== void 0 ){
-				if (x.x !== void 0 || x.xyz !== void 0){
+			if (x.yz || x.zx ){
+				if (x.x || x.xyz){
 					return "Multivector";
 				} 
 				return "Quaternion";
 			} 
-			if (x.xy !== void 0){
+			if (x.xy){
 				return "Complex";
 			} 
 			if(x.w !== void 0){
