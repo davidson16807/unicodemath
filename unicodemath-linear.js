@@ -74,9 +74,9 @@ function RᒾᕽᒾᐧRᒾ (A, bꜛ) {
 	var y = bꜛ.y;
 
 	//Multiply the point against each part of the 1st column, then add together
-	var resultX = (x * xx) + (y * yx)
+	var resultX = (x * xx) + (y * xy)
 	//Multiply the point against each part of the 2nd column, then add together
-	var resultY = (x * xy) + (y * yy)
+	var resultY = (x * yx) + (y * yy)
 
 	return ꜛ(resultX, resultY);
 }
@@ -90,9 +90,9 @@ function RᒾᕽᒾᐧRⁿ (A, bꜛ) {
 	var y = bꜛ[1];
 
 	//Multiply the point against each part of the 1st column, then add together
-	var resultX = (x * xx) + (y * yx)
+	var resultX = (x * xx) + (y * xy)
 	//Multiply the point against each part of the 2nd column, then add together
-	var resultY = (x * xy) + (y * yy)
+	var resultY = (x * yx) + (y * yy)
 
 	return [resultX, resultY];
 }
@@ -107,9 +107,9 @@ function RᒾᐧꘌRᒾᕽᒾ (bꜛ, A) {
 	var y = bꜛ.y;
 
 	//Multiply the point against each part of the 1st column, then add together
-	bꜛ.x = (x * xx) + (y * yx);
+	bꜛ.x = (x * xx) + (y * xy);
 	//Multiply the point against each part of the 2nd column, then add together
-	bꜛ.y = (x * xy) + (y * yy);
+	bꜛ.y = (x * yx) + (y * yy);
 }
 // from https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Matrix_math_for_the_web
 function RᒾᕽᒾᐧRᒾᕽᒾ(A, B) {
@@ -270,11 +270,11 @@ function RᵌᕽᵌᐧRᵌ (A, bꜛ) {
 	var z = bꜛ.z;
 
 	//Multiply the point against each part of the 1st column, then add together
-	var resultX = (x * xx) + (y * yx) + (z * zx);
+	var resultX = (x * xx) + (y * xy) + (z * xz);
 	//Multiply the point against each part of the 2nd column, then add together
-	var resultY = (x * xy) + (y * yy) + (z * zy);
+	var resultY = (x * yx) + (y * yy) + (z * yz);
 	//Multiply the point against each part of the 3rd column, then add together
-	var resultZ = (x * xz) + (y * yz) + (z * zz);
+	var resultZ = (x * zx) + (y * zy) + (z * zz);
 
 	return ꜛ(resultX, resultY, resultZ);
 }
@@ -290,11 +290,11 @@ function RᵌᕽᵌᐧRⁿ (A, bꜛ) {
 	var z = bꜛ[2];
 
 	//Multiply the point against each part of the 1st column, then add together
-	var resultX = (x * xx) + (y * yx) + (z * zx);
+	var resultX = (x * xx) + (y * xy) + (z * xz);
 	//Multiply the point against each part of the 2nd column, then add together
-	var resultY = (x * xy) + (y * yy) + (z * zy);
+	var resultY = (x * yx) + (y * yy) + (z * yz);
 	//Multiply the point against each part of the 3rd column, then add together
-	var resultZ = (x * xz) + (y * yz) + (z * zz);
+	var resultZ = (x * zx) + (y * zy) + (z * zz);
 
 	return [resultX, resultY, resultZ];
 }
@@ -311,11 +311,11 @@ function RᵌᐧꘌRᵌᕽᵌ (bꜛ, A) {
 	var z = bꜛ.z;
 
 	//Multiply the point against each part of the 1st column, then add together
-	bꜛ.x = (x * xx) + (y * yx) + (z * zx);
+	bꜛ.x = (x * xx) + (y * xy) + (z * xz);
 	//Multiply the point against each part of the 2nd column, then add together
-	bꜛ.y = (x * xy) + (y * yy) + (z * zy);
+	bꜛ.y = (x * yx) + (y * yy) + (z * yz);
 	//Multiply the point against each part of the 3rd column, then add together
-	bꜛ.z = (x * xz) + (y * yz) + (z * zz);
+	bꜛ.z = (x * zx) + (y * zy) + (z * zz);
 }
 // from https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Matrix_math_for_the_web
 function RᵌᕽᵌᐧRᵌᕽᵌ(A, B) {
@@ -1080,7 +1080,7 @@ function ꜛ	()		{
 
 	function _associate(f) { 
 		return  function(a,b) {
-			f(b,a);
+			return f(b,a);
 		}
 	}
 
@@ -1461,6 +1461,15 @@ function ꜛ	()		{
 			'Vector2	ᕁ	Matrix2': 	_associate(RᒾᕽᒾᐧRᒾ),
 			'Vector2	ᐧꘌ	Matrix2': 	RᒾᐧꘌRᒾᕽᒾ,
 			'Vector2	ᕁꘌ	Matrix2': 	RᒾᐧꘌRᒾᕽᒾ,
+
+		// MATRIX2, ARRAY
+			'Matrix2	ᐧ	Array': 	RᒾᕽᒾᐧRⁿ,
+			'Matrix2	ᕁ	Array': 	RᒾᕽᒾᐧRⁿ,
+			
+			'Array	ᐧ	Matrix2': 	_associate(RᒾᕽᒾᐧRⁿ),
+			'Array	ᕁ	Matrix2': 	_associate(RᒾᕽᒾᐧRⁿ),
+		//	'Array	ᐧꘌ	Matrix2': 	RⁿᐧꘌRᒾᕽᒾ,		// WIP
+		//	'Array	ᕁꘌ	Matrix2': 	RⁿᐧꘌRᒾᕽᒾ,		// WIP
 			
 		// MATRIX3
 			'Matrix3	ᐧ	Vector3': 	RᵌᕽᵌᐧRᵌ,
@@ -1470,6 +1479,15 @@ function ꜛ	()		{
 			'Vector3	ᕁ	Matrix3': 	_associate(RᵌᕽᵌᐧRᵌ),
 			'Vector3	ᐧꘌ	Matrix3': 	RᵌᐧꘌRᵌᕽᵌ,
 			'Vector3	ᕁꘌ	Matrix3': 	RᵌᐧꘌRᵌᕽᵌ,
+			
+		// MATRIX3, ARRAY
+			'Matrix3	ᐧ	Array': 	RᵌᕽᵌᐧRⁿ,
+			'Matrix3	ᕁ	Array': 	RᵌᕽᵌᐧRⁿ,
+			
+			'Array	ᐧ	Matrix3': 		_associate(RᵌᕽᵌᐧRⁿ),
+			'Array	ᕁ	Matrix3': 		_associate(RᵌᕽᵌᐧRⁿ),
+		// 'Array	ᐧꘌ	Matrix3': 		RⁿᐧꘌRᵌᕽᵌ,	//	WIP
+		// 'Array	ᕁꘌ	Matrix3': 		RⁿᐧꘌRᵌᕽᵌ,	//	WIP
 			
 		// MATRIX4
 			'Matrix4	ᐧ	Vector4': 	RᶣᕽᶣᐧRᶣ,
@@ -1489,6 +1507,15 @@ function ꜛ	()		{
 			'Vector3	ᐧꘌ	Matrix4': 	RᵌᐧꘌRᶣᕽᶣ,
 			'Vector3	ᕁꘌ	Matrix4': 	RᵌᐧꘌRᶣᕽᶣ,
 
+		// MATRIX4, ARRAY HACK - vector 4 array is confused for matrix2
+			'Matrix4	ᐧ	Matrix2': 	RᶣᕽᶣᐧRⁿ,
+			'Matrix4	ᕁ	Matrix2': 	RᶣᕽᶣᐧRⁿ,
+			
+			'Matrix2	ᐧ	Matrix4': 	_associate(RᶣᕽᶣᐧRⁿ),
+			'Matrix2	ᕁ	Matrix4': 	_associate(RᶣᕽᶣᐧRⁿ),
+		//	'Matrix2	ᐧꘌ	Matrix4': 	RⁿᐧꘌRᶣᕽᶣ,	// WIP
+		//	'Matrix2	ᕁꘌ	Matrix4': 	RⁿᐧꘌRᶣᕽᶣ,	// WIP
+
 		// MATRIX, ARRAY
 			'Matrix	ᐧ	Array': 	RⁿᕽⁿᐧRⁿ,
 			'Matrix	ᕁ	Array': 	RⁿᕽⁿᐧRⁿ,
@@ -1497,6 +1524,15 @@ function ꜛ	()		{
 			'Array	ᕁ	Matrix': 	_associate(RⁿᕽⁿᐧRⁿ),
 		//	'Array	ᐧꘌ	Matrix': 	RⁿᐧꘌRⁿᕽⁿ,	// WIP
 		//	'Array	ᕁꘌ	Matrix': 	RⁿᐧꘌRⁿᕽⁿ,	// WIP
+
+		// MATRIX, ARRAY HACK - vector 4 array is confused for matrix2
+			'Matrix	ᐧ	Matrix2': 	RⁿᕽⁿᐧRⁿ,
+			'Matrix	ᕁ	Matrix2': 	RⁿᕽⁿᐧRⁿ,
+			
+			'Matrix2	ᐧ	Matrix': 	_associate(RⁿᕽⁿᐧRⁿ),
+			'Matrix2	ᕁ	Matrix': 	_associate(RⁿᕽⁿᐧRⁿ),
+		//	'Matrix2	ᐧꘌ	Matrix': 	RⁿᐧꘌRⁿᕽⁿ,	// WIP
+		//	'Matrix2	ᕁꘌ	Matrix': 	RⁿᐧꘌRⁿᕽⁿ,	// WIP
 
 		// MATRIX, VECTOR2
 			'Matrix	ᐧ	Vector2': 	RⁿᕽⁿᐧRᒾ,
