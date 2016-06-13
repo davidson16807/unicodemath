@@ -249,7 +249,6 @@ UnicodeMath.add_overloads({
 
 
 
-
 function ːᕮGᵌ(s,x,y,z,xy,yz,zx,xyz) 	{ 
 	return bases = {
 		1: 		s	|| 0,
@@ -484,16 +483,16 @@ UnicodeMath.add_overloads({
 	'Vector3	ꘌ	Multivector': 		Gᵌ.GᵌꘌGᵌ, 	// complex multiplication
 	'Vector3	ꘌꘌ	Multivector': 		Gᵌ.GᵌꘌꘌGᵌ, // complex multiplication
 
-	'Multivector	ᐩ	Quaternion': 		Gᵌ.GᵌᐩGᵌ, 	// complex multiplication
-	'Multivector	ᐨ	Quaternion': 		Gᵌ.GᵌᐨGᵌ, 	// complex multiplication
-	'Multivector	ᐧ	Quaternion': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
-	'Multivector	ॱ	Quaternion': 		Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
-	'Multivector	ᐩꘌ	Quaternion': 		Gᵌ.GᵌᐩꘌGᵌ, 	// complex multiplication
-	'Multivector	ᐨꘌ	Quaternion': 		Gᵌ.GᵌᐨꘌGᵌ, 	// complex multiplication
-	'Multivector	ᐧꘌ	Quaternion': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
-	'Multivector	ॱꘌ	Quaternion': 		Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
-	'Multivector	ꘌ	Quaternion': 		Gᵌ.GᵌꘌGᵌ, 	// complex multiplication
-	'Multivector	ꘌꘌ	Quaternion': 		Gᵌ.GᵌꘌꘌGᵌ, // complex multiplication
+	'Multivector	ᐩ	Quaternion': 	Gᵌ.GᵌᐩGᵌ, 	// complex multiplication
+	'Multivector	ᐨ	Quaternion': 	Gᵌ.GᵌᐨGᵌ, 	// complex multiplication
+	'Multivector	ᐧ	Quaternion': 	Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
+	'Multivector	ॱ	Quaternion': 	Gᵌ.GᵌᐧGᵌ, 	// complex multiplication
+	'Multivector	ᐩꘌ	Quaternion': 	Gᵌ.GᵌᐩꘌGᵌ, 	// complex multiplication
+	'Multivector	ᐨꘌ	Quaternion': 	Gᵌ.GᵌᐨꘌGᵌ, 	// complex multiplication
+	'Multivector	ᐧꘌ	Quaternion': 	Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
+	'Multivector	ॱꘌ	Quaternion': 	Gᵌ.GᵌᐧꘌGᵌ, 	// complex multiplication
+	'Multivector	ꘌ	Quaternion': 	Gᵌ.GᵌꘌGᵌ, 	// complex multiplication
+	'Multivector	ꘌꘌ	Quaternion': 	Gᵌ.GᵌꘌꘌGᵌ, // complex multiplication
 
 	'Quaternion	ᐩ	Multivector': 		Gᵌ.GᵌᐩGᵌ, 	// complex multiplication
 	'Quaternion	ᐨ	Multivector': 		Gᵌ.GᵌᐨGᵌ, 	// complex multiplication
@@ -562,3 +561,4 @@ UnicodeMath.add_overloads({
 	'Vector3	ꘌꘌ	Vector3': 		Gᵌ.GᵌꘌꘌGᵌ,	// complex multiplication
 
 });
+
