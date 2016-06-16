@@ -7,8 +7,6 @@ aꜛᕮRᒾ = ᕮRᒾ = function(aꜛ) {
 }
 
 // 	(R,Rᒾ)->Rᒾ OPERATIONS
-function RᐩRᒾ		(a,b) 	{ return ːᕮRᒾ(	a + b.x,	a + b.y			); }
-function RᐨRᒾ		(a,b) 	{ return ːᕮRᒾ(	a - b.x,	a - b.y			); }
 function RᐧRᒾ		(a,b) 	{ return ːᕮRᒾ(	a * b.x,	a * b.y			); }
 
 // 	(Rᒾ,R)->Rᒾ OPERATIONS
@@ -34,6 +32,7 @@ function RᒾꘌRᒾ		(a,b) 	{ return 		a.x  = b.x;	a.y  = b.y;		}
 
 // 	MISCELLANEOUS Rᒾ OPERATIONS
 function RᒾꘌꘌRᒾ		(a,b) 	{ return 		a.x == b.x&&a.y == b.y; 	}
+function RᒾǃꘌRᒾ		(a,b) 	{ return 		a.x != b.x||a.y != b.y; 	}
 function RᒾᐧRᒾ		(a,b) 	{ return 		a.x * b.x +	a.y * b.y;		}
 function ǀRᒾǀ		(a)		{ return ᛇ(		a.x * a.x +	a.y * a.y		); }
 function Rᒾˆ			(a)		{ return 		Rᒾ〳R 	(a, ǀRᒾǀ(a));		}	
@@ -144,6 +143,12 @@ function Rᒾᕽᒾᐪ (A) {
 	return [A[0], A[2], 
 			A[1], A[3]];
 }
+function Rᒾᕽᒾᐪꘌ(A) {
+	var a=A[0], b=A[2],
+		c=A[1], d=A[3];
+	A[0]=a; A[1]=c;
+	A[2]=b; A[3]=d;
+}
 function ǀRᒾᕽᒾǀ(A) {
 	var a = A[ 0], b = A[ 1], c = A[ 2]; 
 	var d = A[ 3], e = A[ 4], f = A[ 5]; 
@@ -165,8 +170,6 @@ aꜛᕮRᵌ = ᕮRᵌ = function(aꜛ)	{
 aꜛꓽaꜛᕮRᵌ = xᐧiꜛᐩyᐧjꜛᐩzᐧkꜛ		= ːᕮRᵌ;
 
 // 	(R,Rᵌ)->Rᵌ OPERATIONS
-function RᐩRᵌ		(a,b) 	{ return ːᕮRᵌ(	a + b.x,	a + b.y,	a + b.z 		); }
-function RᐨRᵌ		(a,b) 	{ return ːᕮRᵌ(	a - b.x,	a - b.y,	a - b.z 		); }
 function RᐧRᵌ		(a,b) 	{ return ːᕮRᵌ(	a * b.x,	a * b.y,	a * b.z 		); }
 
 // 	(Rᵌ,R)->Rᵌ OPERATIONS
@@ -192,6 +195,7 @@ function RᵌꘌRᵌ		(a,b) 	{ return 		a.x  = b.x;	a.y  = b.y;	a.z  = b.z;		}
 
 // 	MISCELLANEOUS Rᵌ OPERATIONS
 function RᵌꘌꘌRᵌ		(a,b) 	{ return 		a.x == b.x&&a.y == b.y&&a.z == b.z; 	}
+function RᵌǃꘌRᵌ		(a,b) 	{ return 		a.x != b.x||a.y != b.y||a.z != b.z; 	}
 function RᵌᐧRᵌ		(a,b) 	{ return 		a.x * b.x +	a.y * b.y +	a.z * b.z;		}
 function ǀRᵌǀ		(a)		{ return ᛇ(		a.x * a.x +	a.y * a.y +	a.z * a.z		); }
 function Rᵌˆ		(a)		{ return 		Rᵌ〳R 	(a, ǀRᵌǀ(a));		}	
@@ -358,6 +362,14 @@ function Rᵌᕽᵌᐪ (A) {
 			A[1], A[4], A[7], 
 			A[2], A[5], A[8]];
 }
+function Rᵌᕽᵌᐪꘌ(A) {
+	var a = A[ 0], b = A[ 1], c = A[ 2]; 
+	var d = A[ 3], e = A[ 4], f = A[ 5]; 
+	var g = A[ 6], h = A[ 7], i = A[ 8]; 
+    A[0]=a; A[1]=d; A[2]=g;
+    A[3]=b; A[4]=e; A[5]=h;
+    A[6]=c; A[7]=f; A[8]=i;
+}
 function ǀRᵌᕽᵌǀ(A) {
 	var a = A[ 0], b = A[ 1], c = A[ 2]; 
 	var d = A[ 3], e = A[ 4], f = A[ 5]; 
@@ -382,8 +394,6 @@ aꜛᕮRᶣ = ᕮRᶣ = function(aꜛ) {
 }
 	
 // 	(R,Rᶣ)->Rᶣ OPERATIONS
-function RᐩRᶣ		(a,b) 	{ return ːᕮRᶣ(	a + b.x,	a + b.y,	a + b.z, 	a + b.w 	); }
-function RᐨRᶣ		(a,b) 	{ return ːᕮRᶣ(	a - b.x,	a - b.y,	a - b.z, 	a - b.w 	); }
 function RᐧRᶣ		(a,b) 	{ return ːᕮRᶣ(	a * b.x,	a * b.y,	a * b.z, 	a * b.w 	); }
 	
 // 	(Rᶣ,R)->Rᶣ OPERATIONS
@@ -409,6 +419,7 @@ function RᶣꘌRᶣ		(a,b) 	{ return 		a.x  = b.x;	a.y  = b.y;	a.z  = b.z;	a.w 
 	
 // 	MISCELLANEOUS Rᶣ OPERATIONS
 function RᶣꘌꘌRᶣ		(a,b) 	{ return 		a.x == b.x&&a.y == b.y&&a.z == b.z&&a.w == b.w 	 ; }
+function RᶣǃꘌRᶣ		(a,b) 	{ return 		a.x != b.x||a.y != b.y||a.z != b.z||a.w != b.w 	 ; }
 function RᶣᐧRᶣ		(a,b) 	{ return 		a.x * b.x +	a.y * b.y +	a.z * b.z + a.w * b.w; 	}
 function ǀRᶣǀ		(a)		{ return  ᛇ(	a.x * a.x +	a.y * a.y +	a.z * a.z + a.w * a.w	); }
 function Rᶣˆ		(a)		{ return 		Rᶣ〳R 	(a, ǀRᶣǀ(a));		}	
@@ -597,13 +608,23 @@ function RᶣᕽᶣᐧꘌRᶣᕽᶣ(A, B) {
     A[0]= result0[0]; 	A[1]= result1[0]; 	A[2]= result2[0]; 	A[3]= result3[0];
     A[4]= result0[1]; 	A[5]= result1[1]; 	A[6]= result2[1]; 	A[7]= result3[1];
     A[8]= result0[2]; 	A[9]= result1[2]; 	A[10]= result2[2]; 	A[11]= result3[2];
-    A[12]= result0[3]; 	A[13]= result1[14]; A[0]= result2[15]; 	A[0]= result3[3];
+    A[12]= result0[3]; 	A[13]= result1[3];	A[14]= result2[3]; 	A[15]= result3[3];
 }
 function Rᶣᕽᶣᐪ (A) {
 	return [A[0], A[4], A[8],  A[12],
 			A[1], A[5], A[9],  A[13],
 			A[2], A[6], A[10], A[14],
 			A[3], A[7], A[11], A[15]];
+}
+function Rᶣᕽᶣᐪꘌ(A) {
+	var a = A[ 0], b = A[ 1], c = A[ 2], d = A[ 3];
+	var e = A[ 4], f = A[ 5], g = A[ 6], h = A[ 7];
+	var i = A[ 8], j = A[ 9], k = A[10], l = A[11];
+	var m = A[12], n = A[13], o = A[14], p = A[15];
+    A[0]= result0[0]; 	A[1]= result1[0]; 	A[2]= result2[0]; 	A[3]= result3[0];
+    A[4]= result0[1]; 	A[5]= result1[1]; 	A[6]= result2[1]; 	A[7]= result3[1];
+    A[8]= result0[2]; 	A[9]= result1[2]; 	A[10]= result2[2]; 	A[11]= result3[2];
+    A[12]= result0[3]; 	A[13]= result1[3];	A[14]= result2[3]; 	A[15]= result3[3];
 }
 function ǀRᶣᕽᶣǀ(A) {
 	var a = A[ 0], b = A[ 1], c = A[ 2], d = A[ 3];
@@ -645,8 +666,6 @@ aꜛːaꜛᕮRⁿ = ːᕮRⁿ;
 
 // VECTORS OF SIZE N ------------------------------------------
 // 	(R,Rⁿ)->Rⁿ OPERATIONS
-function RᐩRⁿ	(a,b) 	{ var result=[];	for(var i=0, li=b.length; i<li; i++) { result.push(	a + b[i]) }		return result;	}
-function RᐨRⁿ	(a,b) 	{ var result=[];	for(var i=0, li=b.length; i<li; i++) { result.push(	a - b[i]) }		return result;	}
 function RᐧRⁿ	(a,b) 	{ var result=[];	for(var i=0, li=b.length; i<li; i++) { result.push(	a * b[i]) }		return result;	}
 
 // 	(Rⁿ,R)->Rⁿ OPERATIONS
@@ -672,7 +691,8 @@ function RⁿꘌRⁿ	(a,b) 	{ 					for(var i=0, li=a.length; i<li; i++) {				a[i
 
 // 	MISCELLANEOUS Rⁿ OPERATIONS
 function RⁿꘌꘌRⁿ	(a,b) 	{ 					for(var i=0,la=a.length,lb=b.length; i<la||i<lb; i++) {if(a[i]!=b[i]) return false;} return true; }
-function RⁿᐧRⁿ	(a,b) 	{ var result=0; 	for(var i=0, li=a.length; i<li; i++) {	result += a[i] * b[i] }		return result;	}
+function RⁿǃꘌRⁿ	(a,b) 	{ 					for(var i=0,la=a.length,lb=b.length; i<la||i<lb; i++) {if(a[i]!=b[i]) return true;} return false; }
+function RⁿᐧRⁿ	(a,b) 	{ var result=0; 	for(var i=0, li=a.length; i<li; i++) {  result +=(a[i] * b[i])}		return result;	}
 function ǀRⁿǀ	(a)		{ var result=0; 	for(var i=0, li=a.length; i<li; i++) {	result += a[i] * a[i] }		return ᛇ(result); }
 function Rⁿˆ	(a)		{ return Rⁿ〳R (a, ǀRⁿǀ(a));		}	
 function Rⁿˆꘌ	(a)		{ return Rⁿ〳ꘌR (a, ǀRⁿǀ(a));	}	
@@ -704,8 +724,6 @@ function Iⁿ (n){
 	return result;
 }
 // 	(R,Rⁿᕽⁿ)->Rⁿᕽⁿ OPERATIONS
-function RᐩRⁿᕽⁿ	(a,B)	{ var result=[];	for(var i=0, li=B.length; i<li; i++) { result.push(	RᐩRⁿ		(a, B[i]) ); }		return result;	}
-function RᐨRⁿᕽⁿ	(a,B)	{ var result=[];	for(var i=0, li=B.length; i<li; i++) { result.push(	RᐨRⁿ		(a, B[i]) ); }		return result;	}
 function RᐧRⁿᕽⁿ	(a,B)	{ var result=[];	for(var i=0, li=B.length; i<li; i++) { result.push(	RᐧRⁿ		(a, B[i]) ); }		return result;	}
 
 // 	(Rⁿᕽⁿ,R)->Rⁿᕽⁿ OPERATIONS
@@ -724,7 +742,7 @@ function Rⁿᕽⁿ〳ꘌR(A,b)	{ 					for(var i=0, li=A.length; i<li; i++) { 		
 function RⁿᕽⁿᐧRᒾ	(A,b)	{ return  ːᕮRᒾ(		RᒾᐧRⁿ(b,A[0]), 	RᒾᐧRⁿ(b,A[1]) 									); }
 function RⁿᕽⁿᐧRᵌ	(A,b)	{ return  ːᕮRᵌ(		RᵌᐧRⁿ(b,A[0]), 	RᵌᐧRⁿ(b,A[1]), 	RᵌᐧRⁿ(b,A[2])					); }
 function RⁿᕽⁿᐧRᶣ	(A,b)	{ return  ːᕮRᶣ(		RᶣᐧRⁿ(b,A[0]), 	RᶣᐧRⁿ(b,A[1]), 	RᶣᐧRⁿ(b,A[2]), 	RᶣᐧRⁿ(b,A[3])	); }
-function RⁿᕽⁿᐧRⁿ	(A,b)	{ var result=[];	for(var i=0, li=A.length; i<li; i++) {	result.push( RⁿᐧRⁿ(b,A[i]) ) }	return result;	}
+function RⁿᕽⁿᐧRⁿ	(A,b)	{ var result=[];	for(var i=0, li=A.length; i<li; i++) { result.push( RⁿᐧRⁿ(b,A[i]) ) }	return result;	}
 
 // 	(Rⁿᕽⁿ,Rⁿᕽⁿ)->Rⁿᕽⁿ OPERATIONS
 function RⁿᕽⁿᐩRⁿᕽⁿ(A,B)	{ var result=[];	for(var i=0, li=A.length; i<li; i++) { result.push(	RⁿᐩRⁿ	(A[i],B[i]) ); }	return result;	}
@@ -735,8 +753,9 @@ function RⁿᕽⁿᐨꘌRⁿᕽⁿ(A,B)	{					for(var i=0, li=A.length; i<li; i
 function RⁿᕽⁿᐤꘌRⁿᕽⁿ(A,B)	{					for(var i=0, li=A.length; i<li; i++) {				RⁿᐤꘌRⁿ	(A[i],B[i]); }						}
 function RⁿᕽⁿꘌRⁿᕽⁿ(A,B)	{					for(var i=0, li=A.length; i<li; i++) {				RⁿꘌRⁿ	(A[i],B[i]); }						}
 function RⁿᕽⁿꘌꘌRⁿᕽⁿ(A,B){ 					for(var i=0,la=A.length,lb=B.length; i<la||i<lb; i++) { if(!RⁿꘌꘌRⁿ(A[i],B[i])) return false; }	return true;	}
+function RⁿᕽⁿǃꘌRⁿᕽⁿ(A,B){ 					for(var i=0,la=A.length,lb=B.length; i<la||i<lb; i++) { if(!RⁿǃꘌRⁿ(A[i],B[i])) return true; }	return false;	}
 function RⁿᕽⁿᐧRⁿᕽⁿ (A,B)  {
-			var Bᐪ = Rⁿᕽⁿᐪ(B), result=[];	for(var i=0, li=Bᐪ.length; i<li; i++) { result.push( RⁿᕽⁿᐧRⁿ	(A, Bᐪ[i]) ); }		return result;	}
+			var Bᐪ = Rⁿᕽⁿᐪ(B), result=[];	for(var i=0, li=Bᐪ.length; i<li; i++) { result.push( RⁿᕽⁿᐧRⁿ	(A, Bᐪ[i]) ); }		return Rⁿᕽⁿᐪ(result);	}
 
 function Rⁿᕽⁿᐪ (A) {
 	var result=[];
@@ -745,7 +764,7 @@ function Rⁿᕽⁿᐪ (A) {
 	}
 	for (var i=0, li=A.length; i<li; i++) {	
 		for (var j = 0; j < A[i].length; j++) {
-			result[j].push( A[i][j] );
+			result[j][i] = A[i][j];
 		}
 	}
 	return result;
@@ -809,6 +828,7 @@ function RⁿᐨꘌRᵢ	(b,a) 	{				for (var i=0, li=b.length; i<li; i++) {	b[i]
 function RⁿᐤꘌRᵢ	(b,a) 	{				for (var i=0, li=b.length; i<li; i++) {	b[i] = (a.ᵢꘌ(i)+b[i]) }						}
 function RⁿᐧRᵢ	(b,a) 	{result = 0;	for (var i=0, li=b.length; i<li; i++) {	result += 	a.ᵢꘌ(i)+b[i] }	return result;	}
 function RⁿꘌꘌRᵢ	(b,a) 	{				for (var i=0, li=b.length; i<li; i++) {	if(a.ᵢꘌ(i) !== b[i]) return false; } return true; }
+function RⁿǃꘌRᵢ	(b,a) 	{				for (var i=0, li=b.length; i<li; i++) {	if(a.ᵢꘌ(i) !== b[i]) return true; } return false; }
 
 // 	(Rᵢ,Rᶣ)->Rᶣ OPERATIONS
 function RᵢᐩRᶣ	(a,b) 	{ return ːᕮRᶣ(	a.ᵢꘌ(0) + b.x,	a.ᵢꘌ(1) + b.y,	a.ᵢꘌ(2) + b.z,	a.ᵢꘌ(3) + b.w 	); }
@@ -825,6 +845,7 @@ function RᶣᐨꘌRᵢ	(b,a) 	{ 		 		b.x -= a.ᵢꘌ(0);	b.y -= a.ᵢꘌ(1);	b.
 function RᶣᐤꘌRᵢ	(b,a) 	{ 		 		b.x *= a.ᵢꘌ(0);	b.y *= a.ᵢꘌ(1);	b.z *= a.ᵢꘌ(2);	b.w *= a.ᵢꘌ(3);    }
 function RᶣᐧRᵢ	(b,a) 	{ return 		a.ᵢꘌ(0) * b.x+	a.ᵢꘌ(1) * b.y+	a.ᵢꘌ(2) * b.z+	a.ᵢꘌ(3) * b.w 	 ; }
 function RᶣꘌꘌRᵢ	(b,a) 	{ return 		a.ᵢꘌ(0)===b.x&& a.ᵢꘌ(1)===b.y&& a.ᵢꘌ(2)===b.z&& a.ᵢꘌ(3)===b.w 	 ; }
+function RᶣǃꘌRᵢ	(b,a) 	{ return 		a.ᵢꘌ(0)!==b.x|| a.ᵢꘌ(1)!==b.y|| a.ᵢꘌ(2)!==b.z|| a.ᵢꘌ(3)!==b.w 	 ; }
 
 // 	(Rᵢ,Rᵌ)->Rᵌ OPERATIONS
 function RᵢᐩRᵌ	(a,b) 	{ return ːᕮRᵌ(	a.ᵢꘌ(0) + b.x,	a.ᵢꘌ(1) + b.y,	a.ᵢꘌ(2) + b.z	); }
@@ -841,6 +862,7 @@ function RᵌᐨꘌRᵢ	(b,a) 	{ 		 		b.x -= a.ᵢꘌ(0);	b.y -= a.ᵢꘌ(1);	b.
 function RᵌᐤꘌRᵢ	(b,a) 	{ 		 		b.x *= a.ᵢꘌ(0);	b.y *= a.ᵢꘌ(1);	b.z *= a.ᵢꘌ(2);	   }
 function RᵌᐧRᵢ	(b,a) 	{ return 		a.ᵢꘌ(0) * b.x+	a.ᵢꘌ(1) * b.y+	a.ᵢꘌ(2) * b.z	 ; }
 function RᵌꘌꘌRᵢ	(b,a) 	{ return 		a.ᵢꘌ(0)===b.x&&	a.ᵢꘌ(1)===b.y&&	a.ᵢꘌ(2)===b.z	 ; }
+function RᵌǃꘌRᵢ	(b,a) 	{ return 		a.ᵢꘌ(0)!==b.x||	a.ᵢꘌ(1)!==b.y||	a.ᵢꘌ(2)!==b.z	 ; }
 
 // 	(Rᵢ,Rᒾ)->Rᒾ OPERATIONS
 function RᵢᐩRᒾ	(a,b) 	{ return ːᕮRᒾ(	a.ᵢꘌ(0) + b.x,	a.ᵢꘌ(1) + b.y	); }
@@ -857,7 +879,7 @@ function RᒾᐨꘌRᵢ	(b,a) 	{ 		 		b.x -= a.ᵢꘌ(0);	b.y -= a.ᵢꘌ(1);	  
 function RᒾᐤꘌRᵢ	(b,a) 	{ 		 		b.x *= a.ᵢꘌ(0);	b.y *= a.ᵢꘌ(1);	   }
 function RᒾᐧRᵢ	(b,a) 	{ return 		a.ᵢꘌ(0) * b.x+	a.ᵢꘌ(1) * b.y	 ; }
 function RᒾꘌꘌRᵢ	(b,a) 	{ return 		a.ᵢꘌ(0)===b.x&&	a.ᵢꘌ(1)===b.y	 ; }
-
+function RᒾǃꘌRᵢ	(b,a) 	{ return 		a.ᵢꘌ(0)!==b.x||	a.ᵢꘌ(1)!==b.y	 ; }
 
 
 
@@ -1109,6 +1131,9 @@ function ꜛ	()		{
 			'ᐪ	Matrix3': 			Rᵌᕽᵌᐪ, 
 			'ᐪ	Matrix4': 			Rᶣᕽᶣᐪ, 
 			'ᐪ	Matrix': 			Rⁿᕽⁿᐪ, 
+			'ᐪꘌ	Matrix2': 			Rᒾᕽᒾᐪꘌ,
+			'ᐪꘌ	Matrix3': 			Rᵌᕽᵌᐪꘌ,
+			'ᐪꘌ	Matrix4': 			Rᶣᕽᶣᐪꘌ,
 			
 			'ꜛ	Undefined': 	function(_) 	{ return []; },
 			'ꜛ	Array': 		function(array)	{ return array; },
@@ -1168,8 +1193,6 @@ function ꜛ	()		{
 
 	// NUMBER, VECTOR -----------------------------
 		// VECTOR2	
-			'Number	ᐩ	Vector2': 	RᐩRᒾ,
-			'Number	ᐨ	Vector2': 	RᐨRᒾ,
 			'Number	ᐧ	Vector2': 	RᐧRᒾ,
 			'Vector2	ᐩ	Number': 	RᒾᐩR,
 			'Vector2	ᐨ	Number': 	RᒾᐨR,
@@ -1181,8 +1204,6 @@ function ꜛ	()		{
 			'Vector2	〳ꘌ	Number': 	Rᒾ〳ꘌR,
 		
 		// VECTOR3
-			'Number	ᐩ	Vector3': 	RᐩRᵌ,
-			'Number	ᐨ	Vector3': 	RᐨRᵌ,
 			'Number	ᐧ	Vector3': 	RᐧRᵌ,
 			
 			'Vector3	ᐩ	Number': 	RᵌᐩR,
@@ -1195,8 +1216,6 @@ function ꜛ	()		{
 			'Vector3	〳ꘌ	Number': 	Rᵌ〳ꘌR,
 			
 		// VECTOR4
-			'Number	ᐩ	Vector4': 	RᐩRᶣ,
-			'Number	ᐨ	Vector4': 	RᐨRᶣ,
 			'Number	ᐧ	Vector4': 	RᐧRᶣ,
 			
 			'Vector4	ᐩ	Number': 	RᶣᐩR,
@@ -1209,8 +1228,6 @@ function ꜛ	()		{
 			'Vector4	〳ꘌ	Number': 	Rᶣ〳ꘌR,
 			
 		// VECTOR OF SIZE N
-			'Number	ᐩ	Array': 	RᐩRⁿ,
-			'Number	ᐨ	Array': 	RᐨRⁿ,
 			'Number	ᐧ	Array': 	RᐧRⁿ,
 			
 			'Array	ᐩ	Number': 	RⁿᐩR,
@@ -1248,6 +1265,7 @@ function ꜛ	()		{
 			'Vector2	ᐤꘌ	Vector2': 	RᒾᐤꘌRᒾ,
 			'Vector2	ꘌ	Vector2': 	RᒾꘌRᒾ,
 			'Vector2	ꘌꘌ	Vector2': 	RᒾꘌꘌRᒾ,
+			'Vector2	ǃꘌ	Vector2': 	RᒾǃꘌRᒾ,
 		//	'Vector2	ꘌꘌ	Array': 	RᒾꘌꘌRⁿ,	// WIP
 
 		// VECTOR3, VECTOR3
@@ -1263,6 +1281,7 @@ function ꜛ	()		{
 			'Vector3	ᐤꘌ	Vector3': 	RᵌᐤꘌRᵌ,
 			'Vector3	ꘌ	Vector3': 	RᵌꘌRᵌ,
 			'Vector3	ꘌꘌ	Vector3': 	RᵌꘌꘌRᵌ,
+			'Vector3	ǃꘌ	Vector3': 	RᵌǃꘌRᵌ,
 		//	'Vector3	ꘌꘌ	Array': 	RᵌꘌꘌRⁿ,	// WIP
 
 		// VECTOR4
@@ -1278,6 +1297,7 @@ function ꜛ	()		{
 			'Vector4	ᐤꘌ	Vector4': 	RᶣᐤꘌRᶣ,
 			'Vector4	ꘌ	Vector4': 	RᶣꘌRᶣ,
 			'Vector4	ꘌꘌ	Vector4': 	RᶣꘌꘌRᶣ,
+			'Vector4	ǃꘌ	Vector4': 	RᶣǃꘌRᶣ,
 		//	'Vector4	ꘌꘌ	Array': 	RᶣꘌꘌRⁿ,	// WIP
 
 		// VECTOR OF SIZE N
@@ -1293,6 +1313,7 @@ function ꜛ	()		{
 			'Array	ᐤꘌ	Array': 		RⁿᐤꘌRⁿ,
 			'Array	ꘌ	Array': 		RⁿꘌRⁿ,
 			'Array	ꘌꘌ	Array': 		RⁿꘌꘌRⁿ,
+			'Array	ǃꘌ	Array': 		RⁿǃꘌRⁿ,
 
 
 		// VECTOR OF ARBITRARY SIZE
@@ -1308,6 +1329,7 @@ function ꜛ	()		{
 		//	'Function(i)	ᕁ	Array': 			RᵢᕁRⁿ,	// not a valid operation
 			'Function(i)	ᐤ	Array': 			RᵢᐤRⁿ,
 			'Function(i)	ꘌꘌ	Array': 			_associate(RⁿꘌꘌRᵢ),
+			'Function(i)	ǃꘌ	Array': 			_associate(RⁿǃꘌRᵢ),
 			
 			'Array	ᐩ	Function(i)': 				RⁿᐩRᵢ,
 			'Array	ᐨ	Function(i)': 				RⁿᐨRᵢ,
@@ -1321,6 +1343,7 @@ function ꜛ	()		{
 			'Array	ᐤ	Function(i)': 				RⁿᐤꘌRᵢ,
 			'Array	ꘌ	Function(i)': 				RⁿꘌRᵢ,
 			'Array	ꘌꘌ	Function(i)': 				RⁿꘌꘌRᵢ,
+			'Array	ǃꘌ	Function(i)': 				RⁿǃꘌRᵢ,
 			
 			'Function(i)	ᐩ	Vector4': 			RᵢᐩRᶣ,
 			'Function(i)	ᐨ	Vector4': 			RᵢᐨRᶣ,
@@ -1328,6 +1351,7 @@ function ꜛ	()		{
 		//	'Function(i)	ᕁ	Vector4': 			RᵢᕁRᶣ,	// not a valid operation
 			'Function(i)	ᐤ	Vector4': 			RᵢᐤRᶣ,
 			'Function(i)	ꘌꘌ	Vector4': 			_associate(RᶣꘌꘌRᵢ),
+			'Function(i)	ǃꘌ	Vector4': 			_associate(RᶣǃꘌRᵢ),
 			
 			'Vector4	ᐩ	Function(i)': 			RᶣᐩRᵢ,
 			'Vector4	ᐨ	Function(i)': 			RᶣᐨRᵢ,
@@ -1341,6 +1365,7 @@ function ꜛ	()		{
 			'Vector4	ᐤ	Function(i)': 			RᶣᐤꘌRᵢ,
 			'Vector4	ꘌ	Function(i)': 			RᶣꘌRᵢ,
 			'Vector4	ꘌꘌ	Function(i)': 			RᶣꘌꘌRᵢ,
+			'Vector4	ǃꘌ	Function(i)': 			RᶣǃꘌRᵢ,
 			
 			'Function(i)	ᐩ	Vector3': 			RᵢᐩRᵌ,
 			'Function(i)	ᐨ	Vector3': 			RᵢᐨRᵌ,
@@ -1348,6 +1373,7 @@ function ꜛ	()		{
 		//	'Function(i)	ᕁ	Vector3': 			RᵢᕁRᵌ,	// not a valid operation
 			'Function(i)	ᐤ	Vector3': 			RᵢᐤRᵌ,
 			'Function(i)	ꘌꘌ	Vector3': 			_associate(RᵌꘌꘌRᵢ),
+			'Function(i)	ǃꘌ	Vector3': 			_associate(RᵌǃꘌRᵢ),
 			
 			'Vector3	ᐩ	Function(i)': 			RᵌᐩRᵢ,
 			'Vector3	ᐨ	Function(i)': 			RᵌᐨRᵢ,
@@ -1361,6 +1387,7 @@ function ꜛ	()		{
 			'Vector3	ᐤ	Function(i)': 			RᵌᐤꘌRᵢ,
 			'Vector3	ꘌ	Function(i)': 			RᵌꘌRᵢ,
 			'Vector3	ꘌꘌ	Function(i)': 			RᵌꘌꘌRᵢ,
+			'Vector3	ǃꘌ	Function(i)': 			RᵌǃꘌRᵢ,
 			
 			'Function(i)	ᐩ	Vector2': 			RᵢᐩRᒾ,
 			'Function(i)	ᐨ	Vector2': 			RᵢᐨRᒾ,
@@ -1368,6 +1395,7 @@ function ꜛ	()		{
 		//	'Function(i)	ᕁ	Vector2': 			RᵢᕁRᒾ,	// not a valid operation
 			'Function(i)	ᐤ	Vector2': 			RᵢᐤRᒾ,
 			'Function(i)	ꘌꘌ	Vector2': 			_associate(RᒾꘌꘌRᵢ),
+			'Function(i)	ǃꘌ	Vector2': 			_associate(RᒾǃꘌRᵢ),
 			
 			'Vector2	ᐩ	Function(i)': 			RᒾᐩRᵢ,
 			'Vector2	ᐨ	Function(i)': 			RᒾᐨRᵢ,
@@ -1381,12 +1409,11 @@ function ꜛ	()		{
 			'Vector2	ᐤ	Function(i)': 			RᒾᐤꘌRᵢ,
 			'Vector2	ꘌ	Function(i)': 			RᒾꘌRᵢ,
 			'Vector2	ꘌꘌ	Function(i)': 			RᒾꘌꘌRᵢ,
+			'Vector2	ǃꘌ	Function(i)': 			RᒾǃꘌRᵢ,
 
 
 	// NUMBER, MATRIX -----------------------------
 		// MATRIX2
-			'Number	ᐩ	Matrix2': 		RᐩRⁿ,
-			'Number	ᐨ	Matrix2': 		RᐨRⁿ,
 			'Number	ᐧ	Matrix2': 		RᐧRⁿ,
 			'Number	ᕁ	Matrix2': 		RᐧRⁿ,
 			
@@ -1402,8 +1429,6 @@ function ꜛ	()		{
 			'Matrix2	〳ꘌ	Number':  	Rⁿ〳ꘌR,
 
 		// MATRIX3
-			'Number	ᐩ	Matrix3': 		RᐩRⁿ,
-			'Number	ᐨ	Matrix3': 		RᐨRⁿ,
 			'Number	ᐧ	Matrix3': 		RᐧRⁿ,
 			'Number	ᕁ	Matrix3': 		RᐧRⁿ,
 			
@@ -1419,8 +1444,6 @@ function ꜛ	()		{
 			'Matrix3	〳ꘌ	Number':  	Rⁿ〳ꘌR,
 
 		// MATRIX4
-			'Number	ᐩ	Matrix4': 		RᐩRⁿ,
-			'Number	ᐨ	Matrix4': 		RᐨRⁿ,
 			'Number	ᐧ	Matrix4': 		RᐧRⁿ,
 			'Number	ᕁ	Matrix4': 		RᐧRⁿ,
 			
@@ -1436,8 +1459,6 @@ function ꜛ	()		{
 			'Matrix4	〳ꘌ	Number':  	Rⁿ〳ꘌR,
 
 		// MATRIX4
-			'Number	ᐩ	Matrix': 		RᐩRⁿᕽⁿ,
-			'Number	ᐨ	Matrix': 		RᐨRⁿᕽⁿ,
 			'Number	ᐧ	Matrix': 		RᐧRⁿᕽⁿ,
 			'Number	ᕁ	Matrix': 		RᐧRⁿᕽⁿ,
 			
@@ -1569,7 +1590,6 @@ function ꜛ	()		{
 			'Matrix2	ᐤꘌ	Matrix2': 	RⁿᐤꘌRⁿ,
 			'Matrix2	ꘌ	Matrix2': 	RⁿꘌRⁿ,
 			'Matrix2	ꘌꘌ	Matrix2': 	RⁿꘌꘌRⁿ,
-
 		// MATRIX3
 			'Matrix3	ᐩ	Matrix3': 	RⁿᐩRⁿ,
 			'Matrix3	ᐨ	Matrix3': 	RⁿᐨRⁿ,

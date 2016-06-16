@@ -23,7 +23,10 @@ function RᐨR (a,b) { return a - b }	//ᐨー
 function RᐧR (a,b) { return a * b }	//ᕽㄨᐧॱ
 function R〳R (a,b) { return a / b }	//ᐟ〳
 function RꘌꘌR (a,b) { return a == b }
+function RǃꘌR (a,b) { return a != b }
+function ᐨR (a) { return -a }	//ᐨー
 var ǀRǀ	= Math.abs;
+function Rᐨᑊ (a) { return 1 / a }
 function Rǃ (a) {
 	var result = 1;
 	for (var i = a; i > 1; i--) {
@@ -109,6 +112,13 @@ function ꘌꘌ	()	{
 		return false
 	}
 }
+function ǃꘌ	()	{	
+	try{
+		return UnicodeMath.get_binary('ǃꘌ', [].slice.call(arguments) )	
+	} catch(ex){
+		return true
+	}
+}
 
 function ᐨᑊ	(a) 	{	return UnicodeMath.get_unary('ᐨᑊ', [a,b] )	}
 function ᐨᑊꘌ	(a) 	{	return UnicodeMath.get_unary('ᐨᑊꘌ', [a,b] )	}
@@ -120,7 +130,6 @@ function ˆ	(a) 	{	return UnicodeMath.get_unary('ˆ', a)		}
 function ˆꘌ	(a,b) 	{	return UnicodeMath.get_binary('ˆꘌ', a,b)	}
 
 function ǀxǀ(a) 	{	return UnicodeMath.get_unary('ǀxǀ', a)		}
-function ǀxǀꘌ(a) 	{	return UnicodeMath.get_unary('ǀxǀꘌ', a)		}
 function ǃ	(a)		{	return UnicodeMath.get_binary('ǃ', a)		}
 
 
@@ -130,11 +139,11 @@ UnicodeMath = function(){
 	var overloads = {
 
 // UNARY OPERATORS-----------------------
-		'Number	ᐨ	Undefined': function(a,b){	return -a;	}, // NOTE: This needs to be binary to allow overloads for subtraction
-		'ᐨᑊ	Number': 			function(a,b){	return 1/a;	},
+		'Number	ᐨ	Undefined': ᐨR, // NOTE: This needs to be binary to allow overloads for subtraction
+		'ᐨᑊ	Number': 			Rᐨᑊ,
 		'ᛇ	Number': 			ᛇ,
 		'ǀxǀ	Number': 		ǀRǀ,
-
+		
 // FUNCTION OPERATIONS -----------------------------
 		'Function	ᐤ	Function': 	RㅡᐳRᐤRㅡᐳR,
 		'Function	ᐧ	Number': 	RㅡᐳRᐧR,
@@ -148,8 +157,7 @@ UnicodeMath = function(){
 		'Number	ᕁ	Number': 	RᐧR,
 		'Number	〳	Number': 	R〳R,
 		'Number	ꘌꘌ	Number': 	RꘌꘌR,
-		
-
+		'Number	ǃꘌ	Number': 	RǃꘌR
 	};
 	var datatypes = [];
 	function get_type(x) {
@@ -192,6 +200,9 @@ UnicodeMath = function(){
 		}
 		
 		if (type === 'Array'){
+			if(Array.isArray(x[0])) {
+				return 'Matrix';
+			}
 			if(x.length == 4) {
 				return 'Matrix2';
 			}
@@ -200,9 +211,6 @@ UnicodeMath = function(){
 			}
 			if(x.length == 16) {
 				return 'Matrix4';
-			}
-			if(Array.isArray(x[0])) {
-				return 'Matrix';
 			}
 			return type;
 		}
