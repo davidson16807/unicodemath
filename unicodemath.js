@@ -70,6 +70,7 @@ function logₓ(a,x) {
 function logₗₒ(a) {
 	return Math.log(a) / Math.LN10;
 }
+var eˣ = Math.exp;
 var ln = Math.log;
 function Σ (x) { 
 	var result = x[0];
@@ -88,23 +89,15 @@ function Π (x) {
 
 // SHORTHAND FUNCTIONS
 function ᐩ	() 	{	return UnicodeMath.get_binary('ᐩ', 	[].slice.call(arguments) )	}
-function ᐩꘌ	()	{	return UnicodeMath.get_binary('ᐩꘌ', 	[].slice.call(arguments) )	}
 function ᐨ	() 	{	return UnicodeMath.get_binary('ᐨ', 	[].slice.call(arguments) )	}
-function ᐨꘌ	()	{	return UnicodeMath.get_binary('ᐨꘌ', 	[].slice.call(arguments) )	}
 function ᐧ	() 	{	return UnicodeMath.get_binary('ᐧ', 	[].slice.call(arguments) )	}
-function ᐧꘌ	()	{	return UnicodeMath.get_binary('ᐧꘌ', 	[].slice.call(arguments) )	}
 function ᕁ	() 	{	return UnicodeMath.get_binary('ᕁ', 	[].slice.call(arguments) )	}
-function ᕁꘌ	()	{	return UnicodeMath.get_binary('ᕁꘌ', [].slice.call(arguments) )	}
 function ᐤ	() 	{	return UnicodeMath.get_binary('ᐤ', 	[].slice.call(arguments) )	}
-function ᐤꘌ	() 	{	return UnicodeMath.get_binary('ᐤꘌ', 	[].slice.call(arguments) )	}
 function 〳	() 	{	return UnicodeMath.get_binary('〳', 	[].slice.call(arguments) )	}
-function 〳ꘌ	() 	{	return UnicodeMath.get_binary('〳ꘌ',	[].slice.call(arguments) )	}
 function ॱ	() 	{	return UnicodeMath.get_binary('ॱ', 	[].slice.call(arguments) )	}	// geometric product
-function ॱꘌ	()	{	return UnicodeMath.get_binary('ॱꘌ', 	[].slice.call(arguments) )	}	// geometric product
 function ᐲ	()	{ 	return UnicodeMath.get_binary('ᐲ', 	[].slice.call(arguments) )	}	// geometric product (alternate symbol)
 function ᐱ	()	{ 	return UnicodeMath.get_binary('ᐱ', 	[].slice.call(arguments) )	}
 function ᐯ	()	{ 	return UnicodeMath.get_binary('ᐯ', 	[].slice.call(arguments) )	}
-function ꘌ	()	{	return UnicodeMath.get_binary('ꘌ', 	[].slice.call(arguments) )	}
 function ꘌꘌ	()	{	
 	try{
 		return UnicodeMath.get_binary('ꘌꘌ', [].slice.call(arguments) )	
@@ -120,17 +113,23 @@ function ǃꘌ	()	{
 	}
 }
 
+function ᐩꘌ	()	{	return UnicodeMath.get_binary_in_place('ᐩꘌ', 	[].slice.call(arguments) )	}
+function ᐨꘌ	()	{	return UnicodeMath.get_binary_in_place('ᐨꘌ', 	[].slice.call(arguments) )	}
+function ᐧꘌ	()	{	return UnicodeMath.get_binary_in_place('ᐧꘌ', 	[].slice.call(arguments) )	}
+function ᕁꘌ	()	{	return UnicodeMath.get_binary_in_place('ᕁꘌ', [].slice.call(arguments) )	}
+function ᐤꘌ	() 	{	return UnicodeMath.get_binary_in_place('ᐤꘌ', 	[].slice.call(arguments) )	}
+function 〳ꘌ	() 	{	return UnicodeMath.get_binary_in_place('〳ꘌ',	[].slice.call(arguments) )	}
+function ॱꘌ	()	{	return UnicodeMath.get_binary_in_place('ॱꘌ', 	[].slice.call(arguments) )	}	// geometric product
+function ꘌ	()	{	return UnicodeMath.get_binary_in_place('ꘌ', 	[].slice.call(arguments) )	}
+
 function ᐨᑊ	(a) 	{	return UnicodeMath.get_unary('ᐨᑊ', [a,b] )	}
 function ᐨᑊꘌ	(a) 	{	return UnicodeMath.get_unary('ᐨᑊꘌ', [a,b] )	}
-
 function ᐪ	(a) 	{	return UnicodeMath.get_unary('ᐪ', a)			}
 function ᐪꘌ	(a) 	{	return UnicodeMath.get_unary('ᐪꘌ', a)		}
-
 function ˆ	(a) 	{	return UnicodeMath.get_unary('ˆ', a)		}
-function ˆꘌ	(a,b) 	{	return UnicodeMath.get_binary('ˆꘌ', a,b)	}
-
+function ˆꘌ	(a,b) 	{	return UnicodeMath.get_binary_in_place('ˆꘌ', a,b)	}
 function ǀxǀ(a) 	{	return UnicodeMath.get_unary('ǀxǀ', a)		}
-function ǃ	(a)		{	return UnicodeMath.get_binary('ǃ', a)		}
+function ǃ	(a)		{	return UnicodeMath.get_binary_in_place('ǃ', a)		}
 
 
 
@@ -203,9 +202,11 @@ UnicodeMath = function(){
 			if(Array.isArray(x[0])) {
 				return 'Matrix';
 			}
-			if(x.length == 4) {
-				return 'Matrix2';
-			}
+			// Matrix2 not supported - 
+			//  too easily confused with Array of size 4
+			//if(x.length == 4) {
+			//	return 'Matrix2';
+			//}
 			if(x.length == 9) {
 				return 'Matrix3';
 			}
@@ -258,8 +259,21 @@ UnicodeMath = function(){
 		add_binary: function(a, op, b, fn){
 			overloads[get_binary_hash(a,op,b)] = fn;
 		},
+		get_binary_overload: function(op, a, b) {
+			var signature = get_binary_hash(get_type(a), op, get_type(b));
+			var overload = overloads[signature];
+			return overload;
+		},
 		get_binary: function(op, args) {
 			var result = args[0];
+			if (args.length == 1) {
+				var signature = get_binary_hash(get_type(mutated), op, get_type(void 0));
+				var overload = overloads[signature];
+				if (overload === void 0) {
+					throw "The '"+op+"' operator has no suitable overload for the input: '"+signature+"'";
+				}
+				result = overload(mutated);
+			}
 			for (var i = 1; i < args.length; i++) {
 				var arg = args[i];
 				var signature = get_binary_hash(get_type(result), op, get_type(arg));
@@ -270,6 +284,27 @@ UnicodeMath = function(){
 				result = overload(result, arg);
 			}
 			return result;
+		},
+		get_binary_in_place: function(op, args) {
+			var mutated = args[0];
+			if (args.length == 1) {
+				var signature = get_binary_hash(get_type(mutated), op, get_type(void 0));
+				var overload = overloads[signature];
+				if (overload === void 0) {
+					throw "The '"+op+"' operator has no suitable overload for the input: '"+signature+"'";
+				}
+				overload(mutated);
+			}
+			for (var i = 1; i < args.length; i++) {
+				var arg = args[i];
+				var signature = get_binary_hash(get_type(mutated), op, get_type(arg));
+				var overload = overloads[signature];
+				if (overload === void 0) {
+					throw "The '"+op+"' operator has no suitable overload for the input: '"+signature+"'";
+				}
+				overload(mutated, arg);
+			}
+			return mutated;
 		},
 		add_nary: function(op, args, fn){
 			overloads[get_nary_hash(op, args)] = fn;
