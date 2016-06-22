@@ -199,19 +199,10 @@ UnicodeMath = function(){
 		}
 		
 		if (type === 'Array'){
-			if(Array.isArray(x[0])) {
+			var first = x[0];
+			if(Array.isArray(first)) {
+				var lx= x.length
 				return 'Matrix';
-			}
-			// Matrix2 not supported - 
-			//  too easily confused with Array of size 4
-			//if(x.length == 4) {
-			//	return 'Matrix2';
-			//}
-			if(x.length == 9) {
-				return 'Matrix3';
-			}
-			if(x.length == 16) {
-				return 'Matrix4';
 			}
 			return type;
 		}
@@ -274,7 +265,7 @@ UnicodeMath = function(){
 				}
 				result = overload(mutated);
 			}
-			for (var i = 1; i < args.length; i++) {
+			for (var i=1, li=args.length; i<li; i++) {
 				var arg = args[i];
 				var signature = get_binary_hash(get_type(result), op, get_type(arg));
 				var overload = overloads[signature];
@@ -295,7 +286,7 @@ UnicodeMath = function(){
 				}
 				overload(mutated);
 			}
-			for (var i = 1; i < args.length; i++) {
+			for (var i=1, li=args.length; i<li; i++) {
 				var arg = args[i];
 				var signature = get_binary_hash(get_type(mutated), op, get_type(arg));
 				var overload = overloads[signature];

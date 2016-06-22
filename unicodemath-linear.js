@@ -53,115 +53,15 @@ function RᒾᕁRᒾ(a,b) {
 
 // MATRIX OPERATIONS
 ːᕮRᒾᕽᒾ = AːAᕮRᒾᕽᒾ = ᒾᕽᒾ = RᒾㅡᐳRᒾ 	= function(	xx, xy, 
-										yx, yy ) {
+											yx, yy ) {
 	return [
-		xx, xy, 
-		yx, yy, 
+		[xx, xy], 
+		[yx, yy], 
 	];
 }
 
 var Iᒾ = ᒾᕽᒾ(	1, 0, 
 			0, 1 );
-// matrix-vector product
-// from https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Matrix_math_for_the_web
-function RᒾᕽᒾᐧRᒾ (A, bꜛ) {
-	//Give a simple variable name to each part of the matrix, a column and row number
-	var xx = A[ 0], xy = A[ 1];
-	var yx = A[ 2], yy = A[ 3];
-
-	//Now set some simple names for the point
-	var x = bꜛ.x;
-	var y = bꜛ.y;
-
-	//Multiply the point against each part of the 1st column, then add together
-	var resultX = (x * xx) + (y * xy)
-	//Multiply the point against each part of the 2nd column, then add together
-	var resultY = (x * yx) + (y * yy)
-
-	return ꜛ(resultX, resultY);
-}
-function RᒾᕽᒾᐧRⁿ (A, bꜛ) {
-	//Give a simple variable name to each part of the matrix, a column and row number
-	var xx = A[ 0], xy = A[ 1];
-	var yx = A[ 2], yy = A[ 3];
-
-	//Now set some simple names for the point
-	var x = bꜛ[0];
-	var y = bꜛ[1];
-
-	//Multiply the point against each part of the 1st column, then add together
-	var resultX = (x * xx) + (y * xy)
-	//Multiply the point against each part of the 2nd column, then add together
-	var resultY = (x * yx) + (y * yy)
-
-	return [resultX, resultY];
-}
-// from https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Matrix_math_for_the_web
-function RᒾᐧꘌRᒾᕽᒾ (bꜛ, A) {
-	//Give a simple variable name to each part of the matrix, a column and row number
-	var xx = A[ 0], xy = A[ 1];
-	var yx = A[ 2], yy = A[ 3];
-
-	//Now set some simple names for the point
-	var x = bꜛ.x;
-	var y = bꜛ.y;
-
-	//Multiply the point against each part of the 1st column, then add together
-	bꜛ.x = (x * xx) + (y * xy);
-	//Multiply the point against each part of the 2nd column, then add together
-	bꜛ.y = (x * yx) + (y * yy);
-}
-// from https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Matrix_math_for_the_web
-function RᒾᕽᒾᐧRᒾᕽᒾ(A, B) {
-  // Slice the second matrix up into columns
-  var column0 = [B[0], B[2]];
-  var column1 = [B[1], B[3]];
-  
-  // Multiply each column by the matrix
-  var result0 = RᒾᕽᒾᐧRⁿ( A, column0 );
-  var result1 = RᒾᕽᒾᐧRⁿ( A, column1 );
-  
-  // Turn the result columns back into a single matrix
-  return [
-    result0[0], result1[0],
-    result0[1], result1[1]
-  ]
-}
-function RᒾᕽᒾᐧꘌRᒾᕽᒾ(A, B) {
-  // Slice the second matrix up into columns
-  var column0 = [B[0], B[2]];
-  var column1 = [B[1], B[3]];
-  
-  // Multiply each column by the matrix
-  var result0 = RᒾᕽᒾᐧRⁿ( A, column0 );
-  var result1 = RᒾᕽᒾᐧRⁿ( A, column1 );
-  
-  // Turn the result columns back into a single matrix
-    A[0]= result0[0]; A[1]= result1[0],
-    A[2]= result0[1]; A[3]= result1[1]
-}
-function Rᒾᕽᒾᐪ (A) {
-	return [A[0], A[2], 
-			A[1], A[3]];
-}
-function Rᒾᕽᒾᐪꘌ(A) {
-	var a=A[0], b=A[2],
-		c=A[1], d=A[3];
-	A[0]=a; A[1]=c;
-	A[2]=b; A[3]=d;
-}
-function ǀRᒾᕽᒾǀ(A) {
-	var a = A[ 0], b = A[ 1], c = A[ 2]; 
-	var d = A[ 3], e = A[ 4], f = A[ 5]; 
-	var g = A[ 6], h = A[ 7], i = A[ 8]; 
-
-	return ᐨ(
-	 		ᐧ( a, b ),
-			ᐧ( b, b )
-	);
-
-}
-
 
 // ---------------------------------Rᵌ---------------------------------
 function ːᕮRᵌ		(x,y,z)	{ return	{	x:x,	y:y, 	z:z 	}; }
@@ -252,141 +152,17 @@ function FᵌᕁRᵌ(f,a) {
 };
 
 ːᕮRᵌᕽᵌ = AːAᕮRᵌᕽᵌ = ᵌᕽᵌ = RᵌㅡᐳRᵌ = function(	xx, xy, xz,
-									yx, yy, yz,
-									zx, zy, zz	) {
+												yx, yy, yz,
+												zx, zy, zz	) {
 	return [
-		xx, xy, xz,
-		yx, yy, yz,
-		zx, zy, zz
+		[xx, xy, xz],
+		[yx, yy, yz],
+		[zx, zy, zz]
 	];
 };
 var Iᵌ= ᵌᕽᵌ(	1, 0, 0,
 			0, 1, 0,
 			0, 0, 1 );
-// from https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Matrix_math_for_the_web
-function RᵌᕽᵌᐧRᵌ (A, bꜛ) {
-	//Give a simple variable name to each part of the matrix, a column and row number
-	var xx = A[ 0], xy = A[ 1], xz = A[ 2];
-	var yx = A[ 3], yy = A[ 4], yz = A[ 5];
-	var zx = A[ 6], zy = A[ 7], zz = A[ 8];
-
-	//Now set some simple names for the point
-	var x = bꜛ.x;
-	var y = bꜛ.y;
-	var z = bꜛ.z;
-
-	//Multiply the point against each part of the 1st column, then add together
-	var resultX = (x * xx) + (y * xy) + (z * xz);
-	//Multiply the point against each part of the 2nd column, then add together
-	var resultY = (x * yx) + (y * yy) + (z * yz);
-	//Multiply the point against each part of the 3rd column, then add together
-	var resultZ = (x * zx) + (y * zy) + (z * zz);
-
-	return ꜛ(resultX, resultY, resultZ);
-}
-function RᵌᕽᵌᐧRⁿ (A, bꜛ) {
-	//Give a simple variable name to each part of the matrix, a column and row number
-	var xx = A[ 0], xy = A[ 1], xz = A[ 2];
-	var yx = A[ 3], yy = A[ 4], yz = A[ 5];
-	var zx = A[ 6], zy = A[ 7], zz = A[ 8];
-
-	//Now set some simple names for the point
-	var x = bꜛ[0];
-	var y = bꜛ[1];
-	var z = bꜛ[2];
-
-	//Multiply the point against each part of the 1st column, then add together
-	var resultX = (x * xx) + (y * xy) + (z * xz);
-	//Multiply the point against each part of the 2nd column, then add together
-	var resultY = (x * yx) + (y * yy) + (z * yz);
-	//Multiply the point against each part of the 3rd column, then add together
-	var resultZ = (x * zx) + (y * zy) + (z * zz);
-
-	return [resultX, resultY, resultZ];
-}
-// from https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Matrix_math_for_the_web
-function RᵌᐧꘌRᵌᕽᵌ (bꜛ, A) {
-	//Give a simple variable name to each part of the matrix, a column and row number
-	var xx = A[ 0], xy = A[ 1], xz = A[ 2];
-	var yx = A[ 3], yy = A[ 4], yz = A[ 5];
-	var zx = A[ 6], zy = A[ 7], zz = A[ 8];
-
-	//Now set some simple names for the point
-	var x = bꜛ.x;
-	var y = bꜛ.y;
-	var z = bꜛ.z;
-
-	//Multiply the point against each part of the 1st column, then add together
-	bꜛ.x = (x * xx) + (y * xy) + (z * xz);
-	//Multiply the point against each part of the 2nd column, then add together
-	bꜛ.y = (x * yx) + (y * yy) + (z * yz);
-	//Multiply the point against each part of the 3rd column, then add together
-	bꜛ.z = (x * zx) + (y * zy) + (z * zz);
-}
-// from https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Matrix_math_for_the_web
-function RᵌᕽᵌᐧRᵌᕽᵌ(A, B) {
-  // Slice the second matrix up into columns
-  var column0 = [B[0], B[3], B[6]];
-  var column1 = [B[1], B[4], B[7]];
-  var column2 = [B[2], B[5], B[8]];
-  
-  // Multiply each column by the matrix
-  var result0 = RᵌᕽᵌᐧRⁿ( A, column0 );
-  var result1 = RᵌᕽᵌᐧRⁿ( A, column1 );
-  var result2 = RᵌᕽᵌᐧRⁿ( A, column2 );
-  
-  // Turn the result columns back into a single matrix
-  return [
-    result0[0], result1[0], result2[0],
-    result0[1], result1[1], result2[1],
-    result0[2], result1[2], result2[2]
-  ]
-}
-// from https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Matrix_math_for_the_web
-function RᵌᕽᵌᐧꘌRᵌᕽᵌ(A, B) {
-  // Slice the second matrix up into columns
-  var column0 = [B[0], B[3], B[6]];
-  var column1 = [B[1], B[4], B[7]];
-  var column2 = [B[2], B[5], B[8]];
-  
-  // Multiply each column by the matrix
-  var result0 = RᵌᕽᵌᐧRⁿ( A, column0 );
-  var result1 = RᵌᕽᵌᐧRⁿ( A, column1 );
-  var result2 = RᵌᕽᵌᐧRⁿ( A, column2 );
-  
-  // Turn the result columns back into a single matrix
-    A[0]= result0[0]; A[1]= result1[0]; A[2]= result2[0];
-    A[3]= result0[1]; A[4]= result1[1]; A[5]= result2[1];
-    A[6]= result0[2]; A[7]= result1[2]; A[8]= result2[2];
-}
-function Rᵌᕽᵌᐪ (A) {
-	return [A[0], A[3], A[6], 
-			A[1], A[4], A[7], 
-			A[2], A[5], A[8]];
-}
-function Rᵌᕽᵌᐪꘌ(A) {
-	var a = A[ 0], b = A[ 1], c = A[ 2]; 
-	var d = A[ 3], e = A[ 4], f = A[ 5]; 
-	var g = A[ 6], h = A[ 7], i = A[ 8]; 
-    A[0]=a; A[1]=d; A[2]=g;
-    A[3]=b; A[4]=e; A[5]=h;
-    A[6]=c; A[7]=f; A[8]=i;
-}
-function ǀRᵌᕽᵌǀ(A) {
-	var a = A[ 0], b = A[ 1], c = A[ 2]; 
-	var d = A[ 3], e = A[ 4], f = A[ 5]; 
-	var g = A[ 6], h = A[ 7], i = A[ 8]; 
-
-	return ᐩ(
-	 		ᐧ( a,	ǀRᒾᕽᒾǀ([	e,f,
-							h,i	])),
-		ᐨ(	ᐧ( b,	ǀRᒾᕽᒾǀ([	d,f,
-							g,i	]))),
-			ᐧ( c,	ǀRᒾᕽᒾǀ([	d,e,
-							g,h	]))
-	);
-
-}
 	
 // ---------------------------------Rᶣ---------------------------------
 function ːᕮRᶣ		(x,y,z,w) 	{ return	{	x:x,	y:y, 	z:z, 	w:w 	}; }
@@ -441,121 +217,25 @@ function RᶣᐤꘌFᶣ	(f,a)	{				a.x=f.x(a.x); a.y=f.y(a.y); a.z=f.z(a.z); a.w
 												zx, zy, zz,	zw,
 												wx, wy, wz, ww ) {
 	return [
-		xx, xy, xz, xw,
-		yx, yy, yz, yw,
-		zx, zy, zz,	zw,
-		wx, wy, wz, ww
+		[xx, xy, xz, xw],
+		[yx, yy, yz, yw],
+		[zx, zy, zz, zw],
+		[wx, wy, wz, ww]
 	];
 }
 var Iᶣ= ːᕮRᶣᕽᶣ(	1, 0, 0, 0,
 				0, 1, 0, 0,
 				0, 0, 1, 0,
 				0, 0, 0, 1 );
-// from https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Matrix_math_for_the_web
-function RᶣᕽᶣᐧRᶣ(A, bꜛ) {
-	//Give a simple variable name to each part of the matrix, a column and row number
-	var xx = A[ 0], xy = A[ 1], xz = A[ 2], xw = A[ 3];
-	var yx = A[ 4], yy = A[ 5], yz = A[ 6], yw = A[ 7];
-	var zx = A[ 8], zy = A[ 9], zz = A[10], zw = A[11];
-	var wx = A[12], wy = A[13], wz = A[14], ww = A[15];
 
-	//Now set some simple names for the point
-	var x = bꜛ.x;
-	var y = bꜛ.y;
-	var z = bꜛ.z;
-	var w = bꜛ.w;
-
-	//Multiply the point against each part of the 1st column, then add together
-	var resultX = (x * xx) + (y * xy) + (z * xz) + (w * xw);
-	//Multiply the point against each part of the 2nd column, then add together
-	var resultY = (x * yx) + (y * yy) + (z * yz) + (w * yw);
-	//Multiply the point against each part of the 3rd column, then add together
-	var resultZ = (x * zx) + (y * zy) + (z * zz) + (w * zw);
-	//Multiply the point against each part of the 4th column, then add together
-	var resultW = (x * wx) + (y * wy) + (z * wz) + (w * ww);
-
-	return ꜛ(resultX, resultY, resultZ, resultW);
-}
-function RᶣᕽᶣᐧRⁿ(A, bꜛ) {
-	//Give a simple variable name to each part of the matrix, a column and row number
-	var xx = A[ 0], xy = A[ 1], xz = A[ 2], xw = A[ 3];
-	var yx = A[ 4], yy = A[ 5], yz = A[ 6], yw = A[ 7];
-	var zx = A[ 8], zy = A[ 9], zz = A[10], zw = A[11];
-	var wx = A[12], wy = A[13], wz = A[14], ww = A[15];
-
-	//Now set some simple names for the point
-	var x = bꜛ[0];
-	var y = bꜛ[1];
-	var z = bꜛ[2];
-	var w = bꜛ[3];
-
-	//Multiply the point against each part of the 1st column, then add together
-	var resultX = (x * xx) + (y * xy) + (z * xz) + (w * xw);
-	//Multiply the point against each part of the 2nd column, then add together
-	var resultY = (x * yx) + (y * yy) + (z * yz) + (w * yw);
-	//Multiply the point against each part of the 3rd column, then add together
-	var resultZ = (x * zx) + (y * zy) + (z * zz) + (w * zw);
-	//Multiply the point against each part of the 4th column, then add together
-	var resultW = (x * wx) + (y * wy) + (z * wz) + (w * ww);
-
-	return [resultX, resultY, resultZ, resultW];
-}
-// Special case for 3d graphics processing
-function RᶣᕽᶣᐧRᵌ(A, bꜛ) {
-	//Give a simple variable name to each part of the matrix, a column and row number
-	var xx = A[ 0], xy = A[ 1], xz = A[ 2], xw = A[ 3];
-	var yx = A[ 4], yy = A[ 5], yz = A[ 6], yw = A[ 7];
-	var zx = A[ 8], zy = A[ 9], zz = A[10], zw = A[11];
-	var wx = A[12], wy = A[13], wz = A[14], ww = A[15];
-
-	//Now set some simple names for the point
-	var x = bꜛ.x;
-	var y = bꜛ.y;
-	var z = bꜛ.z;
-	var w = 1;
-
-	//Multiply the point against each part of the 1st column, then add together
-	var resultX = (x * xx) + (y * xy) + (z * xz) + (w * xw);
-	//Multiply the point against each part of the 2nd column, then add together
-	var resultY = (x * yx) + (y * yy) + (z * yz) + (w * yw);
-	//Multiply the point against each part of the 3rd column, then add together
-	var resultZ = (x * zx) + (y * zy) + (z * zz) + (w * zw);
-	//Multiply the point against each part of the 4th column, then add together
-	//var resultW = (x * xw) + (y * yw) + (z * zw) + (w * yy);
-
-	return [resultX, resultY, resultZ];
-}
-// in-place matrix product
-// from https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Matrix_math_for_the_web
-function RᶣᐧꘌRᶣᕽᶣ (bꜛ, A) {
-	//Give a simple variable name to each part of the matrix, a column and row number
-	var xx = A[ 0], xy = A[ 1], xz = A[ 2], xw = A[ 3];
-	var yx = A[ 4], yy = A[ 5], yz = A[ 6], yw = A[ 7];
-	var zx = A[ 8], zy = A[ 9], zz = A[10], zw = A[11];
-	var wx = A[12], wy = A[13], wz = A[14], ww = A[15];
-
-	//Now set some simple names for the point
-	var x = bꜛ.x;
-	var y = bꜛ.y;
-	var z = bꜛ.z;
-	var w = bꜛ.w;
-
-	//Multiply the point against each part of the 1st column, then add together
-	bꜛ.x = (x * xx) + (y * xy) + (z * xz) + (w * xw);
-	//Multiply the point against each part of the 2nd column, then add together
-	bꜛ.y = (x * yx) + (y * yy) + (z * yz) + (w * yw);
-	//Multiply the point against each part of the 3rd column, then add together
-	bꜛ.z = (x * zx) + (y * zy) + (z * zz) + (w * zw);
-	//Multiply the point against each part of the 4th column, then add together
-	bꜛ.w = (x * wx) + (y * wy) + (z * wz) + (w * ww);
-}
 // Special case for 3d graphics processing
 function RᵌᐧꘌRᶣᕽᶣ (bꜛ, A) {
 	//Give a simple variable name to each part of the matrix, a column and row number
-	var xx = A[ 0], xy = A[ 1], xz = A[ 2], xw = A[ 3];
-	var yx = A[ 4], yy = A[ 5], yz = A[ 6], yw = A[ 7];
-	var zx = A[ 8], zy = A[ 9], zz = A[10], zw = A[11];
-	var wx = A[12], wy = A[13], wz = A[14], ww = A[15];
+	var A0 = A[0], A1 = A[1], A2 = A[2];
+	var xx = A0[0], xy = A0[1], xz = A0[2], xw = A0[3];
+	var yx = A1[0], yy = A1[1], yz = A1[2], yw = A1[3];
+	var zx = A2[0], zy = A2[1], zz = A2[2], zw = A2[3];
+	var wx = A3[0], wy = A3[1], wz = A3[2], ww = A3[3];
 
 	//Now set some simple names for the point
 	var x = bꜛ.x;
@@ -571,87 +251,6 @@ function RᵌᐧꘌRᶣᕽᶣ (bꜛ, A) {
 	bꜛ.z = (x * zx) + (y * zy) + (z * zz) + (w * zw);
 	//Multiply the point against each part of the 4th column, then add together
 	//bꜛ.w = (x * xw) + (y * yw) + (z * zw) + (w * yy);
-}
-// from https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Matrix_math_for_the_web
-function RᶣᕽᶣᐧRᶣᕽᶣ(A, B) {
-  // Slice the second matrix up into columns
-  var column0 = [B[0], B[4], B[8], B[12]];
-  var column1 = [B[1], B[5], B[9], B[13]];
-  var column2 = [B[2], B[6], B[10], B[14]];
-  var column3 = [B[3], B[7], B[11], B[15]];
-  
-  // Multiply each column by the matrix
-  var result0 = RᶣᕽᶣᐧRⁿ( A, column0 );
-  var result1 = RᶣᕽᶣᐧRⁿ( A, column1 );
-  var result2 = RᶣᕽᶣᐧRⁿ( A, column2 );
-  var result3 = RᶣᕽᶣᐧRⁿ( A, column3 );
-  
-  // Turn the result columns back into a single matrix
-  return [
-    result0[0], result1[0], result2[0], result3[0],
-    result0[1], result1[1], result2[1], result3[1],
-    result0[2], result1[2], result2[2], result3[2],
-    result0[3], result1[3], result2[3], result3[3]
-  ]
-}
-// from https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Matrix_math_for_the_web
-function RᶣᕽᶣᐧꘌRᶣᕽᶣ(A, B) {
-  // Slice the second matrix up into columns
-  var column0 = [B[0], B[4], B[8], B[12]];
-  var column1 = [B[1], B[5], B[9], B[13]];
-  var column2 = [B[2], B[6], B[10], B[14]];
-  var column3 = [B[3], B[7], B[11], B[15]];
-  
-  // Multiply each column by the matrix
-  var result0 = RᶣᕽᶣᐧRⁿ( A, column0 );
-  var result1 = RᶣᕽᶣᐧRⁿ( A, column1 );
-  var result2 = RᶣᕽᶣᐧRⁿ( A, column2 );
-  var result3 = RᶣᕽᶣᐧRⁿ( A, column3 );
-  
-  // Turn the result columns back into a single matrix
-    A[0]= result0[0]; 	A[1]= result1[0]; 	A[2]= result2[0]; 	A[3]= result3[0];
-    A[4]= result0[1]; 	A[5]= result1[1]; 	A[6]= result2[1]; 	A[7]= result3[1];
-    A[8]= result0[2]; 	A[9]= result1[2]; 	A[10]= result2[2]; 	A[11]= result3[2];
-    A[12]= result0[3]; 	A[13]= result1[3];	A[14]= result2[3]; 	A[15]= result3[3];
-}
-function Rᶣᕽᶣᐪ (A) {
-	return [A[0], A[4], A[8],  A[12],
-			A[1], A[5], A[9],  A[13],
-			A[2], A[6], A[10], A[14],
-			A[3], A[7], A[11], A[15]];
-}
-function Rᶣᕽᶣᐪꘌ(A) {
-	var a = A[ 0], b = A[ 1], c = A[ 2], d = A[ 3];
-	var e = A[ 4], f = A[ 5], g = A[ 6], h = A[ 7];
-	var i = A[ 8], j = A[ 9], k = A[10], l = A[11];
-	var m = A[12], n = A[13], o = A[14], p = A[15];
-    A[0]= result0[0]; 	A[1]= result1[0]; 	A[2]= result2[0]; 	A[3]= result3[0];
-    A[4]= result0[1]; 	A[5]= result1[1]; 	A[6]= result2[1]; 	A[7]= result3[1];
-    A[8]= result0[2]; 	A[9]= result1[2]; 	A[10]= result2[2]; 	A[11]= result3[2];
-    A[12]= result0[3]; 	A[13]= result1[3];	A[14]= result2[3]; 	A[15]= result3[3];
-}
-function ǀRᶣᕽᶣǀ(A) {
-	var a = A[ 0], b = A[ 1], c = A[ 2], d = A[ 3];
-	var e = A[ 4], f = A[ 5], g = A[ 6], h = A[ 7];
-	var i = A[ 8], j = A[ 9], k = A[10], l = A[11];
-	var m = A[12], n = A[13], o = A[14], p = A[15];
-
-	return ᐩ(
-
-	 		ᐧ( a,	ǀRᵌᕽᵌǀ([	f,g,h,
-							j,k,l,
-							n,o,p	])),
-		ᐨ(	ᐧ( b,	ǀRᵌᕽᵌǀ([	e,g,h,
-							i,k,l,
-							m,o,p	]))),
-			ᐧ( c,	ǀRᵌᕽᵌǀ([	e,f,h,
-							i,j,l,
-							m,n,p	])),
-		ᐨ(	ᐧ( d,	ǀRᵌᕽᵌǀ([	e,f,g,
-							i,j,k,
-							m,n,o	])))
-	);
-
 }
 
 // -------------------------------- Rⁿ --------------------------------
@@ -754,11 +353,14 @@ function RⁿᕽⁿᐧꘌR	(A,b)	{ 					for(var i=0, li=A.length; i<li; i++) { 	
 function Rⁿᕽⁿ〳ꘌR(A,b)	{ 					for(var i=0, li=A.length; i<li; i++) { 				Rⁿ〳ꘌR	(A[i], b);}					}
 
 // 	(Rⁿᕽⁿ,Rⁿ)->Rⁿ OPERATIONS
-function RⁿᕽⁿᐧRᒾ	(A,b)	{ return  ːᕮRᒾ(		RᒾᐧRⁿ(b,A[0]), 	RᒾᐧRⁿ(b,A[1]) 									); }
-function RⁿᕽⁿᐧRᵌ	(A,b)	{ return  ːᕮRᵌ(		RᵌᐧRⁿ(b,A[0]), 	RᵌᐧRⁿ(b,A[1]), 	RᵌᐧRⁿ(b,A[2])					); }
-function RⁿᕽⁿᐧRᶣ	(A,b)	{ return  ːᕮRᶣ(		RᶣᐧRⁿ(b,A[0]), 	RᶣᐧRⁿ(b,A[1]), 	RᶣᐧRⁿ(b,A[2]), 	RᶣᐧRⁿ(b,A[3])	); }
+function RⁿᕽⁿᐧRᒾ	(A,b)	{ return  ꜛ(		RᒾᐧRⁿ(b,A[0]), 	RᒾᐧRⁿ(b,A[1]) 									); }
+function RⁿᕽⁿᐧRᵌ	(A,b)	{ return  ꜛ(		RᵌᐧRⁿ(b,A[0]), 	RᵌᐧRⁿ(b,A[1]), 	RᵌᐧRⁿ(b,A[2])					); }
+function RⁿᕽⁿᐧRᶣ	(A,b)	{ return  ꜛ(		RᶣᐧRⁿ(b,A[0]), 	RᶣᐧRⁿ(b,A[1]), 	RᶣᐧRⁿ(b,A[2]), 	RᶣᐧRⁿ(b,A[3])	); }
 function RⁿᕽⁿᐧRⁿ	(A,b)	{ var result=[];	for(var i=0, li=A.length; i<li; i++) { result.push( RⁿᐧRⁿ(b,A[i]) ) }	return result;	}
-function RⁿᐧꘌRⁿᕽⁿ(a,B)	{ var result=[];	for(var i=0, li=B.length; i<li; i++) { result.push( RⁿᐧRⁿ(a,B[i]) ) }	ꘌ(a,result);	}
+function RᒾᐧꘌRⁿᕽⁿ	(a,B)	{ var				x=RᒾᐧRⁿ(a,B[0]),	y=RᒾᐧRⁿ(a,B[1])									; 		a.x=x; a.y=y;  				}
+function RᵌᐧꘌRⁿᕽⁿ(a,B)	{ var				x=RᵌᐧRⁿ(a,B[0]),	y=RᵌᐧRⁿ(a,B[1]),	z=RᵌᐧRⁿ(a,B[2])					; 		a.x=x; a.y=y; a.z=z;		}
+function RᶣᐧꘌRⁿᕽⁿ(a,B)	{ var				x=RᶣᐧRⁿ(a,B[0]),	y=RᶣᐧRⁿ(a,B[1]),	z=RᶣᐧRⁿ(a,B[2]), w=RᶣᐧRⁿ(a,B[3])	; 		a.x=x; a.y=y; a.z=z; a.w=w;	}
+function RⁿᐧꘌRⁿᕽⁿ(a,B)	{ var result=[];	for(var i=0, li=B.length; i<li; i++) { result.push( RⁿᐧRⁿ(a,B[i]) ) }	RⁿꘌRⁿ(a,result);}
 
 // 	(Rⁿᕽⁿ,Rⁿᕽⁿ)->Rⁿᕽⁿ OPERATIONS
 function RⁿᕽⁿᐩRⁿᕽⁿ(A,B)	{ var result=[];	for(var i=0, li=A.length; i<li; i++) { result.push(	RⁿᐩRⁿ	(A[i],B[i]) ); }	return result;	}
@@ -771,8 +373,6 @@ function RⁿᕽⁿꘌRⁿᕽⁿ(A,B)	{					for(var i=0, li=A.length; i<li; i++)
 function ꘌRⁿᕽⁿ(A,B)		{ var result=[];	for(var i=0, li=A.length; i<li; i++) { result.push(	ꘌRⁿ		(A[i]) ); }			return result;	}
 function RⁿᕽⁿꘌꘌRⁿᕽⁿ(A,B){ 					for(var i=0,la=A.length,lb=B.length; i<la||i<lb; i++) { if(!RⁿꘌꘌRⁿ(A[i],B[i])) return false; }	return true;	}
 function RⁿᕽⁿǃꘌRⁿᕽⁿ(A,B){ 					for(var i=0,la=A.length,lb=B.length; i<la||i<lb; i++) { if(!RⁿǃꘌRⁿ(A[i],B[i])) return true; }	return false;	}
-function RⁿᕽⁿᐧRⁿᕽⁿ (A,B)  {
-			var Bᐪ = Rⁿᕽⁿᐪ(B), result=[];	for(var i=0, li=Bᐪ.length; i<li; i++) { result.push( RⁿᕽⁿᐧRⁿ	(A, Bᐪ[i]) ); }		return Rⁿᕽⁿᐪ(result);	}
 
 // 	FUNCTIONAL Rⁿᕽⁿ OPERATIONS
 function FᐧRⁿᕽⁿ	(f,B)	{ var result=[];	for(var i=0, li=B.length; i<li; i++) { result.push(	FᐧRⁿ (F, B[i]) ); }			return result;	}
@@ -780,7 +380,30 @@ function FᐧRⁿᕽⁿ	(f,B)	{ var result=[];	for(var i=0, li=B.length; i<li; i
 function RⁿᕽⁿᐧꘌF(A,f) 	{ 					for(var i=0, li=A.length; i<li; i++) {	RⁿᐧꘌF (A[i], f);		} 						}
 // function RⁿᕽⁿᐤꘌFⁿ(a,f)	{  } // WIP
 
+function RⁿᕽⁿᐧRⁿᕽⁿ (A,B)  {
+	var Bᐪ = Rⁿᕽⁿᐪ(B)
+	var result = [];	
+	for (var i=0, li=Bᐪ.length; i<li; i++) { 
+		result.push( RⁿᕽⁿᐧRⁿ	(A, Bᐪ[i]) ); 
+	}
+	return Rⁿᕽⁿᐪ(result);
+}
+function RⁿᕽⁿᐪꘌRⁿᕽⁿᐧRⁿᕽⁿᐪ (Cᐪ,A,Bᐪ)  {
+	var result = [];
+	for (var i=0, li=Bᐪ.length; i<li; i++) { 
+		result.push( RⁿᕽⁿᐧRⁿ	(A, Bᐪ[i]) ); 
+	}
 
+}
+function RⁿᕽⁿᐧꘌRⁿᕽⁿᐪ (A,Bᐪ)  {
+	var result = [];	
+	for (var i=0, li=Bᐪ.length; i<li; i++) { 
+		result.push( RⁿᕽⁿᐧRⁿ	(A, Bᐪ[i]) ); 
+	}
+	for (var i=0, li=result.length; i<li; i++) {	
+		A[i] = result[i];
+	}
+}
 function Rⁿᕽⁿᐪ (A) {
 	var result=[];
 	for (var i = 0; i < A[0].length; i++) {
@@ -1055,23 +678,25 @@ function ᐁRⁿ(f, xꜛ, dx){
 	return result;
 }
 function ᐁRⁿᕽⁿ(f, X, dX) {
-	var li=X.length;
-	var lj=X[0].length;
-	var XᐩdX = ⁿᕽⁿ(li, lj);
-	var fX = f(X);
+	'use strict';
+	var i, j, li=X.length, lj=X[0].length;
+	var XᐩdX = X.slice(0);
+	var XᵢᐩdX;
 	var result = ⁿᕽⁿ(li, lj);
-	var df〳dXᵢⱼ;
-	for (var i = 0; i<li; i++) {
-		for (var j = 0; j<lj; j++) {
+	var resultᵢ;
+	var fX = f(X);
+	for (i = 0; i<li; i++) {
+		XᵢᐩdX = ꘌRⁿ( X[i] );
+		XᐩdX[i] = XᵢᐩdX;
+		resultᵢ = result[i];
+		for (j = 0; j<lj; j++) {
+			XᵢᐩdX[j] += dX;
 
-			RⁿᕽⁿꘌRⁿᕽⁿ( XᐩdX, X ) 			;
-			XᐩdX[i][j] += dX 				;
-
-			df〳dXᵢⱼ = (f(XᐩdX) - fX) / dX ;
-
-			result[i][j] = df〳dXᵢⱼ  		;
-
+			resultᵢ[j] = (f(XᐩdX) - fX) / dX ;
+			
+			XᵢᐩdX[j] -= dX;
 		}
+		XᐩdX[i] = X[i];
 	}
 	return result;
 }
@@ -1179,9 +804,6 @@ function ꜛ	()		{
 			'ǀxǀ	Vector3': 		ǀRᵌǀ,
 			'ǀxǀ	Vector4': 		ǀRᶣǀ,
 			'ǀxǀ	Array': 		ǀRⁿǀ,
-			'ǀxǀ	Matrix2': 		ǀRᒾᕽᒾǀ,
-			'ǀxǀ	Matrix3': 		ǀRᵌᕽᵌǀ,
-			'ǀxǀ	Matrix4': 		ǀRᶣᕽᶣǀ,
 		//	'ǀxǀ	Matrix': 		ǀRⁿᕽⁿǀ, // WIP
 			'ˆ	Vector2': 			Rᒾˆ,
 			'ˆ	Vector3': 			Rᵌˆ,
@@ -1191,23 +813,11 @@ function ꜛ	()		{
 			'ˆꘌ	Vector3': 			Rᵌˆꘌ,
 			'ˆꘌ	Vector4': 			Rᶣˆꘌ,
 			'ˆꘌ	Array': 			Rⁿˆꘌ,
-		//	'ᐨᑊ	Matrix2': 			Rᒾᕽᒾᐨᑊ, 	// WIP
-		//	'ᐨᑊ	Matrix3': 			Rᵌᕽᵌᐨᑊ, 	// WIP
-		//	'ᐨᑊ	Matrix4': 			Rᶣᕽᶣᐨᑊ, 	// WIP
 		//	'ᐨᑊ	Matrix': 			Rⁿᕽⁿᐨᑊ, 	// WIP
-			'ᐪ	Matrix2': 			Rᒾᕽᒾᐪ, 
-			'ᐪ	Matrix3': 			Rᵌᕽᵌᐪ, 
-			'ᐪ	Matrix4': 			Rᶣᕽᶣᐪ, 
 			'ᐪ	Matrix': 			Rⁿᕽⁿᐪ, 
-			'ᐪꘌ	Matrix2': 			Rᒾᕽᒾᐪꘌ,
-			'ᐪꘌ	Matrix3': 			Rᵌᕽᵌᐪꘌ,
-			'ᐪꘌ	Matrix4': 			Rᶣᕽᶣᐪꘌ,
 			
 			'ꜛ	Undefined': 	function(_) 	{ return []; },
 			'ꜛ	Array': 		function(array)	{ return array; },
-			'ꜛ	Matrix2':		function(array)	{ return array; }, // HACK: "32	" is actually an array representing a vector
-			'ꜛ	Matrix3':		function(array)	{ return array; }, // HACK: "Matrix" is actually an array representing a vector
-			'ꜛ	Matrix4':		function(array)	{ return array; }, // HACK: "Matrix" is actually an array representing a vector
 			'ꜛ	Vector4':		function(xyzw)	{ return [xyzw.x, xyzw.y, xyzw.z, xyzw.w]; },
 			'ꜛ	Vector3':		function(xyz)	{ return [xyz.x, xyz.y, xyz.z]; },
 			'ꜛ	Vector2':		function(xy)	{ return [xy.x, xy.y]; },
@@ -1217,9 +827,6 @@ function ꜛ	()		{
 			'ᐁ	Function	Vector3	Number': ᐁRᵌ,
 			'ᐁ	Function	Vector4	Number': ᐁRᶣ,
 			'ᐁ	Function	Array	Number': ᐁRⁿ,
-			'ᐁ	Function	Matrix2	Number': ᐁRⁿ,
-			'ᐁ	Function	Matrix3	Number': ᐁRⁿ,
-			'ᐁ	Function	Matrix4	Number': ᐁRⁿ,
 			'ᐁ	Function	Matrix	Number': ᐁRⁿᕽⁿ,
 
 			'ᐁᕁ	Function	Vector3	Number': ᐁᕁRᵌ,
@@ -1419,22 +1026,6 @@ function ꜛ	()		{
 			'Array	ꘌꘌ	Array': 		RⁿꘌꘌRⁿ,
 			'Array	ǃꘌ	Array': 		RⁿǃꘌRⁿ,
 
-		// HACK - Array gets confused with Matrix2
-			'Matrix2	ᐩ	Matrix2': 		RⁿᐩRⁿ,
-			'Matrix2	ᐨ	Matrix2': 		RⁿᐨRⁿ,
-			'Matrix2	ᐧ	Matrix2': 		RⁿᐧRⁿ,
-		//	'Matrix2	ᕁ	Matrix2': 		RⁿᕁRⁿ,	// not a valid operation
-			'Matrix2	ᐤ	Matrix2': 		RⁿᐤRⁿ,
-			'Matrix2	ᐩꘌ	Matrix2': 		RⁿᐩꘌRⁿ,
-			'Matrix2	ᐨꘌ	Matrix2': 		RⁿᐨꘌRⁿ,
-		//	'Matrix2	ᐧꘌ	Matrix2': 		RⁿᐧꘌRⁿ,	// not a valid operation
-		//	'Matrix2	ᕁꘌ	Matrix2': 		RⁿᕁꘌRⁿ, // not a valid operation
-			'Matrix2	ᐤꘌ	Matrix2': 		RⁿᐤꘌRⁿ,
-			'Matrix2	ꘌ	Matrix2': 		RⁿꘌRⁿ,
-			'Matrix2	ꘌ	Undefined': 	ꘌRⁿ,
-			'Matrix2	ꘌꘌ	Matrix2': 		RⁿꘌꘌRⁿ,
-			'Matrix2	ǃꘌ	Matrix2': 		RⁿǃꘌRⁿ,
-
 
 		// VECTOR OF ARBITRARY SIZE
 			'Function(i)	ᐩ	Function(i)': 		RᵢᐩRᵢ,
@@ -1533,52 +1124,7 @@ function ꜛ	()		{
 
 
 	// NUMBER, MATRIX -----------------------------
-		// MATRIX2
-			'Number	ᐧ	Matrix2': 		RᐧRⁿ,
-			'Number	ᕁ	Matrix2': 		RᐧRⁿ,
-			
-			'Matrix2	ᐩ	Number': 	RⁿᐩR,
-			'Matrix2	ᐨ	Number': 	RⁿᐨR,
-			'Matrix2	ᐧ	Number': 	RⁿᐧR,
-			'Matrix2	ᕁ	Number': 	RⁿᐧR,
-			'Matrix2	〳	Number':  	Rⁿ〳R,
-			'Matrix2	ᐩꘌ	Number': 	RⁿᐩꘌR,
-			'Matrix2	ᐨꘌ	Number': 	RⁿᐨꘌR,
-			'Matrix2	ᐧꘌ	Number': 	RⁿᐧꘌR,
-			'Matrix2	ᕁꘌ	Number': 	RⁿᐧꘌR,
-			'Matrix2	〳ꘌ	Number':  	Rⁿ〳ꘌR,
 
-		// MATRIX3
-			'Number	ᐧ	Matrix3': 		RᐧRⁿ,
-			'Number	ᕁ	Matrix3': 		RᐧRⁿ,
-			
-			'Matrix3	ᐩ	Number': 	RⁿᐩR,
-			'Matrix3	ᐨ	Number': 	RⁿᐨR,
-			'Matrix3	ᐧ	Number': 	RⁿᐧR,
-			'Matrix3	ᕁ	Number': 	RⁿᐧR,
-			'Matrix3	〳	Number':  	Rⁿ〳R,
-			'Matrix3	ᐩꘌ	Number': 	RⁿᐩꘌR,
-			'Matrix3	ᐨꘌ	Number': 	RⁿᐨꘌR,
-			'Matrix3	ᐧꘌ	Number': 	RⁿᐧꘌR,
-			'Matrix3	ᕁꘌ	Number': 	RⁿᐧꘌR,
-			'Matrix3	〳ꘌ	Number':  	Rⁿ〳ꘌR,
-
-		// MATRIX4
-			'Number	ᐧ	Matrix4': 		RᐧRⁿ,
-			'Number	ᕁ	Matrix4': 		RᐧRⁿ,
-			
-			'Matrix4	ᐩ	Number': 	RⁿᐩR,
-			'Matrix4	ᐨ	Number': 	RⁿᐨR,
-			'Matrix4	ᐧ	Number': 	RⁿᐧR,
-			'Matrix4	ᕁ	Number': 	RⁿᐧR,
-			'Matrix4	〳	Number':  	Rⁿ〳R,
-			'Matrix4	ᐩꘌ	Number': 	RⁿᐩꘌR,
-			'Matrix4	ᐨꘌ	Number': 	RⁿᐨꘌR,
-			'Matrix4	ᐧꘌ	Number': 	RⁿᐧꘌR,
-			'Matrix4	ᕁꘌ	Number': 	RⁿᐧꘌR,
-			'Matrix4	〳ꘌ	Number':  	Rⁿ〳ꘌR,
-
-		// MATRIX4
 			'Number	ᐧ	Matrix': 		RᐧRⁿᕽⁿ,
 			'Number	ᕁ	Matrix': 		RᐧRⁿᕽⁿ,
 			
@@ -1594,68 +1140,6 @@ function ꜛ	()		{
 			'Matrix	〳ꘌ	Number':  	Rⁿᕽⁿ〳ꘌR,
 
 	// VECTOR, MATRIX -----------------------------
-		// MATRIX2
-			'Matrix2	ᐧ	Vector2': 	RᒾᕽᒾᐧRᒾ,
-			'Matrix2	ᕁ	Vector2': 	RᒾᕽᒾᐧRᒾ,
-			
-			'Vector2	ᐧ	Matrix2': 	_associate(RᒾᕽᒾᐧRᒾ),
-			'Vector2	ᕁ	Matrix2': 	_associate(RᒾᕽᒾᐧRᒾ),
-			'Vector2	ᐧꘌ	Matrix2': 	RᒾᐧꘌRᒾᕽᒾ,
-			'Vector2	ᕁꘌ	Matrix2': 	RᒾᐧꘌRᒾᕽᒾ,
-
-		// MATRIX2, ARRAY
-		//	'Matrix2	ᐧ	Array': 	RᒾᕽᒾᐧRⁿ,
-		//	'Matrix2	ᕁ	Array': 	RᒾᕽᒾᐧRⁿ,
-		//	
-		//	'Array	ᐧ	Matrix2': 	_associate(RᒾᕽᒾᐧRⁿ),
-		//	'Array	ᕁ	Matrix2': 	_associate(RᒾᕽᒾᐧRⁿ),
-		//	'Array	ᐧꘌ	Matrix2': 	RⁿᐧꘌRᒾᕽᒾ,		// WIP
-		//	'Array	ᕁꘌ	Matrix2': 	RⁿᐧꘌRᒾᕽᒾ,		// WIP
-			
-		// MATRIX3
-			'Matrix3	ᐧ	Vector3': 	RᵌᕽᵌᐧRᵌ,
-			'Matrix3	ᕁ	Vector3': 	RᵌᕽᵌᐧRᵌ,
-			
-			'Vector3	ᐧ	Matrix3': 	_associate(RᵌᕽᵌᐧRᵌ),
-			'Vector3	ᕁ	Matrix3': 	_associate(RᵌᕽᵌᐧRᵌ),
-			'Vector3	ᐧꘌ	Matrix3': 	RᵌᐧꘌRᵌᕽᵌ,
-			'Vector3	ᕁꘌ	Matrix3': 	RᵌᐧꘌRᵌᕽᵌ,
-			
-		// MATRIX3, ARRAY
-		//	'Matrix3	ᐧ	Array': 	RᵌᕽᵌᐧRⁿ,
-		//	'Matrix3	ᕁ	Array': 	RᵌᕽᵌᐧRⁿ,
-		//	
-		//	'Array	ᐧ	Matrix3': 		_associate(RᵌᕽᵌᐧRⁿ),
-		//	'Array	ᕁ	Matrix3': 		_associate(RᵌᕽᵌᐧRⁿ),
-		// 'Array	ᐧꘌ	Matrix3': 		RⁿᐧꘌRᵌᕽᵌ,	//	WIP
-		// 'Array	ᕁꘌ	Matrix3': 		RⁿᐧꘌRᵌᕽᵌ,	//	WIP
-			
-		// MATRIX4
-			'Matrix4	ᐧ	Vector4': 	RᶣᕽᶣᐧRᶣ,
-			'Matrix4	ᕁ	Vector4': 	RᶣᕽᶣᐧRᶣ,
-			
-			'Vector4	ᐧ	Matrix4': 	_associate(RᶣᕽᶣᐧRᶣ),
-			'Vector4	ᕁ	Matrix4': 	_associate(RᶣᕽᶣᐧRᶣ),
-			'Vector4	ᐧꘌ	Matrix4': 	RᶣᐧꘌRᶣᕽᶣ,
-			'Vector4	ᕁꘌ	Matrix4': 	RᶣᐧꘌRᶣᕽᶣ,
-				
-		// MATRIX4, VECTOR3 - special case for 3d graphics processing
-			'Matrix4	ᐧ	Vector3': 	RᶣᕽᶣᐧRᵌ,
-			'Matrix4	ᕁ	Vector3': 	RᶣᕽᶣᐧRᵌ,
-			
-			'Vector3	ᐧ	Matrix4': 	_associate(RᶣᕽᶣᐧRᵌ),
-			'Vector3	ᕁ	Matrix4': 	_associate(RᶣᕽᶣᐧRᵌ),
-			'Vector3	ᐧꘌ	Matrix4': 	RᵌᐧꘌRᶣᕽᶣ,
-			'Vector3	ᕁꘌ	Matrix4': 	RᵌᐧꘌRᶣᕽᶣ,
-
-		// MATRIX4, ARRAY HACK - vector 4 array is confused for matrix2
-		//	'Matrix4	ᐧ	Matrix2': 	RᶣᕽᶣᐧRⁿ,
-		//	'Matrix4	ᕁ	Matrix2': 	RᶣᕽᶣᐧRⁿ,
-		//	
-		//	'Matrix2	ᐧ	Matrix4': 	_associate(RᶣᕽᶣᐧRⁿ),
-		//	'Matrix2	ᕁ	Matrix4': 	_associate(RᶣᕽᶣᐧRⁿ),
-		//	'Matrix2	ᐧꘌ	Matrix4': 	RⁿᐧꘌRᶣᕽᶣ,	// WIP
-		//	'Matrix2	ᕁꘌ	Matrix4': 	RⁿᐧꘌRᶣᕽᶣ,	// WIP
 
 		// MATRIX, ARRAY
 			'Matrix	ᐧ	Array': 	RⁿᕽⁿᐧRⁿ,
@@ -1666,21 +1150,14 @@ function ꜛ	()		{
 			'Array	ᐧꘌ	Matrix': 	RⁿᐧꘌRⁿᕽⁿ,
 			'Array	ᕁꘌ	Matrix': 	RⁿᐧꘌRⁿᕽⁿ,
 
-		// MATRIX, ARRAY HACK - vector 4 array is confused for matrix2
-			'Matrix	ᐧ	Matrix2': 	RⁿᕽⁿᐧRⁿ,
-			'Matrix	ᕁ	Matrix2': 	RⁿᕽⁿᐧRⁿ,
-			
-			'Matrix2	ᐧ	Matrix': 	_associate(RⁿᕽⁿᐧRⁿ),
-			'Matrix2	ᕁ	Matrix': 	_associate(RⁿᕽⁿᐧRⁿ),
-			'Matrix2	ᐧꘌ	Matrix': 	RⁿᐧꘌRⁿᕽⁿ,
-			'Matrix2	ᕁꘌ	Matrix': 	RⁿᐧꘌRⁿᕽⁿ,
-
 		// MATRIX, VECTOR2
 			'Matrix	ᐧ	Vector2': 	RⁿᕽⁿᐧRᒾ,
 			'Matrix	ᕁ	Vector2': 	RⁿᕽⁿᐧRᒾ,
 			
 			'Vector2	ᐧ	Matrix': 	_associate(RⁿᕽⁿᐧRᒾ),
 			'Vector2	ᕁ	Matrix': 	_associate(RⁿᕽⁿᐧRᒾ),
+			'Vector2	ᐧꘌ	Matrix': 	RᒾᐧꘌRⁿᕽⁿ,
+			'Vector2	ᕁꘌ	Matrix': 	RᒾᐧꘌRⁿᕽⁿ,
 
 		// MATRIX, VECTOR3
 			'Matrix	ᐧ	Vector3': 	RⁿᕽⁿᐧRᵌ,
@@ -1688,6 +1165,8 @@ function ꜛ	()		{
 			
 			'Vector3	ᐧ	Matrix': 	_associate(RⁿᕽⁿᐧRᵌ),
 			'Vector3	ᕁ	Matrix': 	_associate(RⁿᕽⁿᐧRᵌ),
+			'Vector3	ᐧꘌ	Matrix': 	RᵌᐧꘌRⁿᕽⁿ,
+			'Vector3	ᕁꘌ	Matrix': 	RᵌᐧꘌRⁿᕽⁿ,
 
 		// MATRIX, VECTOR4
 			'Matrix	ᐧ	Vector4': 	RⁿᕽⁿᐧRᶣ,
@@ -1695,53 +1174,12 @@ function ꜛ	()		{
 			
 			'Vector4	ᐧ	Matrix': 	_associate(RⁿᕽⁿᐧRᶣ),
 			'Vector4	ᕁ	Matrix': 	_associate(RⁿᕽⁿᐧRᶣ),
+			'Vector4	ᐧꘌ	Matrix': 	RᶣᐧꘌRⁿᕽⁿ,
+			'Vector4	ᕁꘌ	Matrix': 	RᶣᐧꘌRⁿᕽⁿ,
 
 	// MATRIX, MATRIX -----------------------------
-		// MATRIX2
-		//	'Matrix2	ᐩ	Matrix2': 	RⁿᐩRⁿ,
-		//	'Matrix2	ᐨ	Matrix2': 	RⁿᐨRⁿ,
-		//	'Matrix2	ᐧ	Matrix2': 	RᒾᕽᒾᐧRᒾᕽᒾ,
-		//	'Matrix2	ᕁ	Matrix2': 	RᒾᕽᒾᐧRᒾᕽᒾ,
-		//	'Matrix2	ᐤ	Matrix2': 	RⁿᐤRⁿ,
-		//	'Matrix2	ᐩꘌ	Matrix2': 	RⁿᐩꘌRⁿ,
-		//	'Matrix2	ᐨꘌ	Matrix2': 	RⁿᐨꘌRⁿ,
-		//	'Matrix2	ᐧꘌ	Matrix2': 	RᒾᕽᒾᐧꘌRᒾᕽᒾ,
-		//	'Matrix2	ᕁꘌ	Matrix2': 	RᒾᕽᒾᐧꘌRᒾᕽᒾ,
-		//	'Matrix2	ᐤꘌ	Matrix2': 	RⁿᐤꘌRⁿ,
-		//	'Matrix2	ꘌ	Matrix2': 	RⁿꘌRⁿ,
-		//	'Matrix2	ꘌ	Undefined': ꘌRⁿ,
-		//	'Matrix2	ꘌꘌ	Matrix2': 	RⁿꘌꘌRⁿ,
-		// MATRIX3
-			'Matrix3	ᐩ	Matrix3': 	RⁿᐩRⁿ,
-			'Matrix3	ᐨ	Matrix3': 	RⁿᐨRⁿ,
-			'Matrix3	ᐧ	Matrix3': 	RᵌᕽᵌᐧRᵌᕽᵌ,
-			'Matrix3	ᕁ	Matrix3': 	RᵌᕽᵌᐧRᵌᕽᵌ,
-			'Matrix3	ᐤ	Matrix3': 	RⁿᐤRⁿ,
-			'Matrix3	ᐩꘌ	Matrix3': 	RⁿᐩꘌRⁿ,
-			'Matrix3	ᐨꘌ	Matrix3': 	RⁿᐨꘌRⁿ,
-			'Matrix3	ᐧꘌ	Matrix3': 	RᵌᕽᵌᐧꘌRᵌᕽᵌ,
-			'Matrix3	ᕁꘌ	Matrix3': 	RᵌᕽᵌᐧꘌRᵌᕽᵌ,
-			'Matrix3	ᐤꘌ	Matrix3': 	RⁿᐤꘌRⁿ,
-			'Matrix3	ꘌ	Matrix3': 	RⁿꘌRⁿ,
-			'Matrix3	ꘌ	Undefined': ꘌRⁿ,
-			'Matrix3	ꘌꘌ	Matrix3': 	RⁿꘌꘌRⁿ,
-
-		// MATRIX4
-			'Matrix4	ᐩ	Matrix4': 	RⁿᐩRⁿ,
-			'Matrix4	ᐨ	Matrix4': 	RⁿᐨRⁿ,
-			'Matrix4	ᐧ	Matrix4': 	RᶣᕽᶣᐧRᶣᕽᶣ,
-			'Matrix4	ᕁ	Matrix4': 	RᶣᕽᶣᐧRᶣᕽᶣ,
-			'Matrix4	ᐤ	Matrix4': 	RⁿᐤRⁿ,
-			'Matrix4	ᐩꘌ	Matrix4': 	RⁿᐩꘌRⁿ,
-			'Matrix4	ᐨꘌ	Matrix4': 	RⁿᐨꘌRⁿ,
-			'Matrix4	ᐧꘌ	Matrix4': 	RᶣᕽᶣᐧꘌRᶣᕽᶣ,
-			'Matrix4	ᕁꘌ	Matrix4': 	RᶣᕽᶣᐧꘌRᶣᕽᶣ,
-			'Matrix4	ᐤꘌ	Matrix4': 	RⁿᐤꘌRⁿ,
-			'Matrix4	ꘌ	Matrix4': 	RⁿꘌRⁿ,
-			'Matrix4	ꘌ	Undefined': ꘌRⁿ,
-			'Matrix4	ꘌꘌ	Matrix4': 	RⁿꘌꘌRⁿ,
-
 		// MATRIX OF SIZE NxN
+			'Matrix	ᐨ	Undefined': 	ᐨRⁿᕽⁿ,
 			'Matrix	ᐩ	Matrix': 		RⁿᕽⁿᐩRⁿᕽⁿ,
 			'Matrix	ᐨ	Matrix': 		RⁿᕽⁿᐨRⁿᕽⁿ,
 			'Matrix	ᐧ	Matrix': 		RⁿᕽⁿᐧRⁿᕽⁿ,
