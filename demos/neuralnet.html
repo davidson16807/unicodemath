@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <script type="text/javascript" src="../unicodemath.js"></script>
+    <script type="text/javascript" src="../unicodemath-linear.js"></script>
+  </head>
+  <body>
+  
+  </body>
+<script type="text/javascript">
+
+
+
+
+
+function unif(min,max) {
+	return Math.random()*(max-min)+min;
+}
+function sigmoid(t) {
+	return 1/(1+eˣ(-1*t))
+}
+
+
+
+function layer(n, m) {
+	var	weights = 	ⁿᕽⁿ(n,m);
+	ᐧꘌ(	weights, 	(x) => unif(-1,1) );
+	return  weights;
+}
+
+function simulate(network, samples) {
+	var weights;
+	var sample;
+	var results = [];
+	var signal;
+	for (var i = 0; i < samples.length; i++) {
+		sample = samples[i];
+		signal 	= ꘌ(sample);
+		for (var j = 0; j < network.length; j++) {
+			layer_ = network[j];
+			signal 	= 	ᐧ(signal, layer_)
+					ᐧꘌ	(signal, sigmoid)
+		}
+		results.push(signal);
+	}
+	return results;
+}
+
+var network = [
+		layer(5, 3),
+		layer(5, 5),
+		layer(1, 5),
+	];
+
+var input 	= [	[1,0,1],
+				[0,1,1],
+				[1,1,1],
+				[0,0,1] ];
+var output 	= [	[1],
+				[1],
+				[0],
+				[0]	];
+
+function cost(network) {
+	var difference = ᐨ( simulate(network, input), output )
+	var differenceꜛ = [].concat.apply([], difference)
+	return ᐧ( differenceꜛ, differenceꜛ );
+}
+function layer_cost(i) {
+	return function(layer) {
+		var networkʹ = network.slice();
+		networkʹ[i] = layer; 
+		return cost(networkʹ);
+	}
+}
+
+// Learning is performed through momentum-based gradient descent
+// This is analogous to a physics simulation ran in an N-dimensional search space
+// The cost function is analogous to potential energy
+// A "drag" force is introduced to prevent harmonic oscillation
+var DRAG_COEFFICIENT = 0.05;
+var MASS = 3/1;
+
+var ᐁpotential	= network.map(	(layer,i)	=> ᐁ(layer_cost(i)) );
+var momentum 	= network.map(	(layer,i)	=> ᐧ(layer,0)		);
+
+for (var j = 0; j < 3000; j++) {
+	for (var i = 0; i < network.length; i++) {
+		var layer = network[i];
+		var force = ᐁpotential[i](layer);
+		var drag = ᐧ(DRAG_COEFFICIENT, momentum[i]);
+		ᐩꘌ(force, 	drag);
+		ᐨꘌ(momentum[i], 	force);
+	}
+	for (var i = 0; i < network.length; i++) {
+		var layer = network[i];
+		ᐩꘌ(layer, ᐧ(1/MASS, momentum[i]))
+	}
+}
+
+var simulation = simulate(network, input);
+console.log( '1 xor 0: ' + simulation[0][0] );
+console.log( '0 xor 1: ' + simulation[1][0] );
+console.log( '1 xor 1: ' + simulation[2][0] );
+console.log( '0 xor 0: ' + simulation[3][0] );
+console.log( 'cost: 	' + cost(network) );
+
+
+
+</script>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <script type="text/javascript" src="../unicodemath.js"></script>
+    <script type="text/javascript" src="../unicodemath-linear.js"></script>
+    <script type="text/javascript" src="../unicodemath-tensors.js"></script>
+  </head>
+  <body>
+  
+  </body>
+<script type="text/javascript">
+
+'use strict';
+
+
+
+function unif(min,max) {
+	return Math.random()*(max-min)+min;
+}
+function sigmoid(t) {
+	return 1/(1+eˣ(-t));
+}
+function sigmoidʹ(argument) {
+	return 1/(eˣ(z)+eˣ(-z)+2);
+}
+function Rⁿᕽⁿᐧꘌsigmoid(x) {
+	var i, j, li=x.length, lj=x[0].length;
+
+	var xi;
+	for (i = 0; i<li; i++) {
+		xi = x[i];
+		for (j = 0; j <lj; j++) {
+			xi[j] = 1/(1+eˣ(-xi[j]));
+		}
+	}
+}
+
+function layer(n, m) {
+	var	weights = 	ⁿᕽⁿ(n,m);
+	RⁿᕽⁿᐧꘌF(	weights, 	(x) => unif(-1,1) );
+	return  weights;
+}
+
+function simulate(network, samples) {
+	var signals = ꘌRⁿ(samples);
+	var i, li = network.length;
+	for (i = 0; i < li; i++) {
+		signals = RᵢⱼᐧRₖⱼ(signals, network[i]);
+		Rⁿᕽⁿᐧꘌsigmoid(signals);
+	}
+	return signals;
+}
+
+var network = [
+		layer(5, 2),
+		layer(5, 5),
+		layer(1, 5),
+	];
+
+var input 	= [	[1,0],
+				[0,1],
+				[1,1],
+				[0,0] ];
+var output 	= [	[1],
+				[1],
+				[0],
+				[0]	];
+
+function cost(network) {
+	var scratch = simulate(network, input);
+	RⁿᕽⁿᐨꘌRⁿᕽⁿ( scratch, output );
+	return 	Rᵢᵢⱼⱼ( scratch );
+}
+// Learning is performed through momentum-based gradient descent
+// This is analogous to a physics simulation ran in an N-dimensional search space
+// The cost function is analogous to potential energy
+// A "drag" force is introduced to prevent harmonic oscillation
+var DRAG_COEFFICIENT = 0.05;
+var MASS = 3/1;
+
+var momentum 	= ꘌRᵢⱼₖ(network);
+var drag 		= ꘌRᵢⱼₖ(network);
+var velocity 	= ꘌRᵢⱼₖ(network);
+var force 		= ꘌRᵢⱼₖ(network);
+
+for (var j = 0; j<1000; j++) {
+	Rᵢⱼₖꘌdf〳dXᵢⱼₖ(force, cost, network, 1e-5);
+
+	RᵢⱼₖꘌRᵢⱼₖ 	(drag, 		momentum);
+	RᵢⱼₖᐧꘌR 		(drag, 		DRAG_COEFFICIENT);
+	
+	RᵢⱼₖᐩꘌRᵢⱼₖ	(force, 	drag);
+	RᵢⱼₖᐨꘌRᵢⱼₖ	(momentum, 	force);
+
+	RᵢⱼₖꘌRᵢⱼₖ 	(velocity, 	momentum);
+	RᵢⱼₖᐧꘌR 		(velocity, 	1/MASS);
+
+	RᵢⱼₖᐩꘌRᵢⱼₖ	(network, 	velocity);
+}
+
+var simulation = simulate(network, input);
+console.log( '1 xor 0:	' + simulation[0][0] );
+console.log( '0 xor 1:	' + simulation[1][0] );
+console.log( '1 xor 1:	' + simulation[2][0] );
+console.log( '0 xor 0:	' + simulation[3][0] );
+console.log( 'cost: 	' + cost(network) );
+
+
+
+</script>
+</html>
