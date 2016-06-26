@@ -76,7 +76,7 @@ We call the operator just as we would with any function:
 
 	ᐩ( new THREE.Vector3(1,2,3); new THREE.Vector3(6,5,4) )
 
-You can write your own overloads to support objects from virtually any library. Existing overloads exist for many mathematical objects. 
+You can write your own overloads to support objects from virtually any library. There's already a set of overloads for library-agnostic datatypes like vectors and matrices.
 
 ##Subcomponents
 
@@ -104,7 +104,7 @@ Objects beyond the third dimension are not currently supported.
 #FAQ
 
 ###Why?
-Your code will be read far more than written. If this is true, then its immaterial how long it takes for you to write code, just as long as it makes up for the time spent reading. When working with mathematical objects, the easiest way to understood is using mathematical notation. That's the notation everyone else uses, and that's the notation everyone has become familiar with. There are certain exceptions where a mathematical expression describes a coherent concept, but in the end, the mathematical expression is the more abstract one, and the mathematical expression is the one you will use when you're defining the concept within your application. As crazy as it sounds, it *makes sense* to use unicode in a language where interpreters have near universal support for it. 
+Your code will be read far more than written. If this is true, then its immaterial how long it takes for you to write code, just as long as it makes up for the time spent reading. When working with mathematical objects, the easiest way for them to be understood is using mathematical notation. That's the notation everyone else uses, and that's the notation everyone has become familiar with. There are certain exceptions where a mathematical expression describes a coherent concept, but in the end, the mathematical expression is the more abstract one, and the mathematical expression is the one you will use when you're defining the concept within your application. As crazy as it sounds, it *makes sense* to use unicode in a language where interpreters have near universal support for it. 
 
 And besides, it just looks cool.
 
