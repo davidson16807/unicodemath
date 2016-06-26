@@ -105,12 +105,12 @@ It's been stated that your code will be read far more than written. If this is t
 
 And besides, it just looks cool.
 
-##This doesn't work with really old browsers
+###This doesn't work with really old browsers
 Sounds like a problem with the browser.
 
-##I can't view a character in a particular font
+###I can't view a character in a particular font
 Sounds like a problem with your font. 
 
-#Thanks
+#Acknowledgements
 
 Big thanks to [Shapecatcher](http://shapecatcher.com/), without which this library would be nowhere near as expressive as it is today.
