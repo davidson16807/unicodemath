@@ -37,7 +37,7 @@ And the Vai Syllabary happens to have a "syllable lengthener" symbol that looks 
 
 	function ꘌꘌ (a,b) { return a == b }
 
-A number of dental click symbols in the International Phonetic Alphabet also resemble common punctuation. We'll add them to:
+A number of dental click symbols in the International Phonetic Alphabet also resemble common punctuation. We'll add them too:
 
 	function ǃꘌ (a,b) { return a != b }
 	var ǀxǀ	= Math.abs;
@@ -51,6 +51,8 @@ By their powers combined, we can represent mathematical expressions of arbitrary
 			(-b - Math.sqrt(b*b - 4*a*c)) / (2*a)
 		];
 	}
+
+#Method Overloading
 
 Now, you might not be impressed by what amounts to basic arithmetic, but you can do so much more. Vectors and matrices are a staple of virtually any math library, but most math libraries expose them using plain english method names. Now you can manipulate these objects with the symbols you are already familiar with, and it's all done in native javascript. 
 
@@ -75,6 +77,8 @@ We call the operator just as we would with any function:
 	ᐩ( new THREE.Vector3(1,2,3); new THREE.Vector3(6,5,4) )
 
 You can write your own overloads to support objects from virtually any library. Existing overloads exist for many mathematical objects. 
+
+##Sub Libraries
 
 Overloads for the real number field are exposed in unicodemath.js, along with core functionality. 
 
