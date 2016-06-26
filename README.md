@@ -37,7 +37,7 @@ And the Vai Syllabary happens to have a "[syllable lengthener](http://unicode-ta
 
 	function ꘌꘌ (a,b) { return a == b }
 
-A number of dental click symbols in the International Phonetic Alphabet also resemble common punctuation. We'll add them too:
+A number of click consonants in the International Phonetic Alphabet also resemble common punctuation. We'll add them too:
 
 	function ǃꘌ (a,b) { return a != b }
 	var ǀxǀ	= Math.abs;
