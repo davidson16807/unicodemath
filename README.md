@@ -1,7 +1,7 @@
 # unicodemath
 ###A javascript math library made to exploit math symbol homoglyphs in unicode 
 
-This is a library born out of a terrible, terrible idea. 
+This is a wretched library - the spawn of a terrible, terrible idea. 
 
 You see, Javascript is somewhat lax when it comes to variable names. Everyone on the web needs to use javascript, and that includes people who don't use the Latin Alphabet. Variable names have to support Unicode. This is a requirement of the language, and even shitty browsers like IE9 respect it.
 
@@ -80,10 +80,13 @@ You can write your own overloads to support objects from virtually any library. 
 
 ##Subcomponents
 
+###Arithmetic and Core Library
 Overloads for the real number field are exposed in unicodemath.js, along with core functionality. 
 
+###Linear Algebra
 Overloads for matrices and vectors are exposed through unicodemath-linear-js. You will need to load unicodemath.js before you load unicodemath-linear-js. As with most math libraries, you can represent matrices using 2d arrays. N-dimensional vectors can be represented as an array of numbers. 2D, 3D, and 4D vectors can also be represented by an object with x/y/z/w attributes. 
 
+###Geometric (A.K.A. "Clifford") Algebra
 Overloads for complex numbers, quaternions, and other objects in Geometric Algebra are exposed through unicodemath-clifford.js. Objects are represented by their component blades. For instance, the bivector `a` can be represented by:
 
 	a = { '1': 0, x: 1, y: 2, xy:3, yz: 4, zx: 5, xyz:6 }
