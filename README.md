@@ -1,5 +1,5 @@
 # unicodemath
-A javascript math library made to exploit math symbol homoglyphs in unicode 
+###A javascript math library made to exploit math symbol homoglyphs in unicode 
 
 This is a library born out of a terrible, terrible idea. 
 
@@ -29,11 +29,11 @@ It just so happens that a lot of math symbols share this same aesthetic. Say, wa
 
 Go ahead and check. All these are valid javascript functions. 
 
-The Canadian Aboriginal Alphabet is not the only syllabary we can choose from. We can complete the basic arithmetic field by borrowing a "division symbol" from the Hirigana "repetition" symbol:
+The Canadian Aboriginal Alphabet is not the only syllabary we can choose from. We can complete the basic arithmetic field by borrowing from the Kana "[repetition](http://unicode-table.com/en/3033/)" symbol:
 
 	function 〳(a,b) { return a / b }	
 
-And the Vai Syllabary happens to have a "syllable lengthener" symbol that looks suspiciously like an equals sign:
+And the Vai Syllabary happens to have a "[syllable lengthener](http://unicode-table.com/en/A60C/)" symbol that looks suspiciously like an equals sign:
 
 	function ꘌꘌ (a,b) { return a == b }
 
@@ -110,3 +110,7 @@ Sounds like a problem with the browser.
 
 ##I can't view a character in a particular font
 Sounds like a problem with your font. 
+
+#Thanks
+
+Big thanks to [Shapecatcher](http://shapecatcher.com/), without which this library would be nowhere near as expressive as it is today.
