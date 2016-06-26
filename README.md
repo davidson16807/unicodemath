@@ -78,7 +78,7 @@ We call the operator just as we would with any function:
 
 You can write your own overloads to support objects from virtually any library. Existing overloads exist for many mathematical objects. 
 
-##Sub Libraries
+##Subcomponents
 
 Overloads for the real number field are exposed in unicodemath.js, along with core functionality. 
 
