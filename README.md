@@ -16,7 +16,7 @@ The same can be said for any subscript or superscript letter:
 		return Math.log(a) / Math.log(x);
 	}
 
-But we can do way more than this. What counts as a "letter" in one language might look like something else in another. The [Canadian Aboriginal Alphabet](), for instance, has a particular aesthetic: most of its letters are composed of simple geometric objects like triangles, circles, and crosses. 
+But we can do way more than this. What counts as a "letter" in one language might look like something else in another. The [Canadian Aboriginal Alphabet](unicode-table.com/en/blocks/unified-canadian-aboriginal-syllabics/), for instance, has a particular aesthetic: most of its letters are composed of simple geometric objects like triangles, circles, and crosses. 
 
 ᐁᐃᐨᐱᐳᐸᐩᑌᑎᕽᐪ
 
@@ -101,7 +101,12 @@ Objects beyond the third dimension are not currently supported.
 #FAQ
 
 ##Why?
-This is something I wonder myself. 
+It's been stated that your code will be read far more than written. If this is the case, then its immaterial how long it takes for you to write code provided it makes up for the time spent reading. When working with mathematical objects, your code is most easily understood using mathematical notation. That's the notation everyone else uses, and that's the notation everyone has become familiar with. There are certain exceptions where a mathematical expression describes a concept with a widely accepted name to it, but in the end, the mathematical expression is the more abstract one, and the mathematical expression is the one you will use when you're defining the concept within your application. As crazy as it sounds, it *makes sense* to use unicode in a language where interpreters have near universal support for it. 
+
+And besides, it just looks cool.
+
+##This doesn't work with really old browsers
+Sounds like a problem with the browser.
 
 ##I can't view a character in a particular font
 Sounds like a problem with your font. 
