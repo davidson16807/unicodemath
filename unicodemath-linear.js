@@ -12,54 +12,48 @@ aꜛᕮRᒾ = ᕮRᒾ = function(aꜛ) {
  return aꜛ.x !== void 0 && aꜛ.y !== void 0 && aꜛ.z === void 0;
 }
 
+function RᒾᐤRᒾ (a,b) { var c = { x:a.x, y:a.y }; c.x=a.x * b.x; c.y=a.y * b.y; return c; } 
+function RᒾᐤꘌRᒾ (a,b) { a.x=a.x * b.x; a.y=a.y * b.y; } 
+function RᒾꘌRᒾᐤRᒾ(c,a,b) { c.x=a.x * b.x; c.y=a.y * b.y; } 
+
+function RᒾᐩRᒾ (a,b) { var c = { x:a.x, y:a.y }; c.x=a.x + b.x; c.y=a.y + b.y; return c; } 
+function RᒾᐩꘌRᒾ (a,b) { a.x=a.x + b.x; a.y=a.y + b.y; } 
+function RᒾꘌRᒾᐩRᒾ(c,a,b) { c.x=a.x + b.x; c.y=a.y + b.y; } 
+
+function RᒾᐨRᒾ (a,b) { var c = { x:a.x, y:a.y }; c.x=a.x - b.x; c.y=a.y - b.y; return c; } 
+function RᒾᐨꘌRᒾ (a,b) { a.x=a.x - b.x; a.y=a.y - b.y; } 
+function RᒾꘌRᒾᐨRᒾ(c,a,b) { c.x=a.x - b.x; c.y=a.y - b.y; } 
 
 
+function RᒾᐩR (a,b) { var c = { x:a.x, y:a.y }; c.x=a.x + b; c.y=a.y + b; return c; } 
+function RᒾᐩꘌR (a,b) { a.x=a.x + b; a.y=a.y + b; } 
+function RᒾꘌRᒾᐩR (c,a,b) { c.x=a.x + b; c.y=a.y + b; } 
 
+function RᒾᐨR (a,b) { var c = { x:a.x, y:a.y }; c.x=a.x - b; c.y=a.y - b; return c; } 
+function RᒾᐨꘌR (a,b) { a.x=a.x - b; a.y=a.y - b; } 
+function RᒾꘌRᒾᐨR (c,a,b) { c.x=a.x - b; c.y=a.y - b; } 
 
-function RᒾᐩRᒾ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x + b.x; c.y=a.y + b.y; return c; }
-function RᒾᐩꘌRᒾ (a,b) { a.x=a.x + b.x; a.y=a.y + b.y; }
-function RᒾꘌRᒾᐩRᒾ(c,a,b) { c.x=a.x + b.x; c.y=a.y + b.y; }
+function RᒾᐧR (a,b) { var c = { x:a.x, y:a.y }; c.x=a.x * b; c.y=a.y * b; return c; } 
+function RᒾᐧꘌR (a,b) { a.x=a.x * b; a.y=a.y * b; } 
+function RᒾꘌRᒾᐧR (c,a,b) { c.x=a.x * b; c.y=a.y * b; } 
 
-function RᒾᐨRᒾ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x - b.x; c.y=a.y - b.y; return c; }
-function RᒾᐨꘌRᒾ (a,b) { a.x=a.x - b.x; a.y=a.y - b.y; }
-function RᒾꘌRᒾᐨRᒾ(c,a,b) { c.x=a.x - b.x; c.y=a.y - b.y; }
+function Rᒾ〳R (a,b) { var c = { x:a.x, y:a.y }; c.x=a.x / b; c.y=a.y / b; return c; } 
+function Rᒾ〳ꘌR (a,b) { a.x=a.x / b; a.y=a.y / b; } 
+function RᒾꘌRᒾ〳R (c,a,b) { c.x=a.x / b; c.y=a.y / b; } 
 
-function RᒾᐤRᒾ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x * b.x; c.y=a.y * b.y; return c; }
-function RᒾᐤꘌRᒾ (a,b) { a.x=a.x * b.x; a.y=a.y * b.y; }
-function RᒾꘌRᒾᐤRᒾ(c,a,b) { c.x=a.x * b.x; c.y=a.y * b.y; }
-
-
-
-function ꘌRᒾ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; return c; }
+function ꘌRᒾ (a,b) { var c = { x:a.x, y:a.y }; return c; }
 function RᒾꘌRᒾ (a,b) { a.x=b.x * 1; a.y=b.y * 1; }
 
-function RᒾᐩR (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x + b; c.y=a.y + b; return c; }
-function RᒾᐩꘌR (a,b) { a.x=a.x + b; a.y=a.y + b; }
-function RᒾꘌRᒾᐩR(c,a,b) { c.x=a.x + b; c.y=a.y + b; }
+function RᐩRᒾ (a,b) { var c = { x:a.x, y:a.y }; c.x=a + b.x; c.y=a + b.y; return c; } 
+function RꘌRᐩRᒾ (c,a,b) { c.x=a + b.x; c.y=a + b.y; } 
 
-function RᒾᐨR (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x - b; c.y=a.y - b; return c; }
-function RᒾᐨꘌR (a,b) { a.x=a.x - b; a.y=a.y - b; }
-function RᒾꘌRᒾᐨR(c,a,b) { c.x=a.x - b; c.y=a.y - b; }
+function RᐨRᒾ (a,b) { var c = { x:a.x, y:a.y }; c.x=a - b.x; c.y=a - b.y; return c; } 
+function RꘌRᐨRᒾ (c,a,b) { c.x=a - b.x; c.y=a - b.y; } 
 
-function RᒾᐧR (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x * b; c.y=a.y * b; return c; }
-function RᒾᐧꘌR (a,b) { a.x=a.x * b; a.y=a.y * b; }
-function RᒾꘌRᒾᐧR(c,a,b) { c.x=a.x * b; c.y=a.y * b; }
+function RᐧRᒾ (a,b) { var c = { x:a.x, y:a.y }; c.x=a * b.x; c.y=a * b.y; return c; } 
+function RꘌRᐧRᒾ (c,a,b) { c.x=a * b.x; c.y=a * b.y; } 
 
-function Rᒾ〳R (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x / b; c.y=a.y / b; return c; }
-function Rᒾ〳ꘌR (a,b) { a.x=a.x / b; a.y=a.y / b; }
-function RᒾꘌRᒾ〳R(c,a,b) { c.x=a.x / b; c.y=a.y / b; }
-
-
-
-function RᐩRᒾ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a * b.x; c.y=a * b.y; return c; }
-function RᒾꘌRᐩRᒾ(c,a,b) { c.x=a * b.x; c.y=a * b.y; }
-
-function RᐨRᒾ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a * b.x; c.y=a * b.y; return c; }
-function ᐨRᒾ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=-1 * b.x; c.y=-1 * b.y; return c; }
-function RᒾꘌRᐨRᒾ(c,a,b) { c.x=a * b.x; c.y=a * b.y; }
-
-function RᐧRᒾ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a * b.x; c.y=a * b.y; return c; }
-function RᒾꘌRᐧRᒾ(c,a,b) { c.x=a * b.x; c.y=a * b.y; }
+function ᐨRᒾ (a,b) { var c = { x:a.x, y:a.y }; c.x=-1 * b.x; c.y=-1 * b.y; return c; }
 
 
 function RᒾꘌꘌRᒾ (a,b) { return a.x == b.x&&a.y == b.y; }
@@ -100,55 +94,48 @@ aꜛᕮRᵌ = ᕮRᵌ = function(aꜛ) {
 }
 aꜛꓽaꜛᕮRᵌ = xᐧiꜛᐩyᐧjꜛᐩzᐧkꜛ = ːᕮRᵌ;
 
+function RᵌᐤRᵌ (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a.x * b.x; c.y=a.y * b.y; c.z=a.z * b.z; return c; } 
+function RᵌᐤꘌRᵌ (a,b) { a.x=a.x * b.x; a.y=a.y * b.y; a.z=a.z * b.z; } 
+function RᵌꘌRᵌᐤRᵌ(c,a,b) { c.x=a.x * b.x; c.y=a.y * b.y; c.z=a.z * b.z; } 
+
+function RᵌᐩRᵌ (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a.x + b.x; c.y=a.y + b.y; c.z=a.z + b.z; return c; } 
+function RᵌᐩꘌRᵌ (a,b) { a.x=a.x + b.x; a.y=a.y + b.y; a.z=a.z + b.z; } 
+function RᵌꘌRᵌᐩRᵌ(c,a,b) { c.x=a.x + b.x; c.y=a.y + b.y; c.z=a.z + b.z; } 
+
+function RᵌᐨRᵌ (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a.x - b.x; c.y=a.y - b.y; c.z=a.z - b.z; return c; } 
+function RᵌᐨꘌRᵌ (a,b) { a.x=a.x - b.x; a.y=a.y - b.y; a.z=a.z - b.z; } 
+function RᵌꘌRᵌᐨRᵌ(c,a,b) { c.x=a.x - b.x; c.y=a.y - b.y; c.z=a.z - b.z; } 
 
 
+function RᵌᐩR (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a.x + b; c.y=a.y + b; c.z=a.z + b; return c; } 
+function RᵌᐩꘌR (a,b) { a.x=a.x + b; a.y=a.y + b; a.z=a.z + b; } 
+function RᵌꘌRᵌᐩR (c,a,b) { c.x=a.x + b; c.y=a.y + b; c.z=a.z + b; } 
 
+function RᵌᐨR (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a.x - b; c.y=a.y - b; c.z=a.z - b; return c; } 
+function RᵌᐨꘌR (a,b) { a.x=a.x - b; a.y=a.y - b; a.z=a.z - b; } 
+function RᵌꘌRᵌᐨR (c,a,b) { c.x=a.x - b; c.y=a.y - b; c.z=a.z - b; } 
 
+function RᵌᐧR (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a.x * b; c.y=a.y * b; c.z=a.z * b; return c; } 
+function RᵌᐧꘌR (a,b) { a.x=a.x * b; a.y=a.y * b; a.z=a.z * b; } 
+function RᵌꘌRᵌᐧR (c,a,b) { c.x=a.x * b; c.y=a.y * b; c.z=a.z * b; } 
 
-function RᵌᐩRᵌ (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a.x + b.x; c.y=a.y + b.y; c.z=a.z + b.z; return c; }
-function RᵌᐩꘌRᵌ (a,b) { a.x=a.x + b.x; a.y=a.y + b.y; a.z=a.z + b.z; }
-function RᵌꘌRᵌᐩRᵌ(c,a,b) { c.x=a.x + b.x; c.y=a.y + b.y; c.z=a.z + b.z; }
-
-function RᵌᐨRᵌ (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a.x - b.x; c.y=a.y - b.y; c.z=a.z - b.z; return c; }
-function RᵌᐨꘌRᵌ (a,b) { a.x=a.x - b.x; a.y=a.y - b.y; a.z=a.z - b.z; }
-function RᵌꘌRᵌᐨRᵌ(c,a,b) { c.x=a.x - b.x; c.y=a.y - b.y; c.z=a.z - b.z; }
-
-function RᵌᐤRᵌ (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a.x * b.x; c.y=a.y * b.y; c.z=a.z * b.z; return c; }
-function RᵌᐤꘌRᵌ (a,b) { a.x=a.x * b.x; a.y=a.y * b.y; a.z=a.z * b.z; }
-function RᵌꘌRᵌᐤRᵌ(c,a,b) { c.x=a.x * b.x; c.y=a.y * b.y; c.z=a.z * b.z; }
-
-
+function Rᵌ〳R (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a.x / b; c.y=a.y / b; c.z=a.z / b; return c; } 
+function Rᵌ〳ꘌR (a,b) { a.x=a.x / b; a.y=a.y / b; a.z=a.z / b; } 
+function RᵌꘌRᵌ〳R (c,a,b) { c.x=a.x / b; c.y=a.y / b; c.z=a.z / b; } 
 
 function ꘌRᵌ (a,b) { var c = { x:a.x, y:a.y, z:a.z }; return c; }
 function RᵌꘌRᵌ (a,b) { a.x=b.x * 1; a.y=b.y * 1; a.z=b.z * 1; }
 
-function RᵌᐩR (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a.x + b; c.y=a.y + b; c.z=a.z + b; return c; }
-function RᵌᐩꘌR (a,b) { a.x=a.x + b; a.y=a.y + b; a.z=a.z + b; }
-function RᵌꘌRᵌᐩR(c,a,b) { c.x=a.x + b; c.y=a.y + b; c.z=a.z + b; }
+function RᐩRᵌ (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a + b.x; c.y=a + b.y; c.z=a + b.z; return c; } 
+function RꘌRᐩRᵌ (c,a,b) { c.x=a + b.x; c.y=a + b.y; c.z=a + b.z; } 
 
-function RᵌᐨR (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a.x - b; c.y=a.y - b; c.z=a.z - b; return c; }
-function RᵌᐨꘌR (a,b) { a.x=a.x - b; a.y=a.y - b; a.z=a.z - b; }
-function RᵌꘌRᵌᐨR(c,a,b) { c.x=a.x - b; c.y=a.y - b; c.z=a.z - b; }
+function RᐨRᵌ (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a - b.x; c.y=a - b.y; c.z=a - b.z; return c; } 
+function RꘌRᐨRᵌ (c,a,b) { c.x=a - b.x; c.y=a - b.y; c.z=a - b.z; } 
 
-function RᵌᐧR (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a.x * b; c.y=a.y * b; c.z=a.z * b; return c; }
-function RᵌᐧꘌR (a,b) { a.x=a.x * b; a.y=a.y * b; a.z=a.z * b; }
-function RᵌꘌRᵌᐧR(c,a,b) { c.x=a.x * b; c.y=a.y * b; c.z=a.z * b; }
+function RᐧRᵌ (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a * b.x; c.y=a * b.y; c.z=a * b.z; return c; } 
+function RꘌRᐧRᵌ (c,a,b) { c.x=a * b.x; c.y=a * b.y; c.z=a * b.z; } 
 
-function Rᵌ〳R (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a.x / b; c.y=a.y / b; c.z=a.z / b; return c; }
-function Rᵌ〳ꘌR (a,b) { a.x=a.x / b; a.y=a.y / b; a.z=a.z / b; }
-function RᵌꘌRᵌ〳R(c,a,b) { c.x=a.x / b; c.y=a.y / b; c.z=a.z / b; }
-
-
-
-function RᐩRᵌ (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a * b.x; c.y=a * b.y; c.z=a * b.z; return c; }
-function RᵌꘌRᐩRᵌ(c,a,b) { c.x=a * b.x; c.y=a * b.y; c.z=a * b.z; }
-
-function RᐨRᵌ (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a * b.x; c.y=a * b.y; c.z=a * b.z; return c; }
 function ᐨRᵌ (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=-1 * b.x; c.y=-1 * b.y; c.z=-1 * b.z; return c; }
-function RᵌꘌRᐨRᵌ(c,a,b) { c.x=a * b.x; c.y=a * b.y; c.z=a * b.z; }
-
-function RᐧRᵌ (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a * b.x; c.y=a * b.y; c.z=a * b.z; return c; }
-function RᵌꘌRᐧRᵌ(c,a,b) { c.x=a * b.x; c.y=a * b.y; c.z=a * b.z; }
 
 
 function RᵌꘌꘌRᵌ (a,b) { return a.x == b.x&&a.y == b.y&&a.z == b.z; }
@@ -221,60 +208,53 @@ var Iᵌ= ᵌᕽᵌ( 1, 0, 0,
 
 
 function ːᕮRᶣ (x,y,z,w) { return { x:x, y:y, z:z, w:w }; }
-aꜛꓽaꜛᕮR4 = xᐧiꜛᐩyᐧjꜛᐩzᐧkꜛᐩwᐧlꜛ = ːᕮRᶣ;
+aꜛꓽaꜛᕮRᶣ = xᐧiꜛᐩyᐧjꜛᐩzᐧkꜛᐩwᐧlꜛ = ːᕮRᶣ;
 aꜛᕮRᶣ = ᕮRᶣ = function(aꜛ) {
  return aꜛ.x !== void 0 && aꜛ.y !== void 0 && aꜛ.z !== void 0 && aꜛ.w === void 0;
 }
 
+function RᶣᐤRᶣ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x * b.x; c.y=a.y * b.y; c.z=a.z * b.z; c.w=a.w * b.w; return c; } 
+function RᶣᐤꘌRᶣ (a,b) { a.x=a.x * b.x; a.y=a.y * b.y; a.z=a.z * b.z; a.w=a.w * b.w; } 
+function RᶣꘌRᶣᐤRᶣ(c,a,b) { c.x=a.x * b.x; c.y=a.y * b.y; c.z=a.z * b.z; c.w=a.w * b.w; } 
+
+function RᶣᐩRᶣ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x + b.x; c.y=a.y + b.y; c.z=a.z + b.z; c.w=a.w + b.w; return c; } 
+function RᶣᐩꘌRᶣ (a,b) { a.x=a.x + b.x; a.y=a.y + b.y; a.z=a.z + b.z; a.w=a.w + b.w; } 
+function RᶣꘌRᶣᐩRᶣ(c,a,b) { c.x=a.x + b.x; c.y=a.y + b.y; c.z=a.z + b.z; c.w=a.w + b.w; } 
+
+function RᶣᐨRᶣ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x - b.x; c.y=a.y - b.y; c.z=a.z - b.z; c.w=a.w - b.w; return c; } 
+function RᶣᐨꘌRᶣ (a,b) { a.x=a.x - b.x; a.y=a.y - b.y; a.z=a.z - b.z; a.w=a.w - b.w; } 
+function RᶣꘌRᶣᐨRᶣ(c,a,b) { c.x=a.x - b.x; c.y=a.y - b.y; c.z=a.z - b.z; c.w=a.w - b.w; } 
 
 
+function RᶣᐩR (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x + b; c.y=a.y + b; c.z=a.z + b; c.w=a.w + b; return c; } 
+function RᶣᐩꘌR (a,b) { a.x=a.x + b; a.y=a.y + b; a.z=a.z + b; a.w=a.w + b; } 
+function RᶣꘌRᶣᐩR (c,a,b) { c.x=a.x + b; c.y=a.y + b; c.z=a.z + b; c.w=a.w + b; } 
 
+function RᶣᐨR (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x - b; c.y=a.y - b; c.z=a.z - b; c.w=a.w - b; return c; } 
+function RᶣᐨꘌR (a,b) { a.x=a.x - b; a.y=a.y - b; a.z=a.z - b; a.w=a.w - b; } 
+function RᶣꘌRᶣᐨR (c,a,b) { c.x=a.x - b; c.y=a.y - b; c.z=a.z - b; c.w=a.w - b; } 
 
+function RᶣᐧR (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x * b; c.y=a.y * b; c.z=a.z * b; c.w=a.w * b; return c; } 
+function RᶣᐧꘌR (a,b) { a.x=a.x * b; a.y=a.y * b; a.z=a.z * b; a.w=a.w * b; } 
+function RᶣꘌRᶣᐧR (c,a,b) { c.x=a.x * b; c.y=a.y * b; c.z=a.z * b; c.w=a.w * b; } 
 
-function RᶣᐩRᶣ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x + b.x; c.y=a.y + b.y; c.z=a.z + b.z; c.w=a.w + b.w; return c; }
-function RᶣᐩꘌRᶣ (a,b) { a.x=a.x + b.x; a.y=a.y + b.y; a.z=a.z + b.z; a.w=a.w + b.w; }
-function RᶣꘌRᶣᐩRᶣ(c,a,b) { c.x=a.x + b.x; c.y=a.y + b.y; c.z=a.z + b.z; c.w=a.w + b.w; }
-
-function RᶣᐨRᶣ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x - b.x; c.y=a.y - b.y; c.z=a.z - b.z; c.w=a.w - b.w; return c; }
-function RᶣᐨꘌRᶣ (a,b) { a.x=a.x - b.x; a.y=a.y - b.y; a.z=a.z - b.z; a.w=a.w - b.w; }
-function RᶣꘌRᶣᐨRᶣ(c,a,b) { c.x=a.x - b.x; c.y=a.y - b.y; c.z=a.z - b.z; c.w=a.w - b.w; }
-
-function RᶣᐤRᶣ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x * b.x; c.y=a.y * b.y; c.z=a.z * b.z; c.w=a.w * b.w; return c; }
-function RᶣᐤꘌRᶣ (a,b) { a.x=a.x * b.x; a.y=a.y * b.y; a.z=a.z * b.z; a.w=a.w * b.w; }
-function RᶣꘌRᶣᐤRᶣ(c,a,b) { c.x=a.x * b.x; c.y=a.y * b.y; c.z=a.z * b.z; c.w=a.w * b.w; }
-
-
+function Rᶣ〳R (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x / b; c.y=a.y / b; c.z=a.z / b; c.w=a.w / b; return c; } 
+function Rᶣ〳ꘌR (a,b) { a.x=a.x / b; a.y=a.y / b; a.z=a.z / b; a.w=a.w / b; } 
+function RᶣꘌRᶣ〳R (c,a,b) { c.x=a.x / b; c.y=a.y / b; c.z=a.z / b; c.w=a.w / b; } 
 
 function ꘌRᶣ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; return c; }
 function RᶣꘌRᶣ (a,b) { a.x=b.x * 1; a.y=b.y * 1; a.z=b.z * 1; a.w=b.w * 1; }
 
-function RᶣᐩR (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x + b; c.y=a.y + b; c.z=a.z + b; c.w=a.w + b; return c; }
-function RᶣᐩꘌR (a,b) { a.x=a.x + b; a.y=a.y + b; a.z=a.z + b; a.w=a.w + b; }
-function RᶣꘌRᶣᐩR(c,a,b) { c.x=a.x + b; c.y=a.y + b; c.z=a.z + b; c.w=a.w + b; }
+function RᐩRᶣ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a + b.x; c.y=a + b.y; c.z=a + b.z; c.w=a + b.w; return c; } 
+function RꘌRᐩRᶣ (c,a,b) { c.x=a + b.x; c.y=a + b.y; c.z=a + b.z; c.w=a + b.w; } 
 
-function RᶣᐨR (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x - b; c.y=a.y - b; c.z=a.z - b; c.w=a.w - b; return c; }
-function RᶣᐨꘌR (a,b) { a.x=a.x - b; a.y=a.y - b; a.z=a.z - b; a.w=a.w - b; }
-function RᶣꘌRᶣᐨR(c,a,b) { c.x=a.x - b; c.y=a.y - b; c.z=a.z - b; c.w=a.w - b; }
+function RᐨRᶣ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a - b.x; c.y=a - b.y; c.z=a - b.z; c.w=a - b.w; return c; } 
+function RꘌRᐨRᶣ (c,a,b) { c.x=a - b.x; c.y=a - b.y; c.z=a - b.z; c.w=a - b.w; } 
 
-function RᶣᐧR (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x * b; c.y=a.y * b; c.z=a.z * b; c.w=a.w * b; return c; }
-function RᶣᐧꘌR (a,b) { a.x=a.x * b; a.y=a.y * b; a.z=a.z * b; a.w=a.w * b; }
-function RᶣꘌRᶣᐧR(c,a,b) { c.x=a.x * b; c.y=a.y * b; c.z=a.z * b; c.w=a.w * b; }
+function RᐧRᶣ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a * b.x; c.y=a * b.y; c.z=a * b.z; c.w=a * b.w; return c; } 
+function RꘌRᐧRᶣ (c,a,b) { c.x=a * b.x; c.y=a * b.y; c.z=a * b.z; c.w=a * b.w; } 
 
-function Rᶣ〳R (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x / b; c.y=a.y / b; c.z=a.z / b; c.w=a.w / b; return c; }
-function Rᶣ〳ꘌR (a,b) { a.x=a.x / b; a.y=a.y / b; a.z=a.z / b; a.w=a.w / b; }
-function RᶣꘌRᶣ〳R(c,a,b) { c.x=a.x / b; c.y=a.y / b; c.z=a.z / b; c.w=a.w / b; }
-
-
-
-function RᐩRᶣ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a * b.x; c.y=a * b.y; c.z=a * b.z; c.w=a * b.w; return c; }
-function RᶣꘌRᐩRᶣ(c,a,b) { c.x=a * b.x; c.y=a * b.y; c.z=a * b.z; c.w=a * b.w; }
-
-function RᐨRᶣ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a * b.x; c.y=a * b.y; c.z=a * b.z; c.w=a * b.w; return c; }
 function ᐨRᶣ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=-1 * b.x; c.y=-1 * b.y; c.z=-1 * b.z; c.w=-1 * b.w; return c; }
-function RᶣꘌRᐨRᶣ(c,a,b) { c.x=a * b.x; c.y=a * b.y; c.z=a * b.z; c.w=a * b.w; }
-
-function RᐧRᶣ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a * b.x; c.y=a * b.y; c.z=a * b.z; c.w=a * b.w; return c; }
-function RᶣꘌRᐧRᶣ(c,a,b) { c.x=a * b.x; c.y=a * b.y; c.z=a * b.z; c.w=a * b.w; }
 
 
 function RᶣꘌꘌRᶣ (a,b) { return a.x == b.x&&a.y == b.y&&a.z == b.z&&a.w == b.w ; }
@@ -347,50 +327,49 @@ function ːᕮRⁿ (a) {
 }
 aꜛːaꜛᕮRⁿ = ːᕮRⁿ;
 
-function RⁿᐩRⁿ (a,b) { var c = Array(a.length); if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { c[i] = a[i] + b[i]; } return c; }
-function RⁿᐩꘌRⁿ (a,b) { if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { a[i] = a[i] + b[i]; } }
-function RⁿꘌRⁿᐩRⁿ(c,a,b) { if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { c[i] = a[i] + b[i]; } }
+function RⁿᐤRⁿ (a,b) { var c = Array(a.length); if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { c[i] = a[i] * b[i]; } return c; } 
+function RⁿᐤꘌRⁿ (a,b) { if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { a[i] = a[i] * b[i]; } } 
+function RⁿꘌRⁿᐤRⁿ(c,a,b) { if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { c[i] = a[i] * b[i]; } } 
 
-function RⁿᐨRⁿ (a,b) { var c = Array(a.length); if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { c[i] = a[i] - b[i]; } return c; }
-function RⁿᐨꘌRⁿ (a,b) { if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { a[i] = a[i] - b[i]; } }
-function RⁿꘌRⁿᐨRⁿ(c,a,b) { if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { c[i] = a[i] - b[i]; } }
+function RⁿᐩRⁿ (a,b) { var c = Array(a.length); if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { c[i] = a[i] + b[i]; } return c; } 
+function RⁿᐩꘌRⁿ (a,b) { if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { a[i] = a[i] + b[i]; } } 
+function RⁿꘌRⁿᐩRⁿ(c,a,b) { if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { c[i] = a[i] + b[i]; } } 
 
-function RⁿᐤRⁿ (a,b) { var c = Array(a.length); if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { c[i] = a[i] * b[i]; } return c; }
-function RⁿᐤꘌRⁿ (a,b) { if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { a[i] = a[i] * b[i]; } }
-function RⁿꘌRⁿᐤRⁿ(c,a,b) { if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { c[i] = a[i] * b[i]; } }
+function RⁿᐨRⁿ (a,b) { var c = Array(a.length); if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { c[i] = a[i] - b[i]; } return c; } 
+function RⁿᐨꘌRⁿ (a,b) { if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { a[i] = a[i] - b[i]; } } 
+function RⁿꘌRⁿᐨRⁿ(c,a,b) { if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { c[i] = a[i] - b[i]; } } 
 
 
+function RⁿᐩR (a,b) { var c = Array(a.length); for(var i=a.length; i>0; i--) { c[i] = a[i] + b; } return c; } 
+function RⁿᐩꘌR (a,b) { for(var i=a.length; i>0; i--) { a[i] = a[i] + b; } } 
+function RⁿꘌRⁿᐩR (c,a,b) { for(var i=a.length; i>0; i--) { c[i] = a[i] + b; } } 
+
+function RⁿᐨR (a,b) { var c = Array(a.length); for(var i=a.length; i>0; i--) { c[i] = a[i] - b; } return c; } 
+function RⁿᐨꘌR (a,b) { for(var i=a.length; i>0; i--) { a[i] = a[i] - b; } } 
+function RⁿꘌRⁿᐨR (c,a,b) { for(var i=a.length; i>0; i--) { c[i] = a[i] - b; } } 
+
+function RⁿᐧR (a,b) { var c = Array(a.length); for(var i=a.length; i>0; i--) { c[i] = a[i] * b; } return c; } 
+function RⁿᐧꘌR (a,b) { for(var i=a.length; i>0; i--) { a[i] = a[i] * b; } } 
+function RⁿꘌRⁿᐧR (c,a,b) { for(var i=a.length; i>0; i--) { c[i] = a[i] * b; } } 
+
+function Rⁿ〳R (a,b) { var c = Array(a.length); for(var i=a.length; i>0; i--) { c[i] = a[i] / b; } return c; } 
+function Rⁿ〳ꘌR (a,b) { for(var i=a.length; i>0; i--) { a[i] = a[i] / b; } } 
+function RⁿꘌRⁿ〳R (c,a,b) { for(var i=a.length; i>0; i--) { c[i] = a[i] / b; } } 
 
 function ꘌRⁿ (a,b) { var c = Array(a.length); return c; }
 function RⁿꘌRⁿ (a,b) { for(var i=b.length; i>0; i--) { a[i] = b[i] * 1; } }
 
-function RⁿᐩR (a,b) { var c = Array(a.length); for(var i=a.length; i>0; i--) { c[i] = a[i] + b; } return c; }
-function RⁿᐩꘌR (a,b) { for(var i=a.length; i>0; i--) { a[i] = a[i] + b; } }
-function RⁿꘌRⁿᐩR(c,a,b) { for(var i=a.length; i>0; i--) { c[i] = a[i] + b; } }
+function RᐩRⁿ (a,b) { var c = Array(a.length); for(var i=a.length; i>0; i--) { c[i] = a + b[i]; } return c; } 
+function RꘌRᐩRⁿ (c,a,b) { for(var i=a.length; i>0; i--) { c[i] = a + b[i]; } } 
 
-function RⁿᐨR (a,b) { var c = Array(a.length); for(var i=a.length; i>0; i--) { c[i] = a[i] - b; } return c; }
-function RⁿᐨꘌR (a,b) { for(var i=a.length; i>0; i--) { a[i] = a[i] - b; } }
-function RⁿꘌRⁿᐨR(c,a,b) { for(var i=a.length; i>0; i--) { c[i] = a[i] - b; } }
+function RᐨRⁿ (a,b) { var c = Array(a.length); for(var i=a.length; i>0; i--) { c[i] = a - b[i]; } return c; } 
+function RꘌRᐨRⁿ (c,a,b) { for(var i=a.length; i>0; i--) { c[i] = a - b[i]; } } 
 
-function RⁿᐧR (a,b) { var c = Array(a.length); for(var i=a.length; i>0; i--) { c[i] = a[i] * b; } return c; }
-function RⁿᐧꘌR (a,b) { for(var i=a.length; i>0; i--) { a[i] = a[i] * b; } }
-function RⁿꘌRⁿᐧR(c,a,b) { for(var i=a.length; i>0; i--) { c[i] = a[i] * b; } }
+function RᐧRⁿ (a,b) { var c = Array(a.length); for(var i=a.length; i>0; i--) { c[i] = a * b[i]; } return c; } 
+function RꘌRᐧRⁿ (c,a,b) { for(var i=a.length; i>0; i--) { c[i] = a * b[i]; } } 
 
-function Rⁿ〳R (a,b) { var c = Array(a.length); for(var i=a.length; i>0; i--) { c[i] = a[i] / b; } return c; }
-function Rⁿ〳ꘌR (a,b) { for(var i=a.length; i>0; i--) { a[i] = a[i] / b; } }
-function RⁿꘌRⁿ〳R(c,a,b) { for(var i=a.length; i>0; i--) { c[i] = a[i] / b; } }
-
-
-
-function RᐩRⁿ (a,b) { var c = Array(a.length); for(var i=a.length; i>0; i--) { c[i] = a * b[i]; } return c; }
-function RⁿꘌRᐩRⁿ(c,a,b) { for(var i=a.length; i>0; i--) { c[i] = a * b[i]; } }
-
-function RᐨRⁿ (a,b) { var c = Array(a.length); for(var i=a.length; i>0; i--) { c[i] = a * b[i]; } return c; }
 function ᐨRⁿ (a,b) { var c = Array(a.length); for(var i=-1 .length; i>0; i--) { c[i] = -1 * b[i]; } return c; }
-function RⁿꘌRᐨRⁿ(c,a,b) { for(var i=a.length; i>0; i--) { c[i] = a * b[i]; } }
 
-function RᐧRⁿ (a,b) { var c = Array(a.length); for(var i=a.length; i>0; i--) { c[i] = a * b[i]; } return c; }
-function RⁿꘌRᐧRⁿ(c,a,b) { for(var i=a.length; i>0; i--) { c[i] = a * b[i]; } }
 
 
 function RⁿꘌꘌRⁿ (a,b) { for(var i=0,la=a.length,lb=b.length; i<la||i<lb; i++) {if(a[i]!=b[i]) return false;} return true; }
@@ -479,13 +458,23 @@ function FᐧRⁿᕽⁿ (f,B) { var result=[]; for(var i=0, li=B.length; i<li; i
 function RⁿᕽⁿᐧꘌF(A,f) { for(var i=0, li=A.length; i<li; i++) { RⁿᐧꘌF (A[i], f); } }
 
 
-function RⁿᕽⁿᐧRⁿᕽⁿ (A,B) {
- var Bᐪ = Rⁿᕽⁿᐪ(B)
- var result = [];
- for (var i=0, li=Bᐪ.length; i<li; i++) {
-  result.push( RⁿᕽⁿᐧRⁿ (A, Bᐪ[i]) );
+function RⁿᕽⁿᐧRⁿᕽⁿ(a,b){
+ var i, j, k, li=a.length, lj=b.length, lk=b[0].length;
+ var aᵢ;
+ var result = [], resultᵢ, resultᵢₖ;
+ for (i = 0; i < li; i++) {
+  aᵢ = a[i];
+  resultᵢ = [];
+  result[i] = resultᵢ;
+  for (k = 0; k < lk; k++) {
+   resultᵢₖ = 0;
+   for (j = 0; j < lj; j++) {
+    resultᵢₖ += aᵢ[j] * b[j][k];
+   }
+   resultᵢ[k] = resultᵢₖ;
+  }
  }
- return Rⁿᕽⁿᐪ(result);
+ return result;
 }
 function RⁿᕽⁿᐪꘌRⁿᕽⁿᐧRⁿᕽⁿᐪ (Cᐪ,A,Bᐪ) {
  var result = [];
