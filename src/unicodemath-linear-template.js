@@ -1,44 +1,87 @@
 
+#define R2_MATCH_MACRO(c,a) 	var c = { x:a.x, y:a.y };
+#define R3_MATCH_MACRO(c,a) 	var c = { x:a.x, y:a.y, z:a.z };
+#define R4_MATCH_MACRO(c,a) 	var c = { x:a.x, y:a.y, z:a.z, w:a.w };
+#define Rn_MATCH_MACRO(c,a) 	var c = Array(a.length);
+#define Rnxn_MATCH_MACRO(c,a) __CR__ var c=Array(a.length); var colnum=a[0].length; for(i=a.length; i>0; i--) c[i] = Array(colnum);
+
+#define R2_EQ_R2_OP_R2_MACRO(c,a,op,b) c.x=a.x op b.x; c.y=a.y op b.y;
+#define R3_EQ_R3_OP_R3_MACRO(c,a,op,b) c.x=a.x op b.x; c.y=a.y op b.y; c.z=a.z op b.z;
+#define R4_EQ_R4_OP_R4_MACRO(c,a,op,b) c.x=a.x op b.x; c.y=a.y op b.y; c.z=a.z op b.z; c.w=a.w op b.w;
+#define Rn_EQ_Rn_OP_Rn_MACRO(c,a,op,b)	\
+	if(a.length !== b.length)	\
+		throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; \
+	for(var i=a.length; i>0; i--) {	c[i] = a[i] op b[i]; } 
+#define Rnxn_EQ_Rnxn_OP_Rnxn_MACRO(c, a, op, b) __CR__\
+	var i, j, li=a.length, lj=a[0].length, ai, bi, ci; __CR__\
+	if(li !== b.length || lj !== b[0].length) __CR__\
+		throw 'Cannot call operator between matrices of size '+a.length+'x'+a[0].length' and '+b.length+'x'+b[0].length; __CR__\
+	for(i=li; i>0; i--) { ai=a[i]; bi=b[i]; ci=c[i]; for(j=lj; j>0; j--) { ci[j] = ai[j] op bi[j]; } } __CR__
+
+
+#define R2_EQ_R2_OP_R_MACRO(c,a,op,b) c.x=a.x op b; c.y=a.y op b; 
+#define R3_EQ_R3_OP_R_MACRO(c,a,op,b) c.x=a.x op b; c.y=a.y op b; c.z=a.z op b;
+#define R4_EQ_R4_OP_R_MACRO(c,a,op,b) c.x=a.x op b; c.y=a.y op b; c.z=a.z op b; c.w=a.w op b;
+#define Rn_EQ_Rn_OP_R_MACRO(c,a,op,b) for(var i=a.length; i>0; i--) { c[i] = a[i] op b; }
+#define Rnxn_EQ_Rnxn_OP_R_MACRO(c, a, op, b) __CR__\
+	var i, j, li=a.length, lj=a[0].length, ai, ci; __CR__\
+	for(i=li; i>0; i--) { ai=a[i]; ci=c[i]; for(j=lj; j>0; j--) { ci[j] = ai[j] op b; } } __CR__
+
+#define R2_EQ_R_OP_R2_MACRO(c,a,op,b) c.x=a op b.x; c.y=a op b.y;
+#define R3_EQ_R_OP_R3_MACRO(c,a,op,b) c.x=a op b.x; c.y=a op b.y; c.z=a op b.z;
+#define R4_EQ_R_OP_R4_MACRO(c,a,op,b) c.x=a op b.x; c.y=a op b.y; c.z=a op b.z; c.w=a op b.w;
+#define Rn_EQ_R_OP_Rn_MACRO(c,a,op,b) for(var i=a.length; i>0; i--) { c[i] = a op b[i]; }
+#define Rnxn_EQ_R_OP_Rnxn_MACRO(c, a, op, b) __CR__\
+	var i, j, li=a.length, lj=a[0].length, ai, ci; __CR__\
+	for(i=li; i>0; i--) { ai=a[i]; ci=c[i]; for(j=lj; j>0; j--) { ci[j] = ai[j] op b; } } __CR__
+
+
+
+
+
+
+#define Rx_EQ_Rx_OP_Rx_SUITE_MACRO(op, uni, x) \
+function R##x##uni##R##x 		(a,b) 	{ R##x##_MATCH_MACRO(c,a)	R##x##_EQ_R##x##_OP_R##x##_MACRO(c, a, op, b) return c; } 	__CR__\
+function R##x##uni##__EQ__R##x 	(a,b) 	{ 							R##x##_EQ_R##x##_OP_R##x##_MACRO(a, a, op, b) }				__CR__\
+function R##x##__EQ__R##x##uni##R##x(c,a,b)	{ 						R##x##_EQ_R##x##_OP_R##x##_MACRO(c, a, op, b) }				__CR__
+
+#define Rx_EQ_Rx_OP_R_SUITE_MACRO(op, uni, x) \
+function R##x##uni##R 			(a,b) 	{ R##x##_MATCH_MACRO(c,a)	R##x##_EQ_R##x##_OP_R_MACRO(c, a, op, b) return c; }	__CR__\
+function R##x##uni##__EQ__R 	(a,b) 	{	 						R##x##_EQ_R##x##_OP_R_MACRO(a, a, op, b) }				__CR__\
+function R##x##__EQ__R##x##uni##R(c,a,b){ 							R##x##_EQ_R##x##_OP_R_MACRO(c, a, op, b) }				__CR__
+
+#define Rx_EQ_R_OP_Rx_SUITE_MACRO(op, uni, x) \
+function R##uni##R##x 			(a,b) 	{ R##x##_MATCH_MACRO(c,a)	R##x##_EQ_R_OP_R##x##_MACRO(c, a, op, b) return c; }	__CR__\
+function R__EQ__R##uni##R##x	(c,a,b)	{ 							R##x##_EQ_R_OP_R##x##_MACRO(c, a, op, b) }				__CR__
+
+
+
+
+
+
+
 // ---------------------------------Rᒾ---------------------------------
+
 function ːᕮRᒾ		(x,y) 		{ return	{	x:x,	y:y 	}; }
 aꜛꓽaꜛᕮRᒾ = xᐧiꜛᐩyᐧjꜛ	= ːᕮRᒾ;
 aꜛᕮRᒾ = ᕮRᒾ = function(aꜛ) {
 	return aꜛ.x !== void 0 && aꜛ.y !== void 0 && aꜛ.z === void 0;
 }
+Rx_EQ_Rx_OP_Rx_SUITE_MACRO	(*, __HADAMARD__, 2)
+Rx_EQ_Rx_OP_Rx_SUITE_MACRO	(+, __ADD__, 2)
+Rx_EQ_Rx_OP_Rx_SUITE_MACRO	(-, __SUB__, 2)
 
-#define R2_MATCH_MACRO(c,a) var c = { x:a.x, y:a.y };
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(+, __ADD__, 2)
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(-, __SUB__, 2)
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(*, __DOT__, 2)
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(/, __DIV__, 2)
 
-#define R2_EQ_R2_OP_R2_MACRO(c,a,op,b) c.x=a.x op b.x; c.y=a.y op b.y;
-#define R2_EQ_R2_OP_R2_SUITE_MACRO(op, uni) \
-function R2##uni##R2 		(a,b) 	{ R2_MATCH_MACRO(c,a)	R2_EQ_R2_OP_R2_MACRO(c, a, op, b) return c; } 	__CR__\
-function R2##uni##__EQ__R2 	(a,b) 	{ 						R2_EQ_R2_OP_R2_MACRO(a, a, op, b) }				__CR__\
-function R2__EQ__R2##uni##R2(c,a,b)	{ 						R2_EQ_R2_OP_R2_MACRO(c, a, op, b) }				__CR__
+Rx_EQ_R_OP_Rx_SUITE_MACRO	(+, __ADD__, 2)
+Rx_EQ_R_OP_Rx_SUITE_MACRO	(-, __SUB__, 2)
+Rx_EQ_R_OP_Rx_SUITE_MACRO	(*, __DOT__, 2)
 
-#define R2_EQ_R2_OP_R_MACRO(c,a,op,b) c.x=a.x op b; c.y=a.y op b; 
-#define R2_EQ_R2_OP_R_SUITE_MACRO(op, uni) \
-function R2##uni##R 		(a,b) 	{ R2_MATCH_MACRO(c,a)	R2_EQ_R2_OP_R_MACRO(c, a, op, b) return c; }	__CR__\
-function R2##uni##__EQ__R 	(a,b) 	{ 						R2_EQ_R2_OP_R_MACRO(a, a, op, b) }				__CR__\
-function R2__EQ__R2##uni##R (c,a,b)	{ 						R2_EQ_R2_OP_R_MACRO(c, a, op, b) }				__CR__
-
-#define R2_EQ_R_OP_R2_MACRO(c,a,op,b) c.x=a op b.x; c.y=a op b.y; 
-#define R2_EQ_R_OP_R2_SUITE_MACRO(op, uni) \
-function R##uni##R2 		(a,b) 	{ R2_MATCH_MACRO(c,a)	R2_EQ_R_OP_R2_MACRO(c, a, op, b) return c; }	__CR__\
-function R__EQ__R##uni##R2 (c,a,b)	{ 						R2_EQ_R_OP_R2_MACRO(c, a, op, b) }				__CR__
-
-R2_EQ_R2_OP_R2_SUITE_MACRO(*, __HADAMARD__)
-R2_EQ_R2_OP_R2_SUITE_MACRO(+, __ADD__)
-R2_EQ_R2_OP_R2_SUITE_MACRO(-, __SUB__)
-
-R2_EQ_R2_OP_R_SUITE_MACRO(+, __ADD__)
-R2_EQ_R2_OP_R_SUITE_MACRO(-, __SUB__)
-R2_EQ_R2_OP_R_SUITE_MACRO(*, __DOT__)
-R2_EQ_R2_OP_R_SUITE_MACRO(/, __DIV__)
 function ꘌR2 	(a,b) 	{ R2_MATCH_MACRO(c,a) return c; }
 function R2ꘌR2 	(a,b) 	{ R2_EQ_R2_OP_R_MACRO(a,b,*,1) }
-
-R2_EQ_R_OP_R2_SUITE_MACRO(+, __ADD__)
-R2_EQ_R_OP_R2_SUITE_MACRO(-, __SUB__)
-R2_EQ_R_OP_R2_SUITE_MACRO(*, __DOT__)
 function ᐨR2 	(a,b) 	{ R2_MATCH_MACRO(c,a) R2_EQ_R_OP_R2_MACRO(c,-1,*,b) return c; }
 
 // 	MISCELLANEOUS Rᒾ OPERATIONS
@@ -73,6 +116,11 @@ function RᒾᕁRᒾ(a,b) {
 var Iᒾ = ᒾᕽᒾ(	1, 0, 
 			0, 1 );
 
+
+
+
+
+
 // ---------------------------------Rᵌ---------------------------------
 function ːᕮRᵌ		(x,y,z)	{ return	{	x:x,	y:y, 	z:z 	}; }
 aꜛᕮRᵌ = ᕮRᵌ = function(aꜛ)	{
@@ -80,40 +128,21 @@ aꜛᕮRᵌ = ᕮRᵌ = function(aꜛ)	{
 }
 aꜛꓽaꜛᕮRᵌ = xᐧiꜛᐩyᐧjꜛᐩzᐧkꜛ		= ːᕮRᵌ;
 
+Rx_EQ_Rx_OP_Rx_SUITE_MACRO	(*, __HADAMARD__, 3)
+Rx_EQ_Rx_OP_Rx_SUITE_MACRO	(+, __ADD__, 3)
+Rx_EQ_Rx_OP_Rx_SUITE_MACRO	(-, __SUB__, 3)
 
-#define R3_MATCH_MACRO(c,a) var c = { x:a.x, y:a.y, z:a.z };
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(+, __ADD__, 3)
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(-, __SUB__, 3)
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(*, __DOT__, 3)
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(/, __DIV__, 3)
 
-#define R3_EQ_R3_OP_R3_MACRO(c,a,op,b) c.x=a.x op b.x; c.y=a.y op b.y; c.z=a.z op b.z; 
-#define R3_EQ_R3_OP_R3_SUITE_MACRO(op, uni) \
-function R3##uni##R3 		(a,b) 	{ R3_MATCH_MACRO(c,a)	R3_EQ_R3_OP_R3_MACRO(c, a, op, b) return c; } 	__CR__\
-function R3##uni##__EQ__R3 	(a,b) 	{ 						R3_EQ_R3_OP_R3_MACRO(a, a, op, b) }				__CR__\
-function R3__EQ__R3##uni##R3(c,a,b)	{ 						R3_EQ_R3_OP_R3_MACRO(c, a, op, b) }				__CR__
+Rx_EQ_R_OP_Rx_SUITE_MACRO	(+, __ADD__, 3)
+Rx_EQ_R_OP_Rx_SUITE_MACRO	(-, __SUB__, 3)
+Rx_EQ_R_OP_Rx_SUITE_MACRO	(*, __DOT__, 3)
 
-#define R3_EQ_R3_OP_R_MACRO(c,a,op,b) c.x=a.x op b; c.y=a.y op b; c.z=a.z op b; 
-#define R3_EQ_R3_OP_R_SUITE_MACRO(op, uni) \
-function R3##uni##R 		(a,b) 	{ R3_MATCH_MACRO(c,a)	R3_EQ_R3_OP_R_MACRO(c, a, op, b) return c; }	__CR__\
-function R3##uni##__EQ__R 	(a,b) 	{ 						R3_EQ_R3_OP_R_MACRO(a, a, op, b) }				__CR__\
-function R3__EQ__R3##uni##R (c,a,b)	{ 						R3_EQ_R3_OP_R_MACRO(c, a, op, b) }				__CR__
-
-#define R3_EQ_R_OP_R3_MACRO(c,a,op,b) c.x=a op b.x; c.y=a op b.y; c.z=a op b.z; 
-#define R3_EQ_R_OP_R3_SUITE_MACRO(op, uni) \
-function R##uni##R3 		(a,b) 	{ R3_MATCH_MACRO(c,a)	R3_EQ_R_OP_R3_MACRO(c, a, op, b) return c; }	__CR__\
-function R__EQ__R##uni##R3 (c,a,b)	{ 						R3_EQ_R_OP_R3_MACRO(c, a, op, b) }				__CR__
-
-R3_EQ_R3_OP_R3_SUITE_MACRO(*, __HADAMARD__)
-R3_EQ_R3_OP_R3_SUITE_MACRO(+, __ADD__)
-R3_EQ_R3_OP_R3_SUITE_MACRO(-, __SUB__)
-
-R3_EQ_R3_OP_R_SUITE_MACRO(+, __ADD__)
-R3_EQ_R3_OP_R_SUITE_MACRO(-, __SUB__)
-R3_EQ_R3_OP_R_SUITE_MACRO(*, __DOT__)
-R3_EQ_R3_OP_R_SUITE_MACRO(/, __DIV__)
 function ꘌR3 	(a,b) 	{ R3_MATCH_MACRO(c,a) return c; }
 function R3ꘌR3 	(a,b) 	{ R3_EQ_R3_OP_R_MACRO(a,b,*,1) }
-
-R3_EQ_R_OP_R3_SUITE_MACRO(+, __ADD__)
-R3_EQ_R_OP_R3_SUITE_MACRO(-, __SUB__)
-R3_EQ_R_OP_R3_SUITE_MACRO(*, __DOT__)
 function ᐨR3 	(a,b) 	{ R3_MATCH_MACRO(c,a) R3_EQ_R_OP_R3_MACRO(c,-1,*,b) return c; }
 
 // 	MISCELLANEOUS Rᵌ OPERATIONS
@@ -185,48 +214,36 @@ var Iᵌ= ᵌᕽᵌ(	1, 0, 0,
 			0, 1, 0,
 			0, 0, 1 );
 	
+
+
+
+
+
+
+
+
 // ---------------------------------Rᶣ---------------------------------
 function ːᕮRᶣ		(x,y,z,w) 	{ return	{	x:x,	y:y, 	z:z, 	w:w 	}; }
 aꜛꓽaꜛᕮR4 = xᐧiꜛᐩyᐧjꜛᐩzᐧkꜛᐩwᐧlꜛ	= ːᕮRᶣ;
 aꜛᕮRᶣ = ᕮRᶣ = function(aꜛ) {
 	return aꜛ.x !== void 0 && aꜛ.y !== void 0 && aꜛ.z !== void 0 && aꜛ.w === void 0;
 }
-	
 
+Rx_EQ_Rx_OP_Rx_SUITE_MACRO	(*, __HADAMARD__, 4)
+Rx_EQ_Rx_OP_Rx_SUITE_MACRO	(+, __ADD__, 4)
+Rx_EQ_Rx_OP_Rx_SUITE_MACRO	(-, __SUB__, 4)
 
-#define R4_MATCH_MACRO(c,a) var c = { x:a.x, y:a.y, z:a.z, w:a.w };
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(+, __ADD__, 4)
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(-, __SUB__, 4)
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(*, __DOT__, 4)
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(/, __DIV__, 4)
 
-#define R4_EQ_R4_OP_R4_MACRO(c,a,op,b) c.x=a.x op b.x; c.y=a.y op b.y; c.z=a.z op b.z; c.w=a.w op b.w;
-#define R4_EQ_R4_OP_R4_SUITE_MACRO(op, uni) \
-function R4##uni##R4 		(a,b) 	{ R4_MATCH_MACRO(c,a)	R4_EQ_R4_OP_R4_MACRO(c, a, op, b) return c; } 	__CR__\
-function R4##uni##__EQ__R4 	(a,b) 	{ 						R4_EQ_R4_OP_R4_MACRO(a, a, op, b) }				__CR__\
-function R4__EQ__R4##uni##R4(c,a,b)	{ 						R4_EQ_R4_OP_R4_MACRO(c, a, op, b) }				__CR__
+Rx_EQ_R_OP_Rx_SUITE_MACRO	(+, __ADD__, 4)
+Rx_EQ_R_OP_Rx_SUITE_MACRO	(-, __SUB__, 4)
+Rx_EQ_R_OP_Rx_SUITE_MACRO	(*, __DOT__, 4)
 
-#define R4_EQ_R4_OP_R_MACRO(c,a,op,b) c.x=a.x op b; c.y=a.y op b; c.z=a.z op b; c.w=a.w op b;
-#define R4_EQ_R4_OP_R_SUITE_MACRO(op, uni) \
-function R4##uni##R 		(a,b) 	{ R4_MATCH_MACRO(c,a)	R4_EQ_R4_OP_R_MACRO(c, a, op, b) return c; }	__CR__\
-function R4##uni##__EQ__R 	(a,b) 	{ 						R4_EQ_R4_OP_R_MACRO(a, a, op, b) }				__CR__\
-function R4__EQ__R4##uni##R (c,a,b)	{ 						R4_EQ_R4_OP_R_MACRO(c, a, op, b) }				__CR__
-
-#define R4_EQ_R_OP_R4_MACRO(c,a,op,b) c.x=a op b.x; c.y=a op b.y; c.z=a op b.z; c.w=a op b.w;
-#define R4_EQ_R_OP_R4_SUITE_MACRO(op, uni) \
-function R##uni##R4 		(a,b) 	{ R4_MATCH_MACRO(c,a)	R4_EQ_R_OP_R4_MACRO(c, a, op, b) return c; }	__CR__\
-function R__EQ__R##uni##R4 (c,a,b)	{ 						R4_EQ_R_OP_R4_MACRO(c, a, op, b) }				__CR__
-
-R4_EQ_R4_OP_R4_SUITE_MACRO(*, __HADAMARD__)
-R4_EQ_R4_OP_R4_SUITE_MACRO(+, __ADD__)
-R4_EQ_R4_OP_R4_SUITE_MACRO(-, __SUB__)
-
-R4_EQ_R4_OP_R_SUITE_MACRO(+, __ADD__)
-R4_EQ_R4_OP_R_SUITE_MACRO(-, __SUB__)
-R4_EQ_R4_OP_R_SUITE_MACRO(*, __DOT__)
-R4_EQ_R4_OP_R_SUITE_MACRO(/, __DIV__)
 function ꘌRᶣ 	(a,b) 	{ R4_MATCH_MACRO(c,a) return c; }
 function RᶣꘌRᶣ 	(a,b) 	{ R4_EQ_R4_OP_R_MACRO(a,b,*,1) }
-
-R4_EQ_R_OP_R4_SUITE_MACRO(+, __ADD__)
-R4_EQ_R_OP_R4_SUITE_MACRO(-, __SUB__)
-R4_EQ_R_OP_R4_SUITE_MACRO(*, __DOT__)
 function ᐨRᶣ 	(a,b) 	{ R4_MATCH_MACRO(c,a) R4_EQ_R_OP_R4_MACRO(c,-1,*,b) return c; }
 
 // 	MISCELLANEOUS Rᶣ OPERATIONS
@@ -300,44 +317,22 @@ function ːᕮRⁿ	(a) 	{
 }
 aꜛːaꜛᕮRⁿ = ːᕮRⁿ;
 
-#define Rn_MATCH_MACRO(c,a) var c = Array(a.length);
+Rx_EQ_Rx_OP_Rx_SUITE_MACRO	(*, __HADAMARD__, n)
+Rx_EQ_Rx_OP_Rx_SUITE_MACRO	(+, __ADD__, n)
+Rx_EQ_Rx_OP_Rx_SUITE_MACRO	(-, __SUB__, n)
 
-#define Rn_EQ_Rn_OP_Rn_MACRO(c,a,op,b)	\
-	if(a.length !== b.length)	\
-		throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; \
-	for(var i=a.length; i>0; i--) {	c[i] = a[i] op b[i]; } 
-#define Rn_EQ_Rn_OP_Rn_SUITE_MACRO(op, uni) \
-function Rn##uni##Rn 		(a,b) 	{ Rn_MATCH_MACRO(c,a)	Rn_EQ_Rn_OP_Rn_MACRO(c, a, op, b) return c; } 	__CR__\
-function Rn##uni##__EQ__Rn 	(a,b) 	{ 						Rn_EQ_Rn_OP_Rn_MACRO(a, a, op, b) }				__CR__\
-function Rn__EQ__Rn##uni##Rn(c,a,b)	{ 						Rn_EQ_Rn_OP_Rn_MACRO(c, a, op, b) }				__CR__
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(+, __ADD__, n)
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(-, __SUB__, n)
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(*, __DOT__, n)
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(/, __DIV__, n)
 
-#define Rn_EQ_Rn_OP_R_MACRO(c,a,op,b) for(var i=a.length; i>0; i--) { c[i] = a[i] op b; }
-#define Rn_EQ_Rn_OP_R_SUITE_MACRO(op, uni) \
-function Rn##uni##R 		(a,b) 	{ Rn_MATCH_MACRO(c,a)	Rn_EQ_Rn_OP_R_MACRO(c, a, op, b) return c; }	__CR__\
-function Rn##uni##__EQ__R 	(a,b) 	{ 						Rn_EQ_Rn_OP_R_MACRO(a, a, op, b) }				__CR__\
-function Rn__EQ__Rn##uni##R (c,a,b)	{ 						Rn_EQ_Rn_OP_R_MACRO(c, a, op, b) }				__CR__
+Rx_EQ_R_OP_Rx_SUITE_MACRO	(+, __ADD__, n)
+Rx_EQ_R_OP_Rx_SUITE_MACRO	(-, __SUB__, n)
+Rx_EQ_R_OP_Rx_SUITE_MACRO	(*, __DOT__, n)
 
-#define Rn_EQ_R_OP_Rn_MACRO(c,a,op,b) for(var i=a.length; i>0; i--) { c[i] = a op b[i]; }
-#define Rn_EQ_R_OP_Rn_SUITE_MACRO(op, uni) \
-function R##uni##Rn 		(a,b) 	{ Rn_MATCH_MACRO(c,a)	Rn_EQ_R_OP_Rn_MACRO(c, a, op, b) return c; }	__CR__\
-function R__EQ__R##uni##Rn (c,a,b)	{ 						Rn_EQ_R_OP_Rn_MACRO(c, a, op, b) }				__CR__
-
-Rn_EQ_Rn_OP_Rn_SUITE_MACRO(*, __HADAMARD__)
-Rn_EQ_Rn_OP_Rn_SUITE_MACRO(+, __ADD__)
-Rn_EQ_Rn_OP_Rn_SUITE_MACRO(-, __SUB__)
-
-Rn_EQ_Rn_OP_R_SUITE_MACRO(+, __ADD__)
-Rn_EQ_Rn_OP_R_SUITE_MACRO(-, __SUB__)
-Rn_EQ_Rn_OP_R_SUITE_MACRO(*, __DOT__)
-Rn_EQ_Rn_OP_R_SUITE_MACRO(/, __DIV__)
 function ꘌRⁿ 	(a,b) 	{ Rn_MATCH_MACRO(c,a) return c; }
 function RⁿꘌRⁿ 	(a,b) 	{ Rn_EQ_Rn_OP_R_MACRO(a,b,*,1) }
-
-Rn_EQ_R_OP_Rn_SUITE_MACRO(+, __ADD__)
-Rn_EQ_R_OP_Rn_SUITE_MACRO(-, __SUB__)
-Rn_EQ_R_OP_Rn_SUITE_MACRO(*, __DOT__)
 function ᐨRⁿ 	(a,b) 	{ Rn_MATCH_MACRO(c,a) Rn_EQ_R_OP_Rn_MACRO(c,-1,*,b) return c; }
-
 
 // 	MISCELLANEOUS Rⁿ OPERATIONS
 function RⁿꘌꘌRⁿ	(a,b) 	{ 					for(var i=0,la=a.length,lb=b.length; i<la||i<lb; i++) {if(a[i]!=b[i]) return false;} return true; }
@@ -361,7 +356,6 @@ function RᶣᐧRⁿ	(a,b) 	{ return a.x * b[0]	+	a.y * b[1]	+	a.z * b[2]	+ 	a.w
 function RⁿᐧRᒾ	(b,a) 	{ return a.x * b[0]	+	a.y * b[1]									 	}
 function RⁿᐧRᵌ	(b,a) 	{ return a.x * b[0]	+	a.y * b[1]	+	a.z * b[2]					 	}
 function RⁿᐧRᶣ	(b,a) 	{ return a.x * b[0]	+	a.y * b[1]	+	a.z * b[2]	+ 	a.w * b[3]; 	}
-
 
 // MATRICES OF SIZE NxN ------------------------------------------
 ːᕮRⁿᕽⁿ = AːAᕮRⁿᕽⁿ = ⁿᕽⁿ = RⁿㅡᐳRⁿ = function(n,m) {	
