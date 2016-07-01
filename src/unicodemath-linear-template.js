@@ -15,7 +15,7 @@
 #define Rnxn_EQ_Rnxn_OP_Rnxn_MACRO(c, a, op, b) __CR__\
 	var i, j, li=a.length, lj=a[0].length, ai, bi, ci; __CR__\
 	if(li !== b.length || lj !== b[0].length) __CR__\
-		throw 'Cannot call operator between matrices of size '+a.length+'x'+a[0].length' and '+b.length+'x'+b[0].length; __CR__\
+		throw 'Cannot call operator between matrices of size '+a.length+'x'+a[0].length+' and '+b.length+'x'+b[0].length; __CR__\
 	for(i=li; i>0; i--) { ai=a[i]; bi=b[i]; ci=c[i]; for(j=lj; j>0; j--) { ci[j] = ai[j] op bi[j]; } } __CR__
 
 
@@ -40,19 +40,20 @@
 
 
 
+
 #define Rx_EQ_Rx_OP_Rx_SUITE_MACRO(op, uni, x) \
-function R##x##uni##R##x 		(a,b) 	{ R##x##_MATCH_MACRO(c,a)	R##x##_EQ_R##x##_OP_R##x##_MACRO(c, a, op, b) return c; } 	__CR__\
-function R##x##uni##__EQ__R##x 	(a,b) 	{ 							R##x##_EQ_R##x##_OP_R##x##_MACRO(a, a, op, b) }				__CR__\
-function R##x##__EQ__R##x##uni##R##x(c,a,b)	{ 						R##x##_EQ_R##x##_OP_R##x##_MACRO(c, a, op, b) }				__CR__
+function R##x##uni##R##x 		(a,b) 	{ R##x##_MATCH_MACRO(c,a)	R##x##_EQ_R##x##_OP_R##x##_MACRO(c, a, op, b) return c;} 	__CR__\
+function R##x##uni##__EQ__R##x 	(a,b) 	{ 							R##x##_EQ_R##x##_OP_R##x##_MACRO(a, a, op, b)}				__CR__\
+function R##x##__EQ__R##x##uni##R##x(c,a,b)	{ 						R##x##_EQ_R##x##_OP_R##x##_MACRO(c, a, op, b)}				__CR__
 
 #define Rx_EQ_Rx_OP_R_SUITE_MACRO(op, uni, x) \
-function R##x##uni##R 			(a,b) 	{ R##x##_MATCH_MACRO(c,a)	R##x##_EQ_R##x##_OP_R_MACRO(c, a, op, b) return c; }	__CR__\
-function R##x##uni##__EQ__R 	(a,b) 	{	 						R##x##_EQ_R##x##_OP_R_MACRO(a, a, op, b) }				__CR__\
-function R##x##__EQ__R##x##uni##R(c,a,b){ 							R##x##_EQ_R##x##_OP_R_MACRO(c, a, op, b) }				__CR__
+function R##x##uni##R 			(a,b) 	{ R##x##_MATCH_MACRO(c,a)	R##x##_EQ_R##x##_OP_R_MACRO(c, a, op, b) return c;}	__CR__\
+function R##x##uni##__EQ__R 	(a,b) 	{	 						R##x##_EQ_R##x##_OP_R_MACRO(a, a, op, b)}			__CR__\
+function R##x##__EQ__R##x##uni##R(c,a,b){ 							R##x##_EQ_R##x##_OP_R_MACRO(c, a, op, b)}			__CR__
 
 #define Rx_EQ_R_OP_Rx_SUITE_MACRO(op, uni, x) \
-function R##uni##R##x 			(a,b) 	{ R##x##_MATCH_MACRO(c,a)	R##x##_EQ_R_OP_R##x##_MACRO(c, a, op, b) return c; }	__CR__\
-function R__EQ__R##uni##R##x	(c,a,b)	{ 							R##x##_EQ_R_OP_R##x##_MACRO(c, a, op, b) }				__CR__
+function R##uni##R##x 			(a,b) 	{ R##x##_MATCH_MACRO(c,a)	R##x##_EQ_R_OP_R##x##_MACRO(c, a, op, b) return c;}	__CR__\
+function R__EQ__R##uni##R##x	(c,a,b)	{ 							R##x##_EQ_R_OP_R##x##_MACRO(c, a, op, b)}			__CR__
 
 
 
@@ -377,20 +378,28 @@ function Iⁿ (n){
 	}
 	return result;
 }
-// 	(R,Rⁿᕽⁿ)->Rⁿᕽⁿ OPERATIONS
-function RᐧRⁿᕽⁿ	(a,B)	{ var result=[];	for(var i=0, li=B.length; i<li; i++) { result.push(	RᐧRⁿ		(a, B[i]) ); }		return result;	}
 
-// 	(Rⁿᕽⁿ,R)->Rⁿᕽⁿ OPERATIONS
+Rx_EQ_Rx_OP_Rx_SUITE_MACRO	(*, __HADAMARD__, nxn)
+Rx_EQ_Rx_OP_Rx_SUITE_MACRO	(+, __ADD__, nxn)
+Rx_EQ_Rx_OP_Rx_SUITE_MACRO	(-, __SUB__, nxn)
+
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(+, __ADD__, nxn)
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(-, __SUB__, nxn)
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(*, __DOT__, nxn)
+Rx_EQ_Rx_OP_R_SUITE_MACRO	(/, __DIV__, nxn)
+
+Rx_EQ_R_OP_Rx_SUITE_MACRO	(+, __ADD__, nxn)
+Rx_EQ_R_OP_Rx_SUITE_MACRO	(-, __SUB__, nxn)
+Rx_EQ_R_OP_Rx_SUITE_MACRO	(*, __DOT__, nxn)
+
 function ᐨRⁿᕽⁿ	(A)		{ var result=[];	for(var i=0, li=A.length; i<li; i++) { result.push(	ᐨRⁿ		(A[i]) ); }		return result;	}
-function RⁿᕽⁿᐩR	(A,b)	{ var result=[];	for(var i=0, li=A.length; i<li; i++) { result.push(	RⁿᐩR		(A[i], b) ); }	return result;	}
-function RⁿᕽⁿᐨR	(A,b)	{ var result=[];	for(var i=0, li=A.length; i<li; i++) { result.push(	RⁿᐨR		(A[i], b) ); }	return result;	}
-function RⁿᕽⁿᐧR	(A,b)	{ var result=[];	for(var i=0, li=A.length; i<li; i++) { result.push(	RⁿᐧR		(A[i], b) ); }	return result;	}
-function Rⁿᕽⁿ〳R	(A,b)	{ var result=[];	for(var i=0, li=A.length; i<li; i++) { result.push(	Rⁿ〳R	(A[i],b) ); }	return result;	}
 function ᐨꘌRⁿᕽⁿ	(A)		{ 					for(var i=0, li=A.length; i<li; i++) { 				ᐨꘌRⁿ		(A[i]);		}					}
-function RⁿᕽⁿᐩꘌR	(A,b)	{ 					for(var i=0, li=A.length; i<li; i++) { 				RⁿᐩꘌR	(A[i], b);	}					}
-function RⁿᕽⁿᐨꘌR	(A,b)	{ 					for(var i=0, li=A.length; i<li; i++) { 				RⁿᐨꘌR	(A[i], b);	}					}
-function RⁿᕽⁿᐧꘌR	(A,b)	{ 					for(var i=0, li=A.length; i<li; i++) { 				RⁿᐧꘌR	(A[i], b);	}					}
-function Rⁿᕽⁿ〳ꘌR(A,b)	{ 					for(var i=0, li=A.length; i<li; i++) { 				Rⁿ〳ꘌR	(A[i], b);}					}
+function RⁿᕽⁿꘌRⁿᕽⁿ(A,B)	{					for(var i=0, li=A.length; i<li; i++) {				RⁿꘌRⁿ	(A[i],B[i]); }						}
+function ꘌRⁿᕽⁿ(A,B)		{ var result=[];	for(var i=0, li=A.length; i<li; i++) { result.push(	ꘌRⁿ		(A[i]) ); }			return result;	}
+
+// 	(Rⁿᕽⁿ,Rⁿᕽⁿ)->Rⁿᕽⁿ OPERATIONS
+function RⁿᕽⁿꘌꘌRⁿᕽⁿ(A,B){ 					for(var i=0,la=A.length,lb=B.length; i<la||i<lb; i++) { if(!RⁿꘌꘌRⁿ(A[i],B[i])) return false; }	return true;	}
+function RⁿᕽⁿǃꘌRⁿᕽⁿ(A,B){ 					for(var i=0,la=A.length,lb=B.length; i<la||i<lb; i++) { if(!RⁿǃꘌRⁿ(A[i],B[i])) return true; }	return false;	}
 
 // 	(Rⁿᕽⁿ,Rⁿ)->Rⁿ OPERATIONS
 function RⁿᕽⁿᐧRᒾ	(A,b)	{ return  ꜛ(		RᒾᐧRⁿ(b,A[0]), 	RᒾᐧRⁿ(b,A[1]) 									); }
@@ -401,18 +410,6 @@ function RᒾᐧꘌRⁿᕽⁿ	(a,B)	{ var				x=RᒾᐧRⁿ(a,B[0]),	y=RᒾᐧR�
 function RᵌᐧꘌRⁿᕽⁿ(a,B)	{ var				x=RᵌᐧRⁿ(a,B[0]),	y=RᵌᐧRⁿ(a,B[1]),	z=RᵌᐧRⁿ(a,B[2])					; 		a.x=x; a.y=y; a.z=z;		}
 function RᶣᐧꘌRⁿᕽⁿ(a,B)	{ var				x=RᶣᐧRⁿ(a,B[0]),	y=RᶣᐧRⁿ(a,B[1]),	z=RᶣᐧRⁿ(a,B[2]), w=RᶣᐧRⁿ(a,B[3])	; 		a.x=x; a.y=y; a.z=z; a.w=w;	}
 function RⁿᐧꘌRⁿᕽⁿ(a,B)	{ var result=[];	for(var i=0, li=B.length; i<li; i++) { result.push( RⁿᐧRⁿ(a,B[i]) ) }	RⁿꘌRⁿ(a,result);}
-
-// 	(Rⁿᕽⁿ,Rⁿᕽⁿ)->Rⁿᕽⁿ OPERATIONS
-function RⁿᕽⁿᐩRⁿᕽⁿ(A,B)	{ var result=[];	for(var i=0, li=A.length; i<li; i++) { result.push(	RⁿᐩRⁿ	(A[i],B[i]) ); }	return result;	}
-function RⁿᕽⁿᐨRⁿᕽⁿ(A,B)	{ var result=[];	for(var i=0, li=A.length; i<li; i++) { result.push(	RⁿᐨRⁿ	(A[i],B[i]) ); }	return result;	}
-function RⁿᕽⁿᐤRⁿᕽⁿ(A,B)	{ var result=[];	for(var i=0, li=A.length; i<li; i++) { result.push(	RⁿᐤRⁿ	(A[i],B[i]) ); }	return result;	}
-function RⁿᕽⁿᐩꘌRⁿᕽⁿ(A,B)	{					for(var i=0, li=A.length; i<li; i++) {				RⁿᐩꘌRⁿ	(A[i],B[i]); }						}
-function RⁿᕽⁿᐨꘌRⁿᕽⁿ(A,B)	{					for(var i=0, li=A.length; i<li; i++) {				RⁿᐨꘌRⁿ	(A[i],B[i]); }						}
-function RⁿᕽⁿᐤꘌRⁿᕽⁿ(A,B)	{					for(var i=0, li=A.length; i<li; i++) {				RⁿᐤꘌRⁿ	(A[i],B[i]); }						}
-function RⁿᕽⁿꘌRⁿᕽⁿ(A,B)	{					for(var i=0, li=A.length; i<li; i++) {				RⁿꘌRⁿ	(A[i],B[i]); }						}
-function ꘌRⁿᕽⁿ(A,B)		{ var result=[];	for(var i=0, li=A.length; i<li; i++) { result.push(	ꘌRⁿ		(A[i]) ); }			return result;	}
-function RⁿᕽⁿꘌꘌRⁿᕽⁿ(A,B){ 					for(var i=0,la=A.length,lb=B.length; i<la||i<lb; i++) { if(!RⁿꘌꘌRⁿ(A[i],B[i])) return false; }	return true;	}
-function RⁿᕽⁿǃꘌRⁿᕽⁿ(A,B){ 					for(var i=0,la=A.length,lb=B.length; i<la||i<lb; i++) { if(!RⁿǃꘌRⁿ(A[i],B[i])) return true; }	return false;	}
 
 // 	FUNCTIONAL Rⁿᕽⁿ OPERATIONS
 function FᐧRⁿᕽⁿ	(f,B)	{ var result=[];	for(var i=0, li=B.length; i<li; i++) { result.push(	FᐧRⁿ (F, B[i]) ); }			return result;	}

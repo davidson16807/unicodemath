@@ -9,6 +9,7 @@ sed \
 	-e s/__DIV__/〳/g 		\
 	-e s/__EQ__/ꘌ/g 		\
 	-e s/__CR__/#/g  		\
+	-e s/Rnxn/Rⁿᕽⁿ/g  		\
 	-e s/Rn/Rⁿ/g  			\
 	-e s/R4/Rᶣ/g  			\
 	-e s/R3/Rᵌ/g  			\
