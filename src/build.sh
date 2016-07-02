@@ -8,6 +8,8 @@ sed \
 	-e s/__DOT__/ᐧ/g 		\
 	-e s/__DIV__/〳/g 		\
 	-e s/__EQ__/ꘌ/g 		\
+	-e s/__NOT__/ǃ/g 		\
+	-e s/__PIPE__/ǀ/g 		\
 	-e s/__CR__/#/g  		\
 	-e s/Rnxn/Rⁿᕽⁿ/g  		\
 	-e s/Rn/Rⁿ/g  			\
