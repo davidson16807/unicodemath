@@ -8,7 +8,10 @@
 #define R_EQ_R2_OP_R2_MACRO(c,a,op,b,join) c = a.x op b.x join a.y op b.y;
 #define R_EQ_R3_OP_R3_MACRO(c,a,op,b,join) c = a.x op b.x join a.y op b.y join a.z op b.z;
 #define R_EQ_R4_OP_R4_MACRO(c,a,op,b,join) c = a.x op b.x join a.y op b.y join a.z op b.z join a.w op b.w;
-#define R_EQ_Rn_OP_Rn_MACRO(c,a,op,b,join) __CR__
+#define R_EQ_Rn_OP_Rn_MACRO(c,a,op,b,join) \
+	if(a.length !== b.length)	\
+		throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; \
+	for(var i=a.length; i>0; i--) {	c = c join a[i] op b[i]; } 
 #define R_EQ_Rnxn_OP_Rnxn_MACRO(c,a,op,b,join) __CR__
 
 #define R2_EQ_R2_OP_R2_MACRO(c,a,op,b) c.x=a.x op b.x; c.y=a.y op b.y;
@@ -108,7 +111,7 @@ function R##x##__EQ__R##x##uni##Rn (c,a,b) { 						R##x##_EQ_R##x##_OP_Rn_MACRO(
 	function R##x##__EQ____EQ__R##x(a,b){	var c;				R_EQ_R##x##_OP_R##x##_MACRO(c,a,==,b,&&);	return c;	} __CR__\
 	function R##x##__NOT____EQ__R##x(a,b){	var c;				R_EQ_R##x##_OP_R##x##_MACRO(c,a,!=,b,||);	return c;	} __CR__\
 	function R##x##__DOT__R##x 		(a,b){	var c;				R_EQ_R##x##_OP_R##x##_MACRO(c,a,*, b,+);	return c;	} __CR__\
-	function __PIPE__R##x##__PIPE__	(a,b){	var c;				R_EQ_R##x##_OP_R##x##_MACRO(c,a,*, b,+);	return ᛇ(c);} __CR__
+	function __PIPE__R##x##__PIPE__	(a,b){	var c;				R_EQ_R##x##_OP_R##x##_MACRO(c,a,*, a,+);	return ᛇ(c);} __CR__
 			
 #define Rx_Rn_SUITE_MACRO(x) \
 	Rx_EQ_Rx_OP_Rn_MACRO(+, __ADD__, x) __CR__\

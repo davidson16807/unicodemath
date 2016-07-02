@@ -52,8 +52,14 @@ function RꘌRᐧRᒾ (c,a,b) { c.x=a * b.x; c.y=a * b.y;}
  
  function ꘌRᒾ (a,b) { var c = { x:a.x, y:a.y }; return c; } 
  function RᒾꘌRᒾ(a,b) { a.x=b.x * 1; a.y=b.y * 1; } 
+ 
  function ᐨRᒾ (a,b) { var c = { x:a.x, y:a.y }; c.x=-1 * a.x; c.y=-1 * a.y; return c; } 
  function ᐨꘌRᒾ(a,b) { a.x=-1 * a.x; a.y=-1 * a.y; return c; } 
+ 
+ function RᒾꘌꘌRᒾ(a,b){ var c; c = a.x == b.x && a.y == b.y;; return c; } 
+ function RᒾǃꘌRᒾ(a,b){ var c; c = a.x != b.x || a.y != b.y;; return c; } 
+ function RᒾᐧRᒾ (a,b){ var c; c = a.x * b.x + a.y * b.y;; return c; } 
+ function ǀRᒾǀ (a,b){ var c; c = a.x * a.x + a.y * a.y;; return ᛇ(c);} 
 
 function RᒾᐩRⁿ (a,b) { var c = { x:a.x, y:a.y }; c.x=a.x + b[0]; c.y=a.y + b[1]; return c;} 
 function RᒾᐩꘌRⁿ (a,b) { a.x=a.x + b[0]; a.y=a.y + b[1];} 
@@ -83,10 +89,6 @@ function RⁿꘌRⁿᐤRᒾ (c,a,b) { c[0]=a[0] * b.x; c[1]=a[1] * b.y;}
 
 
 
-function RᒾꘌꘌRᒾ (a,b) { return a.x == b.x&&a.y == b.y; }
-function RᒾǃꘌRᒾ (a,b) { return a.x != b.x||a.y != b.y; }
-function RᒾᐧRᒾ (a,b) { return a.x * b.x + a.y * b.y; }
-function ǀRᒾǀ (a) { return ᛇ( a.x * a.x + a.y * a.y ); }
 function Rᒾˆ (a) { return Rᒾ〳R (a, ǀRᒾǀ(a)); }
 function Rᒾˆꘌ (a) { return Rᒾ〳ꘌR (a, ǀRᒾǀ(a)); }
 
@@ -168,8 +170,14 @@ function RꘌRᐧRᵌ (c,a,b) { c.x=a * b.x; c.y=a * b.y; c.z=a * b.z;}
  
  function ꘌRᵌ (a,b) { var c = { x:a.x, y:a.y, z:a.z }; return c; } 
  function RᵌꘌRᵌ(a,b) { a.x=b.x * 1; a.y=b.y * 1; a.z=b.z * 1; } 
+ 
  function ᐨRᵌ (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=-1 * a.x; c.y=-1 * a.y; c.z=-1 * a.z; return c; } 
  function ᐨꘌRᵌ(a,b) { a.x=-1 * a.x; a.y=-1 * a.y; a.z=-1 * a.z; return c; } 
+ 
+ function RᵌꘌꘌRᵌ(a,b){ var c; c = a.x == b.x && a.y == b.y && a.z == b.z;; return c; } 
+ function RᵌǃꘌRᵌ(a,b){ var c; c = a.x != b.x || a.y != b.y || a.z != b.z;; return c; } 
+ function RᵌᐧRᵌ (a,b){ var c; c = a.x * b.x + a.y * b.y + a.z * b.z;; return c; } 
+ function ǀRᵌǀ (a,b){ var c; c = a.x * a.x + a.y * a.y + a.z * a.z;; return ᛇ(c);} 
 
 function RᵌᐩRⁿ (a,b) { var c = { x:a.x, y:a.y, z:a.z }; c.x=a.x + b[0]; c.y=a.y + b[1]; c.z=a.z + b[2]; return c;} 
 function RᵌᐩꘌRⁿ (a,b) { a.x=a.x + b[0]; a.y=a.y + b[1]; a.z=a.z + b[2];} 
@@ -199,10 +207,6 @@ function RⁿꘌRⁿᐤRᵌ (c,a,b) { c[0]=a[0] * b.x; c[1]=a[1] * b.y; c[2]=a[2
 
 
 
-function RᵌꘌꘌRᵌ (a,b) { return a.x == b.x&&a.y == b.y&&a.z == b.z; }
-function RᵌǃꘌRᵌ (a,b) { return a.x != b.x||a.y != b.y||a.z != b.z; }
-function RᵌᐧRᵌ (a,b) { return a.x * b.x + a.y * b.y + a.z * b.z; }
-function ǀRᵌǀ (a) { return ᛇ( a.x * a.x + a.y * a.y + a.z * a.z ); }
 function Rᵌˆ (a) { return Rᵌ〳R (a, ǀRᵌǀ(a)); }
 function Rᵌˆꘌ (a) { return Rᵌ〳ꘌR (a, ǀRᵌǀ(a)); }
 
@@ -314,8 +318,14 @@ function RꘌRᐧRᶣ (c,a,b) { c.x=a * b.x; c.y=a * b.y; c.z=a * b.z; c.w=a * b
  
  function ꘌRᶣ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; return c; } 
  function RᶣꘌRᶣ(a,b) { a.x=b.x * 1; a.y=b.y * 1; a.z=b.z * 1; a.w=b.w * 1; } 
+ 
  function ᐨRᶣ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=-1 * a.x; c.y=-1 * a.y; c.z=-1 * a.z; c.w=-1 * a.w; return c; } 
  function ᐨꘌRᶣ(a,b) { a.x=-1 * a.x; a.y=-1 * a.y; a.z=-1 * a.z; a.w=-1 * a.w; return c; } 
+ 
+ function RᶣꘌꘌRᶣ(a,b){ var c; c = a.x == b.x && a.y == b.y && a.z == b.z && a.w == b.w;; return c; } 
+ function RᶣǃꘌRᶣ(a,b){ var c; c = a.x != b.x || a.y != b.y || a.z != b.z || a.w != b.w;; return c; } 
+ function RᶣᐧRᶣ (a,b){ var c; c = a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;; return c; } 
+ function ǀRᶣǀ (a,b){ var c; c = a.x * a.x + a.y * a.y + a.z * a.z + a.w * a.w;; return ᛇ(c);} 
 
 function RᶣᐩRⁿ (a,b) { var c = { x:a.x, y:a.y, z:a.z, w:a.w }; c.x=a.x + b[0]; c.y=a.y + b[1]; c.z=a.z + b[2]; c.w=a.w + b[3]; return c;} 
 function RᶣᐩꘌRⁿ (a,b) { a.x=a.x + b[0]; a.y=a.y + b[1]; a.z=a.z + b[2]; a.w=a.w + b[3];} 
@@ -345,9 +355,6 @@ function RⁿꘌRⁿᐤRᶣ (c,a,b) { c[0]=a[0] * b.x; c[1]=a[1] * b.y; c[2]=a[2
 
 
 
-function RᶣꘌꘌRᶣ (a,b) { return a.x == b.x&&a.y == b.y&&a.z == b.z&&a.w == b.w ; }
-function RᶣǃꘌRᶣ (a,b) { return a.x != b.x||a.y != b.y||a.z != b.z||a.w != b.w ; }
-function RᶣᐧRᶣ (a,b) { return a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w; }
 function ǀRᶣǀ (a) { return ᛇ( a.x * a.x + a.y * a.y + a.z * a.z + a.w * a.w ); }
 function Rᶣˆ (a) { return Rᶣ〳R (a, ǀRᶣǀ(a)); }
 function Rᶣˆꘌ (a) { return Rᶣ〳ꘌR (a, ǀRᶣǀ(a)); }
@@ -457,8 +464,14 @@ function RꘌRᐧRⁿ (c,a,b) { for(var i=a.length; i>0; i--) { c[i] = a * b[i];
  
  function ꘌRⁿ (a,b) { var c = Array(a.length); return c; } 
  function RⁿꘌRⁿ(a,b) { for(var i=b.length; i>0; i--) { a[i] = b[i] * 1; } } 
+ 
  function ᐨRⁿ (a,b) { var c = Array(a.length); for(var i=-1 .length; i>0; i--) { c[i] = -1 * a[i]; } return c; } 
  function ᐨꘌRⁿ(a,b) { for(var i=-1 .length; i>0; i--) { a[i] = -1 * a[i]; } return c; } 
+ 
+ function RⁿꘌꘌRⁿ(a,b){ var c; if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { c = c && a[i] == b[i]; }; return c; } 
+ function RⁿǃꘌRⁿ(a,b){ var c; if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { c = c || a[i] != b[i]; }; return c; } 
+ function RⁿᐧRⁿ (a,b){ var c; if(a.length !== b.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+b.length; for(var i=a.length; i>0; i--) { c = c + a[i] * b[i]; }; return c; } 
+ function ǀRⁿǀ (a,b){ var c; if(a.length !== a.length) throw 'Cannot call operator between vectors of size '+a.length+' and '+a.length; for(var i=a.length; i>0; i--) { c = c + a[i] * a[i]; }; return ᛇ(c);} 
 
 
 
@@ -660,6 +673,7 @@ function RꘌRᐧRⁿᕽⁿ (c,a,b) {
  var i, j, li=b.length, lj=b[0].length, ai, ci; 
  for(i=li; i>0; i--) { ai=b[i]; ci=a[i]; for(j=lj; j>0; j--) { ci[j] = ai[j] * 1; } } 
  } 
+ 
  function ᐨRⁿᕽⁿ (a,b) { 
  var c=Array(a.length); var colnum=a[0].length; for(i=a.length; i>0; i--) c[i] = Array(colnum); 
  var i, j, li=-1 .length, lj=-1[0].length, ai, ci; 
@@ -669,6 +683,15 @@ function RꘌRᐧRⁿᕽⁿ (c,a,b) {
  var i, j, li=-1 .length, lj=-1[0].length, ai, ci; 
  for(i=li; i>0; i--) { ai=-1[i]; ci=a[i]; for(j=lj; j>0; j--) { ci[j] = ai[j] * a; } } 
  return c; } 
+ 
+ function RⁿᕽⁿꘌꘌRⁿᕽⁿ(a,b){ var c; 
+; return c; } 
+ function RⁿᕽⁿǃꘌRⁿᕽⁿ(a,b){ var c; 
+; return c; } 
+ function RⁿᕽⁿᐧRⁿᕽⁿ (a,b){ var c; 
+; return c; } 
+ function ǀRⁿᕽⁿǀ (a,b){ var c; 
+; return ᛇ(c);} 
 
 
 
