@@ -1,5 +1,5 @@
 # unicodemath
-###A javascript math library made to exploit math symbol homoglyphs in unicode 
+### A javascript math library made to exploit math symbol homoglyphs in unicode 
 
 This is a wretched library - the spawn of a terrible, terrible idea. 
 
@@ -78,15 +78,15 @@ We call the operator just as we would with any function:
 
 You can write your own overloads to support objects from virtually any library. There's already a set of overloads for library-agnostic datatypes like vectors and matrices.
 
-##Subcomponents
+## Subcomponents
 
-###Arithmetic and Core Library
+### Arithmetic and Core Library
 Overloads for the real number field are exposed in unicodemath.js, along with core functionality. 
 
-###Linear Algebra
+### Linear Algebra
 Overloads for matrices and vectors are exposed through unicodemath-linear-js. You will need to load unicodemath.js before you load unicodemath-linear-js. As with most math libraries, you can represent matrices using 2d arrays. N-dimensional vectors can be represented as an array of numbers. 2D, 3D, and 4D vectors can also be represented by an object with x/y/z/w attributes. 
 
-###Geometric (A.K.A. "Clifford") Algebra
+### Geometric (A.K.A. "Clifford") Algebra
 Overloads for complex numbers, quaternions, and other objects in Geometric Algebra are exposed through unicodemath-clifford.js. Objects are represented by their component blades. For instance, the bivector `a` can be represented by:
 
 	a = { '1': 0, x: 1, y: 2, xy:3, yz: 4, zx: 5, xyz:6 }
@@ -101,19 +101,19 @@ And a quaternion by:
 
 Objects beyond the third dimension are not currently supported.
 
-#FAQ
+# FAQ
 
-###Why?
+### Why?
 Your code will be read far more than written. If this is true, then its immaterial how long it takes for you to write code, just as long as it makes up for the time spent reading. When working with mathematical objects, the easiest way for them to be understood is using mathematical notation. That's the notation everyone else uses, and that's the notation everyone has become familiar with. There are certain exceptions where a mathematical expression describes a coherent concept, but in the end, the mathematical expression is the more abstract one, and the mathematical expression is the one you will use when you're defining the concept within your application. 
 
 And besides, it just looks cool.
 
-###This doesn't work with really old browsers
+### This doesn't work with really old browsers
 Sounds like a problem with the browser.
 
-###I can't view a character in a particular font
+### I can't view a character in a particular font
 Sounds like a problem with your font. 
 
-#Acknowledgements
+# Acknowledgements
 
 Big thanks to [Shapecatcher](http://shapecatcher.com/), without which this library would be nowhere near as expressive as it is today.
